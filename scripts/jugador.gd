@@ -58,8 +58,6 @@ func golpear():
 	temporizador_golpe.start(duracion_golpe)
 
 func disparar():
-	golpeando = true
-	temporizador_golpe.start(duracion_golpe)
 	var proyectil = Proyectil.instantiate()
 	get_parent().add_child(proyectil)
 	proyectil.global_position = global_position + direccion_mirando() * distancia_disparo
