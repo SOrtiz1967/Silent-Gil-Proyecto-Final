@@ -22,6 +22,7 @@ shape = SubResource("CapsuleShape2D_jugador")
 [node name="ZonaGolpe" type="Area2D" parent="." unique_id=1966236519]
 position = Vector2(24, 0)
 monitoring = false
+monitorable = false
 
 [node name="ColisionGolpe" type="CollisionShape2D" parent="ZonaGolpe" unique_id=77095755]
 shape = SubResource("RectangleShape2D_golpe")

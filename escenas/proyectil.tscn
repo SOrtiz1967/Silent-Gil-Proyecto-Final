@@ -1,21 +1,24 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://h7vckh6nf4eq"]
 
-[ext_resource type="Script" path="res://scripts/proyectil.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/proyectil.svg" id="2_sprite"]
+[ext_resource type="Script" uid="uid://cbpwllyw3s76w" path="res://scripts/proyectil.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://m2xym66s3c2y" path="res://assets/proyectil.svg" id="2_sprite"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_proyectil"]
 radius = 6.0
 
-[node name="Proyectil" type="Area2D"]
+[node name="Proyectil" type="Area2D" unique_id=658447792]
 script = ExtResource("1_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=960352005]
 texture = ExtResource("2_sprite")
 
-[node name="ColisionProyectil" type="CollisionShape2D" parent="."]
+[node name="ColisionProyectil" type="CollisionShape2D" parent="." unique_id=1992565082]
 shape = SubResource("CircleShape2D_proyectil")
 
-[node name="TemporizadorVida" type="Timer" parent="."]
+[node name="TemporizadorVida" type="Timer" parent="." unique_id=1826232232]
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="TemporizadorVida" to="." method="_on_temporizador_vida_timeout"]
