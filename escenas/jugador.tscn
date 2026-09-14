@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/jugador.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/jugador.svg" id="2_sprite"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jugador"]
+radius = 14.0
+height = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_golpe"]
+size = Vector2(24, 20)
+
+[node name="Jugador" type="CharacterBody2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sprite")
+
+[node name="ColisionJugador" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jugador")
+
+[node name="ZonaGolpe" type="Area2D" parent="."]
+position = Vector2(24, 0)
+monitoring = false
+
+[node name="ColisionGolpe" type="CollisionShape2D" parent="ZonaGolpe"]
+shape = SubResource("RectangleShape2D_golpe")
+
+[node name="TemporizadorGolpe" type="Timer" parent="."]
+one_shot = true
