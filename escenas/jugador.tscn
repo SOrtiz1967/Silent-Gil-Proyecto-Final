@@ -10,7 +10,7 @@ height = 40.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_golpe"]
 size = Vector2(20, 20)
 
-[node name="Jugador" type="CharacterBody2D" unique_id=1593424449]
+[node name="Jugador" type="CharacterBody2D" unique_id=1593424449 groups=["jugador"]]
 script = ExtResource("1_script")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=93842069]

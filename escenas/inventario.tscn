@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bdkvp8lq66gg7"]
+
+[ext_resource type="Script" uid="uid://bgu6lw85x04qv" path="res://scripts/inventario.gd" id="1_script"]
+
+[node name="Inventario" type="CanvasLayer" unique_id=646703436]
+process_mode = 3
+script = ExtResource("1_script")
+
+[node name="EtiquetaMensaje" type="Label" parent="." unique_id=2135379563]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -80.0
+offset_right = 300.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TemporizadorMensaje" type="Timer" parent="." unique_id=1529732923]
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+
+[node name="PanelInventario" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -140.0
+offset_right = 180.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.05, 0.92)
+
+[node name="EtiquetaTitulo" type="Label" parent="PanelInventario"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 344.0
+offset_bottom = 38.0
+text = "INVENTARIO"
+horizontal_alignment = 1
+
+[node name="EtiquetaLista" type="Label" parent="PanelInventario"]
+offset_left = 24.0
+offset_top = 50.0
+offset_right = 336.0
+offset_bottom = 240.0
+
+[node name="EtiquetaCerrar" type="Label" parent="PanelInventario"]
+offset_left = 16.0
+offset_top = 246.0
+offset_right = 344.0
+offset_bottom = 270.0
+text = "T o Esc para cerrar"
+horizontal_alignment = 2
+
+[connection signal="timeout" from="TemporizadorMensaje" to="." method="ocultarMensaje"]
