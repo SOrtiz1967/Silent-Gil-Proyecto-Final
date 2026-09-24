@@ -747,45 +747,6 @@ position = Vector2(80, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CANTERO_03/StaticBody2D" unique_id=914757787]
 shape = SubResource("Shape_160x64")
 
-[node name="AUTO_01" type="Node2D" parent="." unique_id=626839571]
-position = Vector2(2912, 2304)
-
-[node name="Polygon2D" type="Polygon2D" parent="AUTO_01" unique_id=402684808]
-color = Color(0.4, 0.5, 0.6, 1)
-polygon = PackedVector2Array(0, 0, 160, 0, 160, 64, 0, 64)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="AUTO_01" unique_id=86071567]
-position = Vector2(80, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AUTO_01/StaticBody2D" unique_id=1771097911]
-shape = SubResource("Shape_160x64")
-
-[node name="AUTO_02" type="Node2D" parent="." unique_id=973387855]
-position = Vector2(3232, 2592)
-
-[node name="Polygon2D" type="Polygon2D" parent="AUTO_02" unique_id=2034858388]
-color = Color(0.4, 0.5, 0.6, 1)
-polygon = PackedVector2Array(0, 0, 160, 0, 160, 64, 0, 64)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="AUTO_02" unique_id=1061751637]
-position = Vector2(80, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AUTO_02/StaticBody2D" unique_id=1791972687]
-shape = SubResource("Shape_160x64")
-
-[node name="AUTO_03" type="Node2D" parent="." unique_id=1150491764]
-position = Vector2(2752, 3040)
-
-[node name="Polygon2D" type="Polygon2D" parent="AUTO_03" unique_id=1254958681]
-color = Color(0.4, 0.5, 0.6, 1)
-polygon = PackedVector2Array(0, 0, 160, 0, 160, 64, 0, 64)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="AUTO_03" unique_id=1568019725]
-position = Vector2(80, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AUTO_03/StaticBody2D" unique_id=539055082]
-shape = SubResource("Shape_160x64")
-
 [node name="Barrio" type="Node2D" parent="." unique_id=1480371550]
 position = Vector2(320, 3456)
 
