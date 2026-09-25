@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b4jos6t2t4kjo"]
+
+[ext_resource type="Script" uid="uid://c8d7vuee12pd" path="res://scripts/objetoClave.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/llave.svg" id="2_sprite"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_objeto"]
+radius = 16.0
+
+[node name="ObjetoClave" type="Area2D" unique_id=1600033789]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=501237209]
+texture = ExtResource("2_sprite")
+
+[node name="ColisionObjeto" type="CollisionShape2D" parent="." unique_id=329257056]
+shape = SubResource("CircleShape2D_objeto")
+
+[connection signal="body_entered" from="." to="." method="alEntrarCuerpo"]
+[connection signal="body_exited" from="." to="." method="alSalirCuerpo"]

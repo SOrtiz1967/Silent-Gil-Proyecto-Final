@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://oob0ouo3ypvy"]
+
+[ext_resource type="Script" uid="uid://cskyv4782bho2" path="res://scripts/jugador.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://ci0c7i7at1miy" path="res://assets/jugador.svg" id="2_sprite"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jugador"]
+radius = 14.0
+height = 40.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_golpe"]
+size = Vector2(20, 20)
+
+[node name="Jugador" type="CharacterBody2D" unique_id=1593424449 groups=["jugador"]]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=93842069]
+texture = ExtResource("2_sprite")
+
+[node name="ColisionJugador" type="CollisionShape2D" parent="." unique_id=1744172139]
+shape = SubResource("CapsuleShape2D_jugador")
+
+[node name="ZonaGolpe" type="Area2D" parent="." unique_id=1966236519]
+position = Vector2(24, 0)
+monitoring = false
+monitorable = false
+
+[node name="ColisionGolpe" type="CollisionShape2D" parent="ZonaGolpe" unique_id=77095755]
+shape = SubResource("RectangleShape2D_golpe")
+
+[node name="TemporizadorGolpe" type="Timer" parent="." unique_id=1799378790]
+one_shot = true
+
+[connection signal="area_entered" from="ZonaGolpe" to="." method="_on_zona_golpe_area_entered"]
+[connection signal="timeout" from="TemporizadorGolpe" to="." method="_on_temporizador_golpe_timeout"]

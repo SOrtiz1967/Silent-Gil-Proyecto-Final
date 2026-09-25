@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_script"]
+
+[node name="Tutorial" type="CanvasLayer"]
+process_mode = 3
+layer = 20
+visible = false
+script = ExtResource("1_script")
+
+[node name="Panel" type="ColorRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 20.0
+offset_right = 260.0
+offset_bottom = 190.0
+grow_horizontal = 2
+color = Color(0.05, 0.05, 0.05, 0.92)
+
+[node name="EtiquetaTitulo" type="Label" parent="Panel"]
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 504.0
+offset_bottom = 36.0
+horizontal_alignment = 1
+
+[node name="EtiquetaTexto" type="Label" parent="Panel"]
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 504.0
+offset_bottom = 138.0
+autowrap_mode = 3
+
+[node name="EtiquetaContinuar" type="Label" parent="Panel"]
+offset_left = 16.0
+offset_top = 140.0
+offset_right = 504.0
+offset_bottom = 164.0
+text = "F para continuar"
+horizontal_alignment = 2

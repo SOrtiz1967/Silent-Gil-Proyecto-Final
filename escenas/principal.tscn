@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://ygvhfmxjahg"]
+
+[ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador.tscn" id="1_jugador"]
+[ext_resource type="PackedScene" uid="uid://b4jos6t2t4kjo" path="res://escenas/objetoClave.tscn" id="2_objeto"]
+[ext_resource type="PackedScene" uid="uid://d0ye08umralgi" path="res://escenas/puerta.tscn" id="3_puerta"]
+
+[node name="Principal" type="Node2D" unique_id=712360398]
+
+[node name="Jugador" parent="." unique_id=1289151348 instance=ExtResource("1_jugador")]
+position = Vector2(80, 150)
+
+[node name="ObjetoClave" parent="." unique_id=1041391655 instance=ExtResource("2_objeto")]
+position = Vector2(200, 150)
+idLlave = "llaveRoja"
+nombreObjeto = "Llave roja"
+
+[node name="Puerta" parent="." unique_id=653238310 instance=ExtResource("3_puerta")]
+position = Vector2(400, 150)
+idLlaveRequerida = "llaveRoja"
+
+[node name="Ganzua1" parent="." unique_id=910089879 instance=ExtResource("2_objeto")]
+modulate = Color(0.5, 0.8, 1, 1)
+position = Vector2(200, 300)
+nombreObjeto = "Ganzua"
+esGanzua = true
+
+[node name="Ganzua2" parent="." unique_id=1492990864 instance=ExtResource("2_objeto")]
+modulate = Color(0.5, 0.8, 1, 1)
+position = Vector2(260, 300)
+nombreObjeto = "Ganzua"
+esGanzua = true
+
+[node name="PuertaForzar" parent="." unique_id=698696786 instance=ExtResource("3_puerta")]
+position = Vector2(400, 300)
+forzar = true
