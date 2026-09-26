@@ -19,6 +19,9 @@ texture = ExtResource("2_sprite")
 [node name="ColisionJugador" type="CollisionShape2D" parent="." unique_id=1744172139]
 shape = SubResource("CapsuleShape2D_jugador")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
 [node name="ZonaGolpe" type="Area2D" parent="." unique_id=1966236519]
 position = Vector2(24, 0)
 monitoring = false
@@ -31,4 +34,5 @@ shape = SubResource("RectangleShape2D_golpe")
 one_shot = true
 
 [connection signal="area_entered" from="ZonaGolpe" to="." method="_on_zona_golpe_area_entered"]
+[connection signal="body_entered" from="ZonaGolpe" to="." method="_on_zona_golpe_body_entered"]
 [connection signal="timeout" from="TemporizadorGolpe" to="." method="_on_temporizador_golpe_timeout"]

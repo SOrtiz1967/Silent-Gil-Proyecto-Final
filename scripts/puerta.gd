@@ -4,10 +4,13 @@ extends Area2D
 @export var mensajeBloqueada = "Esta cerrada"
 @export var mensajeAbierta = "Abriste la puerta"
 @export var forzar = false
+@export var forzarSiNoHayLlave = false
+@export var idTutorialAlAbrir = ""
+@export var bloqueosExtra:Array[NodePath] = []
 var jugadorCerca = false
 var abierta = false
-@onready var imagen = $Sprite2D
-@onready var colisionBloqueo = $Bloqueo/ColisionBloqueo
+@onready var imagen = get_node_or_null("Sprite2D")
+@onready var colisionBloqueo = get_node_or_null("Bloqueo/ColisionBloqueo")
 func _process(delta):
 	if jugadorCerca and not abierta and Input.is_action_just_pressed("interactuar"):
 		intentarAbrir()
@@ -16,6 +19,8 @@ func intentarAbrir():
 		intentarForzar()
 	elif puedeAbrir():
 		abrir()
+	elif forzarSiNoHayLlave:
+		intentarForzar()
 	else:
 		Inventario.mostrarMensaje(mensajeBloqueada)
 func intentarForzar():
@@ -29,9 +34,15 @@ func abrir():
 	abierta = true
 	if consumirLlave:
 		Inventario.quitarLlave(idLlaveRequerida)
-	imagen.visible = false
-	colisionBloqueo.disabled = true
+	if imagen:
+		imagen.visible = false
+	if colisionBloqueo:
+		colisionBloqueo.disabled = true
+	for ruta in bloqueosExtra:
+		get_node(ruta).disabled = true
 	Inventario.mostrarMensaje(mensajeAbierta)
+	if idTutorialAlAbrir != "":
+		Tutorial.mostrar(idTutorialAlAbrir)
 func alEntrarCuerpo(cuerpo):
 	if cuerpo.is_in_group("jugador"):
 		jugadorCerca = true

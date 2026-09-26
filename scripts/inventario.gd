@@ -54,9 +54,15 @@ func cerrarInventario():
 	panelInventario.visible = false
 	get_tree().paused = false
 func textoInventario():
-	var texto = "Llaves:\n"
-	if llaves.is_empty():
-		texto += "  ninguna\n"
+	var texto = ""
+	if llaves.has("sube"):
+		texto += "SUBE: conseguida\n\n"
+	texto += "Llaves:\n"
+	var hayLlaves = false
 	for idLlave in llaves:
-		texto += "  - " + nombresLlaves[idLlave] + "\n"
+		if idLlave != "sube":
+			texto += "  - " + nombresLlaves[idLlave] + "\n"
+			hayLlaves = true
+	if not hayLlaves:
+		texto += "  ninguna\n"
 	return texto + "\nGanzuas: " + str(ganzuas)

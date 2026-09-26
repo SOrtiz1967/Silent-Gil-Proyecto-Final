@@ -6,9 +6,12 @@ const Proyectil = preload("res://escenas/proyectil.tscn")
 @export var duracion_golpe = 0.3
 @export var distancia_golpe = 24.0
 @export var distancia_disparo = 20.0
+@export var dano = 1
+@export var vidaMaxima = 3
 
 var mirando = "abajo"
 var golpeando = false
+var vida = vidaMaxima
 
 @onready var zona_golpe = $ZonaGolpe
 @onready var temporizador_golpe = $TemporizadorGolpe
@@ -69,3 +72,15 @@ func _on_temporizador_golpe_timeout():
 
 func _on_zona_golpe_area_entered(area):
 	print("golpeaste a: ", area.name)
+
+func _on_zona_golpe_body_entered(cuerpo):
+	if cuerpo.is_in_group("enemigo"):
+		cuerpo.recibirDano(dano)
+
+func recibirDano(cantidad):
+	vida -= cantidad
+	if vida <= 0:
+		morir()
+
+func morir():
+	get_tree().reload_current_scene()

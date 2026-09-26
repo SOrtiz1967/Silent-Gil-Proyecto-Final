@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var velocidad = 400.0
+@export var dano = 1
 
 var direccion = Vector2.RIGHT
 
@@ -13,3 +14,8 @@ func _on_temporizador_vida_timeout():
 func _on_area_entered(area):
 	print("el disparo pego a: ", area.name)
 	queue_free()
+
+func _on_body_entered(cuerpo):
+	if cuerpo.is_in_group("enemigo"):
+		cuerpo.recibirDano(dano)
+		queue_free()

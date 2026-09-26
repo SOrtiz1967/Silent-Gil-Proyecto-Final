@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemigo.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/jugador.svg" id="2_sprite"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_enemigo"]
+radius = 14.0
+height = 40.0
+
+[node name="Enemigo" type="CharacterBody2D" groups=["enemigo"]]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.9, 0.15, 0.15, 1)
+texture = ExtResource("2_sprite")
+
+[node name="ColisionEnemigo" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_enemigo")
+
+[node name="TemporizadorAtaque" type="Timer" parent="."]
+wait_time = 1.0
+one_shot = true
