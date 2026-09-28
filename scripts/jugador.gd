@@ -1,20 +1,30 @@
 extends CharacterBody2D
 
 const Proyectil = preload("res://escenas/proyectil.tscn")
+const anchoBarra = 200.0
 
 @export var velocidad = 200.0
 @export var duracion_golpe = 0.3
 @export var distancia_golpe = 24.0
 @export var distancia_disparo = 20.0
-@export var dano = 1
-@export var vidaMaxima = 3
+@export var dano = 3
+@export var vidaMaxima = 5
+@export var duracionInvulnerable = 0.6
 
 var mirando = "abajo"
 var golpeando = false
-var vida = vidaMaxima
+var invulnerable = false
+var vida = 0
 
 @onready var zona_golpe = $ZonaGolpe
 @onready var temporizador_golpe = $TemporizadorGolpe
+@onready var temporizadorInvulnerable = $TemporizadorInvulnerable
+@onready var rellenoVida = $Hud/RellenoVida
+@onready var etiquetaVida = $Hud/EtiquetaVida
+
+func _ready():
+	vida = vidaMaxima
+	actualizarBarraVida()
 
 func _physics_process(delta):
 	if golpeando:
@@ -78,9 +88,28 @@ func _on_zona_golpe_body_entered(cuerpo):
 		cuerpo.recibirDano(dano)
 
 func recibirDano(cantidad):
+	if invulnerable:
+		return
 	vida -= cantidad
+	actualizarBarraVida()
 	if vida <= 0:
 		morir()
+		return
+	activarInvulnerable()
+
+func activarInvulnerable():
+	invulnerable = true
+	$Sprite2D.modulate.a = 0.5
+	temporizadorInvulnerable.start(duracionInvulnerable)
+
+func _on_temporizador_invulnerable_timeout():
+	invulnerable = false
+	$Sprite2D.modulate.a = 1.0
+
+func actualizarBarraVida():
+	var vidaVisible = max(vida, 0)
+	rellenoVida.size.x = anchoBarra * float(vidaVisible) / float(vidaMaxima)
+	etiquetaVida.text = str(vidaVisible) + " / " + str(vidaMaxima)
 
 func morir():
 	get_tree().reload_current_scene()
