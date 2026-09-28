@@ -20,6 +20,7 @@ func recoger():
 	else:
 		Inventario.agregarLlave(idLlave, nombreObjeto)
 		mostrarTutorial("llave")
+	Inventario.ocultarAviso()
 	Inventario.marcarRecogido(idObjeto)
 	Inventario.mostrarMensaje(mensajeRecogida + " " + nombreObjeto)
 	queue_free()
@@ -31,6 +32,8 @@ func mostrarTutorial(idPorDefecto):
 func alEntrarCuerpo(cuerpo):
 	if cuerpo.is_in_group("jugador"):
 		jugadorCerca = true
+		Inventario.mostrarAviso("F para agarrar " + nombreObjeto)
 func alSalirCuerpo(cuerpo):
 	if cuerpo.is_in_group("jugador"):
 		jugadorCerca = false
+		Inventario.ocultarAviso()

@@ -3,6 +3,7 @@ extends Area2D
 @export var consumirLlave = false
 @export var mensajeBloqueada = "Esta cerrada"
 @export var mensajeAbierta = "Abriste la puerta"
+@export var textoAviso = "F para abrir"
 @export var forzar = false
 @export var forzarSiNoHayLlave = false
 @export var idTutorialAlAbrir = ""
@@ -32,6 +33,7 @@ func puedeAbrir():
 	return idLlaveRequerida=="" or Inventario.tieneLlave(idLlaveRequerida)
 func abrir():
 	abierta = true
+	Inventario.ocultarAviso()
 	if consumirLlave:
 		Inventario.quitarLlave(idLlaveRequerida)
 	if imagen:
@@ -46,6 +48,9 @@ func abrir():
 func alEntrarCuerpo(cuerpo):
 	if cuerpo.is_in_group("jugador"):
 		jugadorCerca = true
+		if not abierta:
+			Inventario.mostrarAviso(textoAviso)
 func alSalirCuerpo(cuerpo):
 	if cuerpo.is_in_group("jugador"):
 		jugadorCerca = false
+		Inventario.ocultarAviso()

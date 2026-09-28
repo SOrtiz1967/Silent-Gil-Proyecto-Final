@@ -5,6 +5,7 @@ var objetosRecogidos = []
 var ganzuas = 0
 var inventarioAbierto = false
 @onready var etiquetaMensaje = $EtiquetaMensaje
+@onready var etiquetaAviso = $EtiquetaAviso
 @onready var temporizadorMensaje = $TemporizadorMensaje
 @onready var panelInventario = $PanelInventario
 @onready var etiquetaLista = $PanelInventario/EtiquetaLista
@@ -34,6 +35,11 @@ func mostrarMensaje(texto):
 	temporizadorMensaje.start()
 func ocultarMensaje():
 	etiquetaMensaje.visible = false
+func mostrarAviso(texto):
+	etiquetaAviso.text = texto
+	etiquetaAviso.visible = true
+func ocultarAviso():
+	etiquetaAviso.visible = false
 func _process(delta):
 	if Input.is_action_just_pressed("inventario"):
 		alternarInventario()
