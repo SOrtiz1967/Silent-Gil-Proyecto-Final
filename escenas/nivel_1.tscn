@@ -1062,7 +1062,7 @@ script = ExtResource("2_puerta")
 idLlaveRequerida = "sube"
 mensajeAbierta = "Pasaste los molinetes con la SUBE"
 forzarSiNoHayLlave = true
-idTutorialAlAbrir = "molinete"
+idTutorialAlAbrir = "combate"
 bloqueosExtra = Array[NodePath]([NodePath("../MOLINETE_01/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_02/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_03/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_04/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_05/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_06/StaticBody2D/CollisionShape2D")])
 
 [node name="ColisionZonaMolinetes" type="CollisionShape2D" parent="ZonaMolinetes"]
