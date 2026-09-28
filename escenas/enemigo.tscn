@@ -1,22 +1,27 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://c2ogquvnho5bw"]
 
-[ext_resource type="Script" path="res://scripts/enemigo.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/jugador.svg" id="2_sprite"]
+[ext_resource type="Script" uid="uid://b3gy7ar7e5kas" path="res://scripts/enemigo.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://ci0c7i7at1miy" path="res://assets/jugador.svg" id="2_sprite"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_enemigo"]
 radius = 14.0
 height = 40.0
 
-[node name="Enemigo" type="CharacterBody2D" groups=["enemigo"]]
+[node name="Enemigo" type="CharacterBody2D" unique_id=1258971802 groups=["enemigo"]]
 script = ExtResource("1_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=870265803]
 modulate = Color(0.9, 0.15, 0.15, 1)
 texture = ExtResource("2_sprite")
 
-[node name="ColisionEnemigo" type="CollisionShape2D" parent="."]
+[node name="ColisionEnemigo" type="CollisionShape2D" parent="." unique_id=1218333933]
 shape = SubResource("CapsuleShape2D_enemigo")
 
-[node name="TemporizadorAtaque" type="Timer" parent="."]
-wait_time = 1.0
+[node name="TemporizadorAtaque" type="Timer" parent="." unique_id=1211714465]
 one_shot = true
+
+[node name="TemporizadorFlash" type="Timer" parent="." unique_id=1604484284]
+wait_time = 0.12
+one_shot = true
+
+[connection signal="timeout" from="TemporizadorFlash" to="." method="_on_temporizador_flash_timeout"]

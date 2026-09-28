@@ -1,10 +1,14 @@
 extends CharacterBody2D
-@export var vida = 3
+@export var vida = 6
 @export var velocidad = 60.0
 @export var rangoAtaque = 40.0
 @export var dano = 1
+@export var colorNormal: Color = Color(0.9, 0.15, 0.15)
+@export var colorDano: Color = Color(1, 1, 1)
 @onready var jugador = get_tree().get_first_node_in_group("jugador")
 @onready var temporizador_ataque = $TemporizadorAtaque
+@onready var temporizadorFlash = $TemporizadorFlash
+@onready var sprite = $Sprite2D
 func _physics_process(delta):
 	if jugador:
 		var distancia = global_position.distance_to(jugador.global_position)
@@ -22,3 +26,10 @@ func recibirDano(cantidad):
 	vida -= cantidad
 	if vida <= 0:
 		queue_free()
+		return
+	mostrarFlash()
+func mostrarFlash():
+	sprite.modulate = colorDano
+	temporizadorFlash.start()
+func _on_temporizador_flash_timeout():
+	sprite.modulate = colorNormal

@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var velocidad = 400.0
-@export var dano = 1
+@export var dano = 2
 
 var direccion = Vector2.RIGHT
 
