@@ -3,9 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador.tscn" id="1_jugador"]
 [ext_resource type="Script" uid="uid://cvsm6pmgwj0e2" path="res://scripts/puerta.gd" id="2_puerta"]
 [ext_resource type="PackedScene" uid="uid://b4jos6t2t4kjo" path="res://escenas/objetoClave.tscn" id="3_objeto"]
-[ext_resource type="PackedScene" path="res://escenas/enemigo.tscn" id="4_enemigo"]
+[ext_resource type="PackedScene" uid="uid://c2ogquvnho5bw" path="res://escenas/enemigo.tscn" id="4_enemigo"]
 [ext_resource type="PackedScene" path="res://escenas/zonaTutorial.tscn" id="5_zona"]
-[ext_resource type="Script" path="res://scripts/nivel_1.gd" id="6_nivel1"]
+[ext_resource type="Script" uid="uid://bwk44xvrtavt2" path="res://scripts/nivel_1.gd" id="6_nivel1"]
+[ext_resource type="Script" uid="uid://d0f7j8h27kbk5" path="res://scripts/entradaNivel.gd" id="7_entrada"]
+[ext_resource type="PackedScene" path="res://escenas/piedra.tscn" id="8_piedra"]
 
 [sub_resource type="RectangleShape2D" id="Shape_4096x32"]
 size = Vector2(4096, 32)
@@ -87,6 +89,9 @@ size = Vector2(32, 320)
 
 [sub_resource type="RectangleShape2D" id="Shape_192x32"]
 size = Vector2(192, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_EntradaMc"]
+size = Vector2(100, 110)
 
 [sub_resource type="RectangleShape2D" id="Shape_ZonaMolinetes"]
 size = Vector2(460, 200)
@@ -1044,19 +1049,46 @@ position = Vector2(96, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PARED_CASA_FINAL_ABAJO_DER/StaticBody2D" unique_id=300745963]
 shape = SubResource("Shape_192x32")
 
+[node name="PUERTA_MCDONALDS" type="Node2D" parent="." unique_id=1589970161]
+position = Vector2(652, 2696)
+
+[node name="Polygon2D" type="Polygon2D" parent="PUERTA_MCDONALDS" unique_id=1733520404]
+color = Color(0.95, 0.78, 0.1, 1)
+polygon = PackedVector2Array(0, 0, 24, 0, 24, 96, 0, 96)
+
+[node name="EntradaMcDonalds" type="Area2D" parent="." unique_id=1756060015]
+position = Vector2(700, 2745)
+script = ExtResource("7_entrada")
+idLlaveRequerida = "llaveMc"
+rutaNivel = "res://escenas/nivel_mc.tscn"
+puntoDestino = "PUNTO_APARICION_JUGADOR"
+mensajeBloqueada = "Esta cerrado, necesito la llave"
+textoAviso = "F para entrar al McDonalds"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntradaMcDonalds" unique_id=2105753215]
+shape = SubResource("Shape_EntradaMc")
+
+[node name="PUNTO_SALIDA_MC" type="Marker2D" parent="." unique_id=897896742]
+position = Vector2(730, 2745)
+
 [node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="." unique_id=1707614678]
 position = Vector2(1900, 1900)
 
-[node name="Jugador" parent="." instance=ExtResource("1_jugador")]
+[node name="Jugador" parent="." unique_id=846078762 instance=ExtResource("1_jugador")]
 position = Vector2(1900, 1900)
 
-[node name="SUBE" parent="." instance=ExtResource("3_objeto")]
+[node name="SUBE" parent="." unique_id=1901465831 instance=ExtResource("3_objeto")]
 position = Vector2(1150, 1650)
 idLlave = "sube"
 nombreObjeto = "SUBE"
 idTutorialPersonalizado = "sube"
 
-[node name="ZonaMolinetes" type="Area2D" parent="."]
+[node name="LlaveMcDonalds" parent="." unique_id=1360776584 instance=ExtResource("3_objeto")]
+position = Vector2(3100, 3150)
+idLlave = "llaveMc"
+nombreObjeto = "Llave del McDonalds"
+
+[node name="ZonaMolinetes" type="Area2D" parent="." unique_id=1893183612]
 position = Vector2(1917, 2048)
 script = ExtResource("2_puerta")
 idLlaveRequerida = "sube"
@@ -1065,36 +1097,59 @@ forzarSiNoHayLlave = true
 idTutorialAlAbrir = "combate"
 bloqueosExtra = Array[NodePath]([NodePath("../MOLINETE_01/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_02/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_03/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_04/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_05/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_06/StaticBody2D/CollisionShape2D")])
 
-[node name="ColisionZonaMolinetes" type="CollisionShape2D" parent="ZonaMolinetes"]
+[node name="ColisionZonaMolinetes" type="CollisionShape2D" parent="ZonaMolinetes" unique_id=104633837]
 shape = SubResource("Shape_ZonaMolinetes")
 
-[node name="Bloqueo" type="StaticBody2D" parent="ZonaMolinetes"]
+[node name="Bloqueo" type="StaticBody2D" parent="ZonaMolinetes" unique_id=1506114765]
 
-[node name="ColisionBloqueo" type="CollisionShape2D" parent="ZonaMolinetes/Bloqueo"]
+[node name="ColisionBloqueo" type="CollisionShape2D" parent="ZonaMolinetes/Bloqueo" unique_id=628087750]
 shape = SubResource("Shape_BloqueoMolinetes")
 
-[node name="ZonaTutorialCombate" parent="." instance=ExtResource("5_zona")]
+[node name="ZonaTutorialCombate" parent="." unique_id=1660306162 instance=ExtResource("5_zona")]
 position = Vector2(1920, 2200)
 idTutorial = "combate"
 
-[node name="ZonaTutorialFinal" parent="." instance=ExtResource("5_zona")]
+[node name="ZonaTutorialFinal" parent="." unique_id=495658636 instance=ExtResource("5_zona")]
 position = Vector2(2848, 4600)
 idTutorial = "final"
 
-[node name="Enemigo1" parent="." instance=ExtResource("4_enemigo")]
-position = Vector2(1850, 2320)
+[node name="Enemigo1" parent="." unique_id=1552811569 instance=ExtResource("4_enemigo")]
+position = Vector2(1300, 2900)
 
-[node name="Enemigo2" parent="." instance=ExtResource("4_enemigo")]
-position = Vector2(2000, 2300)
+[node name="Enemigo2" parent="." unique_id=1231592335 instance=ExtResource("4_enemigo")]
+position = Vector2(2700, 3000)
 
-[node name="Enemigo3" parent="." instance=ExtResource("4_enemigo")]
-position = Vector2(1750, 2420)
+[node name="Enemigo3" parent="." unique_id=1239546411 instance=ExtResource("4_enemigo")]
+position = Vector2(1900, 3500)
 
-[node name="Enemigo4" parent="." instance=ExtResource("4_enemigo")]
-position = Vector2(2100, 2420)
+[node name="Enemigo4" parent="." unique_id=1742777604 instance=ExtResource("4_enemigo")]
+position = Vector2(1000, 3900)
 
-[node name="Enemigo5" parent="." instance=ExtResource("4_enemigo")]
-position = Vector2(1900, 2460)
+[node name="Enemigo5" parent="." unique_id=1856224343 instance=ExtResource("4_enemigo")]
+position = Vector2(2900, 4000)
 
+[node name="Piedra1" parent="." unique_id=1115322859 instance=ExtResource("8_piedra")]
+position = Vector2(2060, 1841)
+
+[node name="Piedra2" parent="." unique_id=1835964115 instance=ExtResource("8_piedra")]
+position = Vector2(1500, 2700)
+
+[node name="Piedra3" parent="." unique_id=1149776829 instance=ExtResource("8_piedra")]
+position = Vector2(2400, 2800)
+
+[node name="Piedra4" parent="." unique_id=409958786 instance=ExtResource("8_piedra")]
+position = Vector2(1700, 3200)
+
+[node name="Piedra5" parent="." unique_id=387253654 instance=ExtResource("8_piedra")]
+position = Vector2(2500, 3600)
+
+[node name="Piedra6" parent="." unique_id=99306034 instance=ExtResource("8_piedra")]
+position = Vector2(1300, 3700)
+
+[node name="Piedra7" parent="." unique_id=510973901 instance=ExtResource("8_piedra")]
+position = Vector2(2100, 4100)
+
+[connection signal="body_entered" from="EntradaMcDonalds" to="EntradaMcDonalds" method="alEntrarCuerpo"]
+[connection signal="body_exited" from="EntradaMcDonalds" to="EntradaMcDonalds" method="alSalirCuerpo"]
 [connection signal="body_entered" from="ZonaMolinetes" to="ZonaMolinetes" method="alEntrarCuerpo"]
 [connection signal="body_exited" from="ZonaMolinetes" to="ZonaMolinetes" method="alSalirCuerpo"]

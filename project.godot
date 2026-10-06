@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Silent Gil"
 run/main_scene="res://escenas/nivel_1.tscn"
-config/features=PackedStringArray("4.7")
+config/features=PackedStringArray("4.6")
 config/icon="res://assets/jugador.svg"
 
 [autoload]
@@ -25,6 +25,8 @@ Inventario="*res://escenas/inventario.tscn"
 Cerradura="*res://escenas/cerradura.tscn"
 Pernos="*res://escenas/pernos.tscn"
 Tutorial="*res://escenas/tutorial.tscn"
+MenuPausa="*res://escenas/menu_pausa.tscn"
+CambioNivel="*res://scripts/cambio_nivel.gd"
 
 [input]
 

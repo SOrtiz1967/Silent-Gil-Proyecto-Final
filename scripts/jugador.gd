@@ -15,7 +15,9 @@ var mirando = "abajo"
 var golpeando = false
 var invulnerable = false
 var vida = 0
+var cantidad_piedras = 0
 
+@onready var etiquetaPiedras = $Hud/EtiquetaPiedras
 @onready var zona_golpe = $ZonaGolpe
 @onready var temporizador_golpe = $TemporizadorGolpe
 @onready var temporizadorInvulnerable = $TemporizadorInvulnerable
@@ -70,7 +72,18 @@ func golpear():
 	zona_golpe.monitoring = true
 	temporizador_golpe.start(duracion_golpe)
 
+func agregarPiedra():
+	cantidad_piedras += 1
+	actualizarPiedras()
+
+func actualizarPiedras():
+	etiquetaPiedras.text = "Piedras: " + str(cantidad_piedras)
+
 func disparar():
+	if cantidad_piedras <= 0:
+		return
+	cantidad_piedras -= 1
+	actualizarPiedras()
 	var proyectil = Proyectil.instantiate()
 	get_parent().add_child(proyectil)
 	proyectil.global_position = global_position + direccion_mirando() * distancia_disparo

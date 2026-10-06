@@ -58,6 +58,14 @@ offset_bottom = 44.0
 text = "5 / 5"
 vertical_alignment = 1
 
+[node name="EtiquetaPiedras" type="Label" parent="Hud"]
+offset_left = 16.0
+offset_top = 52.0
+offset_right = 176.0
+offset_bottom = 80.0
+text = "Piedras: 0"
+vertical_alignment = 1
+
 [connection signal="area_entered" from="ZonaGolpe" to="." method="_on_zona_golpe_area_entered"]
 [connection signal="body_entered" from="ZonaGolpe" to="." method="_on_zona_golpe_body_entered"]
 [connection signal="timeout" from="TemporizadorGolpe" to="." method="_on_temporizador_golpe_timeout"]

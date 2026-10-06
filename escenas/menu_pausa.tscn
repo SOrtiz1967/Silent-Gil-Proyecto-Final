@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://wsnl0qof4sp1"]
+
+[ext_resource type="Script" uid="uid://dblss0gn5ih3g" path="res://scripts/menu_pausa.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://wyjvspjxi0oy" path="res://assets/pausa.jpeg" id="2_pausa"]
+
+[node name="MenuPausa" type="CanvasLayer" unique_id=188052302]
+process_mode = 3
+layer = 100
+visible = false
+script = ExtResource("1_script")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1875900275]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pausa")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=402599660]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1174566478]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BotonContinuar" type="Button" parent="CenterContainer/VBoxContainer" unique_id=81085667]
+layout_mode = 2
+text = "Seguir jugando"
+
+[node name="BotonReiniciar" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1474642094]
+layout_mode = 2
+text = "Reiniciar"
+
+[node name="BotonSalir" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1455383]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BotonContinuar" to="." method="_on_boton_continuar_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BotonReiniciar" to="." method="_on_boton_reiniciar_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BotonSalir" to="." method="_on_boton_salir_pressed"]

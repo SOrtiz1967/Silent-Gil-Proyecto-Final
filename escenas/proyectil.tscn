@@ -16,7 +16,7 @@ texture = ExtResource("2_sprite")
 shape = SubResource("CircleShape2D_proyectil")
 
 [node name="TemporizadorVida" type="Timer" parent="." unique_id=1826232232]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 

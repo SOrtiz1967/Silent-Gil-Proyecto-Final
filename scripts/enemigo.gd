@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var velocidad = 60.0
 @export var rangoAtaque = 40.0
 @export var dano = 1
+@export var rangoDeteccion = 250.0
+var persiguiendo = false
 @export var colorNormal: Color = Color(0.9, 0.15, 0.15)
 @export var colorDano: Color = Color(1, 1, 1)
 @onready var jugador = get_tree().get_first_node_in_group("jugador")
@@ -12,7 +14,11 @@ extends CharacterBody2D
 func _physics_process(delta):
 	if jugador:
 		var distancia = global_position.distance_to(jugador.global_position)
-		if distancia > rangoAtaque:
+		if not persiguiendo and distancia <= rangoDeteccion:
+			persiguiendo = true
+		if not persiguiendo:
+			velocity = Vector2.ZERO
+		elif distancia > rangoAtaque:
 			velocity = global_position.direction_to(jugador.global_position) * velocidad
 		else:
 			velocity = Vector2.ZERO
