@@ -44,6 +44,7 @@ func agujaEnZona():
 	return centro >= zona.position.x and centro <= zona.position.x + zona.size.x
 func acertar():
 	aciertos += 1
+	parpadear(Color(0.2, 0.55, 0.2))
 	if aciertos >= aciertosNecesarios:
 		puertaActual.abrir()
 		cerrar()
@@ -52,6 +53,7 @@ func acertar():
 		actualizarEstado()
 func fallar():
 	Inventario.quitarGanzua()
+	parpadear(Color(0.65, 0.15, 0.15))
 	if Inventario.tieneGanzua():
 		aciertos = 0
 		prepararZona()
@@ -68,3 +70,7 @@ func cerrar():
 	activa = false
 	visible = false
 	get_tree().paused = false
+func parpadear(color):
+	barra.color = color
+	await get_tree().create_timer(0.15).timeout
+	barra.color = Color(0.2, 0.2, 0.2)

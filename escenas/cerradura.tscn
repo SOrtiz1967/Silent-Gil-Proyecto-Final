@@ -16,6 +16,52 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.7)
 
+[node name="Panel" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -96.0
+offset_right = 240.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09, 0.09, 0.11, 1)
+
+[node name="Titulo" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -92.0
+offset_right = 200.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CERRADURA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ayuda" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 34.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "F para probar  -  Esc para salir"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Barra" type="ColorRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
