@@ -20,6 +20,8 @@ func _on_boton_continuar_pressed():
 	continuar()
 func _on_boton_reiniciar_pressed():
 	continuar()
+	Inventario.vida = -1.0
+	Inventario.piedras = 0
 	get_tree().reload_current_scene()
 func _on_boton_salir_pressed():
 	get_tree().quit()

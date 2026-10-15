@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://oob0ouo3ypvy"]
 
 [ext_resource type="Script" uid="uid://cskyv4782bho2" path="res://scripts/jugador.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://ci0c7i7at1miy" path="res://assets/jugador.svg" id="2_sprite"]
+[ext_resource type="SpriteFrames" path="res://assets/personaje_principal/jugador_frames.tres" id="2_frames"]
+
+[ext_resource type="GradientTexture2D" path="res://assets/estacion/luz_radial.tres" id="9_radial"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jugador"]
 radius = 14.0
@@ -12,13 +14,22 @@ height = 40.0
 [node name="Jugador" type="CharacterBody2D" unique_id=1593424449 groups=["jugador"]]
 script = ExtResource("1_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=93842069]
-texture = ExtResource("2_sprite")
+[node name="Animacion" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_frames")
+animation = &"idle_abajo"
+autoplay = "idle_abajo"
+offset = Vector2(0, -10)
 
 [node name="ColisionJugador" type="CollisionShape2D" parent="." unique_id=1744172139]
 shape = SubResource("CapsuleShape2D_jugador")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=164561058]
+
+[node name="Linterna" type="PointLight2D" parent="."]
+color = Color(1, 0.94, 0.8, 1)
+energy = 1.0
+texture = ExtResource("9_radial")
+texture_scale = 2.6
 
 [node name="ZonaGolpe" type="Area2D" parent="." unique_id=1966236519]
 position = Vector2(24, 0)
@@ -64,6 +75,28 @@ offset_top = 52.0
 offset_right = 176.0
 offset_bottom = 80.0
 text = "Piedras: 0"
+vertical_alignment = 1
+
+[node name="FondoBateria" type="ColorRect" parent="Hud"]
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 224.0
+offset_bottom = 116.0
+color = Color(0.08, 0.08, 0.08, 0.85)
+
+[node name="RellenoBateria" type="ColorRect" parent="Hud"]
+offset_left = 20.0
+offset_top = 92.0
+offset_right = 220.0
+offset_bottom = 112.0
+color = Color(0.3, 0.9, 0.75, 1)
+
+[node name="EtiquetaBateria" type="Label" parent="Hud"]
+offset_left = 236.0
+offset_top = 88.0
+offset_right = 460.0
+offset_bottom = 116.0
+text = "Celular: 100%"
 vertical_alignment = 1
 
 [connection signal="area_entered" from="ZonaGolpe" to="." method="_on_zona_golpe_area_entered"]

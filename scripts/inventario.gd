@@ -3,6 +3,9 @@ var llaves = []
 var nombresLlaves = {}
 var objetosRecogidos = []
 var ganzuas = 0
+var bateria = 100.0
+var vida = -1.0
+var piedras = 0
 var inventarioAbierto = false
 @onready var etiquetaMensaje = $EtiquetaMensaje
 @onready var etiquetaAviso = $EtiquetaAviso
@@ -24,6 +27,8 @@ func quitarGanzua():
 	ganzuas -= 1
 func tieneGanzua():
 	return ganzuas > 0
+func cargarBateria(cantidad):
+	bateria = min(bateria + cantidad, 100.0)
 func marcarRecogido(idObjeto):
 	if not objetosRecogidos.has(idObjeto):
 		objetosRecogidos.append(idObjeto)
@@ -63,10 +68,14 @@ func textoInventario():
 	var texto = ""
 	if llaves.has("sube"):
 		texto += "SUBE: conseguida\n\n"
+	if llaves.has("powerbank"):
+		texto += "POWERBANK: conseguido (el celular se queda al 100%)\n\n"
+	else:
+		texto += "Celular: " + str(int(bateria)) + "%\n\n"
 	texto += "Llaves:\n"
 	var hayLlaves = false
 	for idLlave in llaves:
-		if idLlave != "sube":
+		if idLlave != "sube" and idLlave != "powerbank":
 			texto += "  - " + nombresLlaves[idLlave] + "\n"
 			hayLlaves = true
 	if not hayLlaves:

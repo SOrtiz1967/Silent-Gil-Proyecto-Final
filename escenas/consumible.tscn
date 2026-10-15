@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/consumible.gd" id="1_script"]
+[ext_resource type="GradientTexture2D" path="res://assets/estacion/luz_radial.tres" id="2_luz"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_zona"]
+radius = 48.0
+
+[node name="Consumible" type="Area2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="ColisionZona" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_zona")
+
+[node name="Luz" type="PointLight2D" parent="."]
+color = Color(1, 0.95, 0.7, 1)
+energy = 0.5
+texture = ExtResource("2_luz")
+texture_scale = 0.6
+
+[connection signal="body_entered" from="." to="." method="alEntrarCuerpo"]
+[connection signal="body_exited" from="." to="." method="alSalirCuerpo"]

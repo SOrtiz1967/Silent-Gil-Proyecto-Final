@@ -10,12 +10,20 @@ const anchoBarra = 200.0
 @export var dano = 3
 @export var vidaMaxima = 5
 @export var duracionInvulnerable = 0.6
+@export var duracionBateria = 100.0
+@export var energiaLinterna = 1.0
+@export var velocidadPowerbank = 5.0
 
 var mirando = "abajo"
 var golpeando = false
 var invulnerable = false
 var vida = 0
 var cantidad_piedras = 0
+var controlBloqueado = false
+var linternaEncendida = true
+var posicionAnterior = Vector2.ZERO
+var bloqueoAnim = 0.0
+var bateriaAnterior = 100.0
 
 @onready var etiquetaPiedras = $Hud/EtiquetaPiedras
 @onready var zona_golpe = $ZonaGolpe
@@ -23,12 +31,76 @@ var cantidad_piedras = 0
 @onready var temporizadorInvulnerable = $TemporizadorInvulnerable
 @onready var rellenoVida = $Hud/RellenoVida
 @onready var etiquetaVida = $Hud/EtiquetaVida
+@onready var linterna = $Linterna
+@onready var animacion = $Animacion
+@onready var rellenoBateria = $Hud/RellenoBateria
+@onready var etiquetaBateria = $Hud/EtiquetaBateria
 
 func _ready():
-	vida = vidaMaxima
+	posicionAnterior = global_position
+	vida = Inventario.vida if Inventario.vida > 0.0 else float(vidaMaxima)
+	cantidad_piedras = Inventario.piedras
 	actualizarBarraVida()
+	actualizarPiedras()
+	bateriaAnterior = Inventario.bateria
+	actualizarLinterna(0.0)
+
+func _process(delta):
+	actualizarLinterna(delta)
+	actualizarAnimacion(delta)
+
+func actualizarAnimacion(delta):
+	var movio = global_position.distance_to(posicionAnterior) > 0.2
+	posicionAnterior = global_position
+	if bloqueoAnim > 0.0:
+		bloqueoAnim -= delta
+		return
+	if golpeando:
+		return
+	var nombre = ("caminar_" if movio else "idle_") + mirando
+	if animacion.animation != nombre:
+		animacion.play(nombre)
+
+func actualizarLinterna(delta):
+	var conPowerbank = Inventario.tieneLlave("powerbank")
+	if conPowerbank:
+		Inventario.cargarBateria(velocidadPowerbank * delta)
+	if Input.is_action_just_pressed("linterna") and Inventario.bateria > 0.0:
+		linternaEncendida = not linternaEncendida
+	if Inventario.bateria > 0.0 and bateriaAnterior <= 0.0:
+		linternaEncendida = true
+	if linternaEncendida and not conPowerbank:
+		Inventario.bateria = max(Inventario.bateria - 100.0 / duracionBateria * delta, 0.0)
+	if bateriaAnterior > 20.0 and Inventario.bateria <= 20.0 and Inventario.bateria > 0.0:
+		Inventario.mostrarMensaje("Bateria baja")
+	if bateriaAnterior > 0.0 and Inventario.bateria <= 0.0:
+		linternaEncendida = false
+		Inventario.mostrarMensaje("Se te murio el celular")
+	if Inventario.bateria < 70.0:
+		Tutorial.mostrar("celular")
+	bateriaAnterior = Inventario.bateria
+	var energia = energiaLinterna
+	if Inventario.bateria < 20.0:
+		energia = energiaLinterna * (0.4 + 0.6 * Inventario.bateria / 20.0)
+		if randf() < 0.05:
+			energia *= 0.3
+	linterna.energy = energia
+	linterna.visible = linternaEncendida and Inventario.bateria > 0.0
+	actualizarBarraBateria(conPowerbank)
+
+func actualizarBarraBateria(conPowerbank):
+	rellenoBateria.size.x = anchoBarra * Inventario.bateria / 100.0
+	rellenoBateria.color = Color(0.9, 0.3, 0.2) if Inventario.bateria < 20.0 else Color(0.3, 0.9, 0.75)
+	var texto = "Celular: " + str(int(Inventario.bateria)) + "%"
+	if conPowerbank and Inventario.bateria < 100.0:
+		texto += " (cargando)"
+	if not linternaEncendida:
+		texto += " (apagado)"
+	etiquetaBateria.text = texto
 
 func _physics_process(delta):
+	if controlBloqueado:
+		return
 	if golpeando:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -44,8 +116,6 @@ func _physics_process(delta):
 			mirando = "derecha" if entrada.x > 0 else "izquierda"
 		else:
 			mirando = "abajo" if entrada.y > 0 else "arriba"
-
-	$Sprite2D.flip_h = mirando == "izquierda"
 
 	velocity = entrada * velocidad
 	move_and_slide()
@@ -68,6 +138,7 @@ func direccion_mirando():
 
 func golpear():
 	golpeando = true
+	animacion.play("golpear_" + mirando)
 	zona_golpe.position = direccion_mirando() * distancia_golpe
 	zona_golpe.monitoring = true
 	temporizador_golpe.start(duracion_golpe)
@@ -77,12 +148,15 @@ func agregarPiedra():
 	actualizarPiedras()
 
 func actualizarPiedras():
+	Inventario.piedras = cantidad_piedras
 	etiquetaPiedras.text = "Piedras: " + str(cantidad_piedras)
 
 func disparar():
 	if cantidad_piedras <= 0:
 		return
 	cantidad_piedras -= 1
+	animacion.play("lanzar_" + mirando)
+	bloqueoAnim = 0.2
 	actualizarPiedras()
 	var proyectil = Proyectil.instantiate()
 	get_parent().add_child(proyectil)
@@ -112,17 +186,26 @@ func recibirDano(cantidad):
 
 func activarInvulnerable():
 	invulnerable = true
-	$Sprite2D.modulate.a = 0.5
+	animacion.modulate.a = 0.5
 	temporizadorInvulnerable.start(duracionInvulnerable)
 
 func _on_temporizador_invulnerable_timeout():
 	invulnerable = false
-	$Sprite2D.modulate.a = 1.0
+	animacion.modulate.a = 1.0
+
+func curar(cantidad):
+	vida = min(vida + cantidad, vidaMaxima)
+	actualizarBarraVida()
 
 func actualizarBarraVida():
+	Inventario.vida = vida
 	var vidaVisible = max(vida, 0)
 	rellenoVida.size.x = anchoBarra * float(vidaVisible) / float(vidaMaxima)
-	etiquetaVida.text = str(vidaVisible) + " / " + str(vidaMaxima)
+	var textoVida = str(int(vidaVisible)) if vidaVisible == floor(vidaVisible) else str(vidaVisible)
+	etiquetaVida.text = textoVida + " / " + str(vidaMaxima)
 
 func morir():
+	Inventario.vida = -1.0
+	Inventario.piedras = 0
+	Inventario.bateria = max(Inventario.bateria, 30.0)
 	get_tree().reload_current_scene()
