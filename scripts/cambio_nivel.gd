@@ -1,5 +1,6 @@
 extends Node
 var puntoDestino = ""
+var introTrenHecha = false
 func ir(rutaNivel, punto):
 	puntoDestino = punto
 	get_tree().change_scene_to_file.call_deferred(rutaNivel)

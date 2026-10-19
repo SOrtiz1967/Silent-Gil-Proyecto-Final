@@ -6,8 +6,32 @@
 [ext_resource type="PackedScene" uid="uid://c2ogquvnho5bw" path="res://escenas/enemigo.tscn" id="4_enemigo"]
 [ext_resource type="PackedScene" path="res://escenas/zonaTutorial.tscn" id="5_zona"]
 [ext_resource type="Script" uid="uid://bwk44xvrtavt2" path="res://scripts/nivel_1.gd" id="6_nivel1"]
+[ext_resource type="Texture2D" path="res://assets/estacion/molinete.png" id="9_molinete"]
+[ext_resource type="PackedScene" path="res://escenas/estacion_visual.tscn" id="10_estacion"]
+[ext_resource type="PackedScene" path="res://escenas/tren.tscn" id="11_tren"]
 [ext_resource type="Script" uid="uid://d0f7j8h27kbk5" path="res://scripts/entradaNivel.gd" id="7_entrada"]
 [ext_resource type="PackedScene" path="res://escenas/piedra.tscn" id="8_piedra"]
+[ext_resource type="PackedScene" path="res://escenas/puntoCarga.tscn" id="20_carga"]
+[ext_resource type="PackedScene" path="res://escenas/plaza_visual.tscn" id="30_plaza"]
+[ext_resource type="PackedScene" path="res://escenas/farola.tscn" id="32_farola"]
+[ext_resource type="Texture2D" path="res://assets/plaza/arbol_0.png" id="p00_arbol_0"]
+[ext_resource type="Texture2D" path="res://assets/plaza/arbol_1.png" id="p01_arbol_1"]
+[ext_resource type="Texture2D" path="res://assets/plaza/arbol_2.png" id="p02_arbol_2"]
+[ext_resource type="Texture2D" path="res://assets/plaza/arbol_3.png" id="p03_arbol_3"]
+[ext_resource type="Texture2D" path="res://assets/plaza/banco_0.png" id="p04_banco_0"]
+[ext_resource type="Texture2D" path="res://assets/plaza/banco_1.png" id="p05_banco_1"]
+[ext_resource type="Texture2D" path="res://assets/plaza/banco_2.png" id="p06_banco_2"]
+[ext_resource type="Texture2D" path="res://assets/plaza/banco_3.png" id="p07_banco_3"]
+[ext_resource type="Texture2D" path="res://assets/plaza/cantero_80.png" id="p08_cantero_80"]
+[ext_resource type="Texture2D" path="res://assets/plaza/cantero_96.png" id="p09_cantero_96"]
+[ext_resource type="Texture2D" path="res://assets/plaza/escombro_0.png" id="p10_escombro_0"]
+[ext_resource type="Texture2D" path="res://assets/plaza/escombro_1.png" id="p11_escombro_1"]
+[ext_resource type="Texture2D" path="res://assets/plaza/escombro_2.png" id="p12_escombro_2"]
+[ext_resource type="Texture2D" path="res://assets/plaza/puesto.png" id="p13_puesto"]
+[ext_resource type="Texture2D" path="res://assets/plaza/refugio.png" id="p14_refugio"]
+[ext_resource type="Texture2D" path="res://assets/plaza/subte.png" id="p15_subte"]
+[ext_resource type="PackedScene" path="res://escenas/consumible.tscn" id="50_consumible"]
+[ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="51_cartel"]
 
 [sub_resource type="RectangleShape2D" id="Shape_4096x32"]
 size = Vector2(4096, 32)
@@ -99,6 +123,33 @@ size = Vector2(460, 200)
 [sub_resource type="RectangleShape2D" id="Shape_BloqueoMolinetes"]
 size = Vector2(400, 70)
 
+[sub_resource type="RectangleShape2D" id="Shape_pz_192x128"]
+size = Vector2(192, 128)
+
+[sub_resource type="RectangleShape2D" id="Shape_pz_192x96"]
+size = Vector2(192, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_pz_128x96"]
+size = Vector2(128, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_pz_24x24"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="Shape_pz_128x32"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_pz_56x24"]
+size = Vector2(56, 24)
+
+[sub_resource type="RectangleShape2D" id="Shape_pz_40x24"]
+size = Vector2(40, 24)
+
+[sub_resource type="RectangleShape2D" id="Shape_pz_1440x64"]
+size = Vector2(1440, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_pz_1696x64"]
+size = Vector2(1696, 64)
+
 [node name="Nivel1" type="Node2D" unique_id=688588302]
 script = ExtResource("6_nivel1")
 
@@ -152,12 +203,15 @@ position = Vector2(16, 2560)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LIMITE_DER/StaticBody2D" unique_id=844911108]
 shape = SubResource("Shape_32x5120")
 
+[node name="EstacionVisual" parent="." instance=ExtResource("10_estacion")]
+
+[node name="PlazaVisual" parent="." instance=ExtResource("30_plaza")]
+
+[node name="Tren" parent="." instance=ExtResource("11_tren")]
+position = Vector2(1984, 320)
+
 [node name="PARED_ESTACION_ARRIBA" type="Node2D" parent="." unique_id=1699056370]
 position = Vector2(256, 192)
-
-[node name="Polygon2D" type="Polygon2D" parent="PARED_ESTACION_ARRIBA" unique_id=1486656587]
-color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 3584, 0, 3584, 32, 0, 32)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PARED_ESTACION_ARRIBA" unique_id=1477002300]
 position = Vector2(1792, 16)
@@ -168,10 +222,6 @@ shape = SubResource("Shape_3584x32")
 [node name="PARED_ESTACION_IZQ" type="Node2D" parent="." unique_id=1472321769]
 position = Vector2(256, 192)
 
-[node name="Polygon2D" type="Polygon2D" parent="PARED_ESTACION_IZQ" unique_id=1809157006]
-color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 1888, 0, 1888)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="PARED_ESTACION_IZQ" unique_id=1138525978]
 position = Vector2(16, 944)
 
@@ -180,10 +230,6 @@ shape = SubResource("Shape_32x1888")
 
 [node name="PARED_ESTACION_DER" type="Node2D" parent="." unique_id=206844745]
 position = Vector2(3808, 192)
-
-[node name="Polygon2D" type="Polygon2D" parent="PARED_ESTACION_DER" unique_id=2028438056]
-color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 1888, 0, 1888)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PARED_ESTACION_DER" unique_id=1669366189]
 position = Vector2(16, 944)
@@ -194,10 +240,6 @@ shape = SubResource("Shape_32x1888")
 [node name="PARED_ESTACION_ABAJO_IZQ" type="Node2D" parent="." unique_id=1717467913]
 position = Vector2(256, 2048)
 
-[node name="Polygon2D" type="Polygon2D" parent="PARED_ESTACION_ABAJO_IZQ" unique_id=1836480823]
-color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 1440, 0, 1440, 32, 0, 32)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="PARED_ESTACION_ABAJO_IZQ" unique_id=135968406]
 position = Vector2(720, 16)
 
@@ -206,10 +248,6 @@ shape = SubResource("Shape_1440x32")
 
 [node name="PARED_ESTACION_ABAJO_DER" type="Node2D" parent="." unique_id=57823114]
 position = Vector2(2144, 2048)
-
-[node name="Polygon2D" type="Polygon2D" parent="PARED_ESTACION_ABAJO_DER" unique_id=1185950664]
-color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 1696, 0, 1696, 32, 0, 32)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PARED_ESTACION_ABAJO_DER" unique_id=1598180570]
 position = Vector2(848, 16)
@@ -220,51 +258,23 @@ shape = SubResource("Shape_1696x32")
 [node name="VESTIBULO" type="Node2D" parent="." unique_id=176552489]
 position = Vector2(448, 1408)
 
-[node name="Polygon2D" type="Polygon2D" parent="VESTIBULO" unique_id=627121908]
-color = Color(0.35, 0.35, 0.35, 1)
-polygon = PackedVector2Array(0, 0, 1585.1675, 0, 3200, 0, 3200, 640, 0, 640)
-
 [node name="PASILLO_SALIDA" type="Node2D" parent="." unique_id=29424403]
 position = Vector2(1696, 2048)
-
-[node name="Polygon2D" type="Polygon2D" parent="PASILLO_SALIDA" unique_id=449778943]
-color = Color(0.3, 0.3, 0.3, 1)
-polygon = PackedVector2Array(0, 0, 448, 0, 448, 192, 0, 192)
 
 [node name="ANDEN_01" type="Node2D" parent="." unique_id=1865092424]
 position = Vector2(576, 320)
 
-[node name="Polygon2D" type="Polygon2D" parent="ANDEN_01" unique_id=1947361041]
-color = Color(0.92, 0.92, 0.92, 1)
-polygon = PackedVector2Array(0, 0, 640, 0, 640, 273.22443, 640, 960, 0, 960)
-
 [node name="ANDEN_02" type="Node2D" parent="." unique_id=1551790284]
 position = Vector2(1344, 320)
-
-[node name="Polygon2D" type="Polygon2D" parent="ANDEN_02" unique_id=768476329]
-color = Color(0.92, 0.92, 0.92, 1)
-polygon = PackedVector2Array(0, 0, 640, 0, 640, 960, 0, 960)
 
 [node name="ANDEN_03" type="Node2D" parent="." unique_id=706241422]
 position = Vector2(2112, 320)
 
-[node name="Polygon2D" type="Polygon2D" parent="ANDEN_03" unique_id=873698474]
-color = Color(0.92, 0.92, 0.92, 1)
-polygon = PackedVector2Array(0, 0, 640, 0, 639.99976, 540.825, 640, 960, 0, 960)
-
 [node name="ANDEN_04" type="Node2D" parent="." unique_id=365815413]
 position = Vector2(2880, 320)
 
-[node name="Polygon2D" type="Polygon2D" parent="ANDEN_04" unique_id=1980409248]
-color = Color(0.92, 0.92, 0.92, 1)
-polygon = PackedVector2Array(0, 0, 640, 0, 640, 960, 0, 960)
-
 [node name="VIA_01" type="Node2D" parent="." unique_id=1016910969]
 position = Vector2(1216, 320)
-
-[node name="Polygon2D" type="Polygon2D" parent="VIA_01" unique_id=920398800]
-color = Color(0.05, 0.05, 0.05, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 960, 0, 960)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="VIA_01" unique_id=1748172862]
 position = Vector2(64, 480)
@@ -275,10 +285,6 @@ shape = SubResource("Shape_128x960")
 [node name="VIA_02" type="Node2D" parent="." unique_id=1660652611]
 position = Vector2(1984, 320)
 
-[node name="Polygon2D" type="Polygon2D" parent="VIA_02" unique_id=1830407532]
-color = Color(0.05, 0.05, 0.05, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 960, 0, 960)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="VIA_02" unique_id=1990556583]
 position = Vector2(64, 480)
 
@@ -288,49 +294,14 @@ shape = SubResource("Shape_128x960")
 [node name="VIA_03" type="Node2D" parent="." unique_id=966318586]
 position = Vector2(2752, 320)
 
-[node name="Polygon2D" type="Polygon2D" parent="VIA_03" unique_id=1226318128]
-color = Color(0.05, 0.05, 0.05, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 960, 0, 960)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="VIA_03" unique_id=460459465]
 position = Vector2(64, 480)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VIA_03/StaticBody2D" unique_id=771771593]
 shape = SubResource("Shape_128x960")
 
-[node name="TREN_CUERPO" type="Node2D" parent="." unique_id=1753126401]
-position = Vector2(1984, 384)
-
-[node name="Polygon2D" type="Polygon2D" parent="TREN_CUERPO" unique_id=1320671007]
-color = Color(0.2, 0.2, 0.7, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 800, 0, 800)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TREN_CUERPO" unique_id=71596661]
-position = Vector2(64, 400)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TREN_CUERPO/StaticBody2D" unique_id=458615588]
-shape = SubResource("Shape_128x800")
-
-[node name="TREN_FRENTE" type="Node2D" parent="." unique_id=1216615373]
-position = Vector2(1984, 320)
-
-[node name="Polygon2D" type="Polygon2D" parent="TREN_FRENTE" unique_id=1265639481]
-color = Color(0.2, 0.2, 0.7, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 64, 0, 64)
-
-[node name="TREN_TRASERA" type="Node2D" parent="." unique_id=196781328]
-position = Vector2(1984, 1184)
-
-[node name="Polygon2D" type="Polygon2D" parent="TREN_TRASERA" unique_id=469738813]
-color = Color(0.2, 0.2, 0.7, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 64, 0, 64)
-
 [node name="BOLETERIA_01" type="Node2D" parent="." unique_id=636996099]
 position = Vector2(576, 1504)
-
-[node name="Polygon2D" type="Polygon2D" parent="BOLETERIA_01" unique_id=864421908]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 320, 0, 320, 96, 0, 96)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BOLETERIA_01" unique_id=1229666461]
 position = Vector2(160, 48)
@@ -340,10 +311,6 @@ shape = SubResource("Shape_320x96")
 
 [node name="BOLETERIA_02" type="Node2D" parent="." unique_id=355333246]
 position = Vector2(992, 1504)
-
-[node name="Polygon2D" type="Polygon2D" parent="BOLETERIA_02" unique_id=1790974604]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 320, 0, 320, 96, 0, 96)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BOLETERIA_02" unique_id=52214229]
 position = Vector2(160, 48)
@@ -355,10 +322,6 @@ shape = SubResource("Shape_320x96")
 [node name="BOLETERIA_03" type="Node2D" parent="." unique_id=2008110847]
 position = Vector2(1408, 1504)
 
-[node name="Polygon2D" type="Polygon2D" parent="BOLETERIA_03" unique_id=778927107]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 320, 0, 320, 96, 0, 96)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="BOLETERIA_03" unique_id=2038604143]
 position = Vector2(160, 48)
 
@@ -368,9 +331,10 @@ shape = SubResource("Shape_320x96")
 [node name="MOLINETE_01" type="Node2D" parent="." unique_id=726847469]
 position = Vector2(1723, 2014)
 
-[node name="Polygon2D" type="Polygon2D" parent="MOLINETE_01" unique_id=1664275277]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+[node name="Sprite2D" type="Sprite2D" parent="MOLINETE_01"]
+texture = ExtResource("9_molinete")
+centered = false
+scale = Vector2(2, 2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MOLINETE_01" unique_id=840852815]
 position = Vector2(16, 32)
@@ -381,9 +345,10 @@ shape = SubResource("Shape_32x64")
 [node name="MOLINETE_02" type="Node2D" parent="." unique_id=1654009932]
 position = Vector2(1790, 2016)
 
-[node name="Polygon2D" type="Polygon2D" parent="MOLINETE_02" unique_id=1390625975]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+[node name="Sprite2D" type="Sprite2D" parent="MOLINETE_02"]
+texture = ExtResource("9_molinete")
+centered = false
+scale = Vector2(2, 2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MOLINETE_02" unique_id=710857864]
 position = Vector2(16, 32)
@@ -394,9 +359,10 @@ shape = SubResource("Shape_32x64")
 [node name="MOLINETE_03" type="Node2D" parent="." unique_id=1849933836]
 position = Vector2(1863, 2019)
 
-[node name="Polygon2D" type="Polygon2D" parent="MOLINETE_03" unique_id=61625955]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+[node name="Sprite2D" type="Sprite2D" parent="MOLINETE_03"]
+texture = ExtResource("9_molinete")
+centered = false
+scale = Vector2(2, 2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MOLINETE_03" unique_id=801591105]
 position = Vector2(16, 32)
@@ -407,9 +373,10 @@ shape = SubResource("Shape_32x64")
 [node name="MOLINETE_04" type="Node2D" parent="." unique_id=697944024]
 position = Vector2(1939, 2018)
 
-[node name="Polygon2D" type="Polygon2D" parent="MOLINETE_04" unique_id=1195431154]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+[node name="Sprite2D" type="Sprite2D" parent="MOLINETE_04"]
+texture = ExtResource("9_molinete")
+centered = false
+scale = Vector2(2, 2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MOLINETE_04" unique_id=15098908]
 position = Vector2(16, 32)
@@ -420,9 +387,10 @@ shape = SubResource("Shape_32x64")
 [node name="MOLINETE_05" type="Node2D" parent="." unique_id=1476238572]
 position = Vector2(2014, 2018)
 
-[node name="Polygon2D" type="Polygon2D" parent="MOLINETE_05" unique_id=1330124011]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+[node name="Sprite2D" type="Sprite2D" parent="MOLINETE_05"]
+texture = ExtResource("9_molinete")
+centered = false
+scale = Vector2(2, 2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MOLINETE_05" unique_id=1153428287]
 position = Vector2(16, 32)
@@ -433,9 +401,10 @@ shape = SubResource("Shape_32x64")
 [node name="MOLINETE_06" type="Node2D" parent="." unique_id=2103431113]
 position = Vector2(2078, 2017)
 
-[node name="Polygon2D" type="Polygon2D" parent="MOLINETE_06" unique_id=1958869228]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+[node name="Sprite2D" type="Sprite2D" parent="MOLINETE_06"]
+texture = ExtResource("9_molinete")
+centered = false
+scale = Vector2(2, 2)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MOLINETE_06" unique_id=431069149]
 position = Vector2(16, 32)
@@ -444,11 +413,7 @@ position = Vector2(16, 32)
 shape = SubResource("Shape_32x64")
 
 [node name="LOCAL_01" type="Node2D" parent="." unique_id=912725636]
-position = Vector2(2400, 1472)
-
-[node name="Polygon2D" type="Polygon2D" parent="LOCAL_01" unique_id=1096078517]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 320, 0, 320, 224, 0, 224)
+position = Vector2(736, 448)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="LOCAL_01" unique_id=217965294]
 position = Vector2(160, 112)
@@ -459,16 +424,8 @@ shape = SubResource("Shape_320x224")
 [node name="Mostrador" type="Node2D" parent="LOCAL_01" unique_id=1756361892]
 position = Vector2(32, 160)
 
-[node name="Polygon2D" type="Polygon2D" parent="LOCAL_01/Mostrador" unique_id=1896656492]
-color = Color(0.45, 0.45, 0.45, 1)
-polygon = PackedVector2Array(0, 0, 256, 0, 256, 64, 0, 64)
-
 [node name="LOCAL_02" type="Node2D" parent="." unique_id=1780594527]
-position = Vector2(2784, 1472)
-
-[node name="Polygon2D" type="Polygon2D" parent="LOCAL_02" unique_id=1980603426]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 320, 0, 320, 224, 0, 224)
+position = Vector2(2272, 832)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="LOCAL_02" unique_id=331041323]
 position = Vector2(160, 112)
@@ -479,16 +436,8 @@ shape = SubResource("Shape_320x224")
 [node name="Mostrador" type="Node2D" parent="LOCAL_02" unique_id=172252464]
 position = Vector2(32, 160)
 
-[node name="Polygon2D" type="Polygon2D" parent="LOCAL_02/Mostrador" unique_id=1995824039]
-color = Color(0.45, 0.45, 0.45, 1)
-polygon = PackedVector2Array(0, 0, 256, 0, 256, 64, 0, 64)
-
 [node name="LOCAL_03" type="Node2D" parent="." unique_id=1938881612]
 position = Vector2(3168, 1472)
-
-[node name="Polygon2D" type="Polygon2D" parent="LOCAL_03" unique_id=1230961312]
-color = Color(0.55, 0.55, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 320, 0, 320, 224, 0, 224)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="LOCAL_03" unique_id=1886984602]
 position = Vector2(160, 112)
@@ -499,16 +448,8 @@ shape = SubResource("Shape_320x224")
 [node name="Mostrador" type="Node2D" parent="LOCAL_03" unique_id=684363394]
 position = Vector2(32, 160)
 
-[node name="Polygon2D" type="Polygon2D" parent="LOCAL_03/Mostrador" unique_id=444078492]
-color = Color(0.45, 0.45, 0.45, 1)
-polygon = PackedVector2Array(0, 0, 256, 0, 256, 64, 0, 64)
-
 [node name="BANO_HOMBRES" type="Node2D" parent="." unique_id=649465893]
 position = Vector2(576, 1792)
-
-[node name="Polygon2D" type="Polygon2D" parent="BANO_HOMBRES" unique_id=1005288387]
-color = Color(0.5, 0.5, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 384, 0, 384, 224, 0, 224)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BANO_HOMBRES" unique_id=1658085722]
 position = Vector2(192, 112)
@@ -518,10 +459,6 @@ shape = SubResource("Shape_384x224")
 
 [node name="BANO_MUJERES" type="Node2D" parent="." unique_id=1433655143]
 position = Vector2(1024, 1792)
-
-[node name="Polygon2D" type="Polygon2D" parent="BANO_MUJERES" unique_id=1928468866]
-color = Color(0.5, 0.5, 0.55, 1)
-polygon = PackedVector2Array(0, 0, 384, 0, 384, 224, 0, 224)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BANO_MUJERES" unique_id=1474833789]
 position = Vector2(192, 112)
@@ -533,29 +470,14 @@ shape = SubResource("Shape_384x224")
 [node name="ZONA_SUBTE" type="Node2D" parent="." unique_id=1309080012]
 position = Vector2(3264, 1760)
 
-[node name="Polygon2D" type="Polygon2D" parent="ZONA_SUBTE" unique_id=1699583948]
-color = Color(0.3, 0.1, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 320, 0, 320, 256, 0, 256)
-
 [node name="REJA_SUBTE" type="Node2D" parent="." unique_id=291578510]
 position = Vector2(3328, 1792)
-
-[node name="Polygon2D" type="Polygon2D" parent="REJA_SUBTE" unique_id=698957837]
-color = Color(0.4, 0, 0, 1)
-polygon = PackedVector2Array(0, 0, 192, 0, 192, 128, 0, 128)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="REJA_SUBTE" unique_id=1403485796]
 position = Vector2(96, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="REJA_SUBTE/StaticBody2D" unique_id=1528284597]
 shape = SubResource("Shape_192x128")
-
-[node name="Plaza" type="Node2D" parent="." unique_id=856702744]
-position = Vector2(448, 2144)
-
-[node name="Polygon2D" type="Polygon2D" parent="Plaza" unique_id=1245214701]
-color = Color(0.4, 0.4, 0.4, 1)
-polygon = PackedVector2Array(0, 0, 3200, 0, 3200, 1248, 2580.7722, 1247.9998, 0, 1248)
 
 [node name="MCDONALDS" type="Node2D" parent="." unique_id=243284635]
 position = Vector2(36, 2520)
@@ -574,10 +496,6 @@ shape = SubResource("Shape_640x448")
 [node name="ARBOL_01" type="Node2D" parent="." unique_id=1500534075]
 position = Vector2(1088, 2240)
 
-[node name="Polygon2D" type="Polygon2D" parent="ARBOL_01" unique_id=693132795]
-color = Color(0.1, 0.4, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="ARBOL_01" unique_id=1901270337]
 position = Vector2(32, 32)
 
@@ -586,10 +504,6 @@ shape = SubResource("Shape_64x64")
 
 [node name="ARBOL_02" type="Node2D" parent="." unique_id=1028518734]
 position = Vector2(1344, 2208)
-
-[node name="Polygon2D" type="Polygon2D" parent="ARBOL_02" unique_id=40713151]
-color = Color(0.1, 0.4, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ARBOL_02" unique_id=790080169]
 position = Vector2(32, 32)
@@ -600,10 +514,6 @@ shape = SubResource("Shape_64x64")
 [node name="ARBOL_03" type="Node2D" parent="." unique_id=1304550680]
 position = Vector2(1696, 2816)
 
-[node name="Polygon2D" type="Polygon2D" parent="ARBOL_03" unique_id=1032450694]
-color = Color(0.1, 0.4, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="ARBOL_03" unique_id=1884314979]
 position = Vector2(32, 32)
 
@@ -612,10 +522,6 @@ shape = SubResource("Shape_64x64")
 
 [node name="ARBOL_04" type="Node2D" parent="." unique_id=427939509]
 position = Vector2(2144, 2240)
-
-[node name="Polygon2D" type="Polygon2D" parent="ARBOL_04" unique_id=1426556068]
-color = Color(0.1, 0.4, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ARBOL_04" unique_id=203443862]
 position = Vector2(32, 32)
@@ -626,10 +532,6 @@ shape = SubResource("Shape_64x64")
 [node name="ARBOL_05" type="Node2D" parent="." unique_id=1455513336]
 position = Vector2(2368, 2688)
 
-[node name="Polygon2D" type="Polygon2D" parent="ARBOL_05" unique_id=989985814]
-color = Color(0.1, 0.4, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="ARBOL_05" unique_id=978348905]
 position = Vector2(32, 32)
 
@@ -638,10 +540,6 @@ shape = SubResource("Shape_64x64")
 
 [node name="ARBOL_06" type="Node2D" parent="." unique_id=1353891711]
 position = Vector2(1184, 3008)
-
-[node name="Polygon2D" type="Polygon2D" parent="ARBOL_06" unique_id=1306500761]
-color = Color(0.1, 0.4, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ARBOL_06" unique_id=110892054]
 position = Vector2(32, 32)
@@ -652,10 +550,6 @@ shape = SubResource("Shape_64x64")
 [node name="ARBOL_07" type="Node2D" parent="." unique_id=453007162]
 position = Vector2(1920, 3072)
 
-[node name="Polygon2D" type="Polygon2D" parent="ARBOL_07" unique_id=251140217]
-color = Color(0.1, 0.4, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="ARBOL_07" unique_id=25089534]
 position = Vector2(32, 32)
 
@@ -664,10 +558,6 @@ shape = SubResource("Shape_64x64")
 
 [node name="ARBOL_08" type="Node2D" parent="." unique_id=134752237]
 position = Vector2(2528, 2944)
-
-[node name="Polygon2D" type="Polygon2D" parent="ARBOL_08" unique_id=409237143]
-color = Color(0.1, 0.4, 0.1, 1)
-polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="ARBOL_08" unique_id=2099965356]
 position = Vector2(32, 32)
@@ -678,10 +568,6 @@ shape = SubResource("Shape_64x64")
 [node name="BANCO_01" type="Node2D" parent="." unique_id=118856992]
 position = Vector2(1504, 2496)
 
-[node name="Polygon2D" type="Polygon2D" parent="BANCO_01" unique_id=1098178284]
-color = Color(0.45, 0.3, 0.15, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="BANCO_01" unique_id=2114169056]
 position = Vector2(64, 16)
 
@@ -690,10 +576,6 @@ shape = SubResource("Shape_128x32")
 
 [node name="BANCO_02" type="Node2D" parent="." unique_id=1308597002]
 position = Vector2(1952, 2496)
-
-[node name="Polygon2D" type="Polygon2D" parent="BANCO_02" unique_id=464718778]
-color = Color(0.45, 0.3, 0.15, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BANCO_02" unique_id=869144283]
 position = Vector2(64, 16)
@@ -704,10 +586,6 @@ shape = SubResource("Shape_128x32")
 [node name="BANCO_03" type="Node2D" parent="." unique_id=1021466449]
 position = Vector2(1504, 2912)
 
-[node name="Polygon2D" type="Polygon2D" parent="BANCO_03" unique_id=1497206295]
-color = Color(0.45, 0.3, 0.15, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="BANCO_03" unique_id=1386142608]
 position = Vector2(64, 16)
 
@@ -716,10 +594,6 @@ shape = SubResource("Shape_128x32")
 
 [node name="BANCO_04" type="Node2D" parent="." unique_id=2022349912]
 position = Vector2(2080, 2912)
-
-[node name="Polygon2D" type="Polygon2D" parent="BANCO_04" unique_id=1449712521]
-color = Color(0.45, 0.3, 0.15, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BANCO_04" unique_id=706692773]
 position = Vector2(64, 16)
@@ -730,10 +604,6 @@ shape = SubResource("Shape_128x32")
 [node name="CANTERO_01" type="Node2D" parent="." unique_id=261623353]
 position = Vector2(1088, 2624)
 
-[node name="Polygon2D" type="Polygon2D" parent="CANTERO_01" unique_id=879328975]
-color = Color(0.3, 0.5, 0.2, 1)
-polygon = PackedVector2Array(0, 0, 192, 0, 192, 64, 0, 64)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="CANTERO_01" unique_id=1502223891]
 position = Vector2(96, 32)
 
@@ -743,10 +613,6 @@ shape = SubResource("Shape_192x64")
 [node name="CANTERO_02" type="Node2D" parent="." unique_id=795380006]
 position = Vector2(2752, 2432)
 
-[node name="Polygon2D" type="Polygon2D" parent="CANTERO_02" unique_id=948796374]
-color = Color(0.3, 0.5, 0.2, 1)
-polygon = PackedVector2Array(0, 0, 192, 0, 192, 64, 0, 64)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="CANTERO_02" unique_id=1614625158]
 position = Vector2(96, 32)
 
@@ -755,10 +621,6 @@ shape = SubResource("Shape_192x64")
 
 [node name="CANTERO_03" type="Node2D" parent="." unique_id=2133866657]
 position = Vector2(2656, 2816)
-
-[node name="Polygon2D" type="Polygon2D" parent="CANTERO_03" unique_id=44996041]
-color = Color(0.3, 0.5, 0.2, 1)
-polygon = PackedVector2Array(0, 0, 160, 0, 160, 64, 0, 64)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CANTERO_03" unique_id=560999613]
 position = Vector2(80, 32)
@@ -1049,6 +911,809 @@ position = Vector2(96, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PARED_CASA_FINAL_ABAJO_DER/StaticBody2D" unique_id=300745963]
 shape = SubResource("Shape_192x32")
 
+[node name="PuntoCarga1" parent="." instance=ExtResource("20_carga")]
+position = Vector2(2304, 592)
+
+[node name="PuntoCarga2" parent="." instance=ExtResource("20_carga")]
+position = Vector2(1664, 1700)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOL_01"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p00_arbol_0")
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOL_02"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p01_arbol_1")
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOL_03"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p02_arbol_2")
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOL_04"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p03_arbol_3")
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOL_05"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p00_arbol_0")
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOL_06"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p01_arbol_1")
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOL_07"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p02_arbol_2")
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOL_08"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p03_arbol_3")
+
+[node name="Sprite2D" type="Sprite2D" parent="BANCO_01"]
+scale = Vector2(2, 2)
+texture = ExtResource("p04_banco_0")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BANCO_02"]
+scale = Vector2(2, 2)
+texture = ExtResource("p05_banco_1")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BANCO_03"]
+scale = Vector2(2, 2)
+texture = ExtResource("p06_banco_2")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BANCO_04"]
+scale = Vector2(2, 2)
+texture = ExtResource("p07_banco_3")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CANTERO_01"]
+scale = Vector2(2, 2)
+texture = ExtResource("p09_cantero_96")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CANTERO_02"]
+scale = Vector2(2, 2)
+texture = ExtResource("p09_cantero_96")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CANTERO_03"]
+scale = Vector2(2, 2)
+texture = ExtResource("p08_cantero_80")
+centered = false
+
+[node name="SUBTE_PLAZA_01" type="StaticBody2D" parent="."]
+position = Vector2(3168, 2336)
+
+[node name="Sprite2D" type="Sprite2D" parent="SUBTE_PLAZA_01"]
+scale = Vector2(2, 2)
+texture = ExtResource("p15_subte")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="SUBTE_PLAZA_01"]
+position = Vector2(96, 64)
+shape = SubResource("Shape_pz_192x128")
+
+[node name="REFUGIO_01" type="StaticBody2D" parent="."]
+position = Vector2(800, 3200)
+
+[node name="Sprite2D" type="Sprite2D" parent="REFUGIO_01"]
+scale = Vector2(2, 2)
+texture = ExtResource("p14_refugio")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="REFUGIO_01"]
+position = Vector2(96, 48)
+shape = SubResource("Shape_pz_192x96")
+
+[node name="REFUGIO_02" type="StaticBody2D" parent="."]
+position = Vector2(2560, 2176)
+
+[node name="Sprite2D" type="Sprite2D" parent="REFUGIO_02"]
+scale = Vector2(2, 2)
+texture = ExtResource("p14_refugio")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="REFUGIO_02"]
+position = Vector2(96, 48)
+shape = SubResource("Shape_pz_192x96")
+
+[node name="PUESTO_DIARIOS_01" type="StaticBody2D" parent="."]
+position = Vector2(896, 2848)
+
+[node name="Sprite2D" type="Sprite2D" parent="PUESTO_DIARIOS_01"]
+scale = Vector2(2, 2)
+texture = ExtResource("p13_puesto")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="PUESTO_DIARIOS_01"]
+position = Vector2(64, 48)
+shape = SubResource("Shape_pz_128x96")
+
+[node name="PUESTO_DIARIOS_02" type="StaticBody2D" parent="."]
+position = Vector2(2976, 2752)
+
+[node name="Sprite2D" type="Sprite2D" parent="PUESTO_DIARIOS_02"]
+scale = Vector2(2, 2)
+texture = ExtResource("p13_puesto")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="PUESTO_DIARIOS_02"]
+position = Vector2(64, 48)
+shape = SubResource("Shape_pz_128x96")
+
+[node name="ARBOLX_01" type="StaticBody2D" parent="."]
+position = Vector2(512, 2304)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_01"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p01_arbol_1")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_01"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_02" type="StaticBody2D" parent="."]
+position = Vector2(896, 2272)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_02"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p02_arbol_2")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_02"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_03" type="StaticBody2D" parent="."]
+position = Vector2(1504, 2336)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_03"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p03_arbol_3")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_03"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_04" type="StaticBody2D" parent="."]
+position = Vector2(864, 2464)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_04"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p00_arbol_0")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_04"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_05" type="StaticBody2D" parent="."]
+position = Vector2(2528, 2400)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_05"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p01_arbol_1")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_05"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_06" type="StaticBody2D" parent="."]
+position = Vector2(3040, 2592)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_06"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p02_arbol_2")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_06"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_07" type="StaticBody2D" parent="."]
+position = Vector2(1472, 3040)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_07"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p03_arbol_3")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_07"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_08" type="StaticBody2D" parent="."]
+position = Vector2(2400, 3168)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_08"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p00_arbol_0")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_08"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_09" type="StaticBody2D" parent="."]
+position = Vector2(3360, 3104)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_09"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p01_arbol_1")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_09"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_10" type="StaticBody2D" parent="."]
+position = Vector2(3392, 2560)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_10"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p02_arbol_2")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_10"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_11" type="StaticBody2D" parent="."]
+position = Vector2(3104, 2944)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_11"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p03_arbol_3")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_11"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_12" type="StaticBody2D" parent="."]
+position = Vector2(2784, 2560)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_12"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p00_arbol_0")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_12"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_13" type="StaticBody2D" parent="."]
+position = Vector2(480, 3008)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_13"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p01_arbol_1")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_13"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_14" type="StaticBody2D" parent="."]
+position = Vector2(640, 3168)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_14"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p02_arbol_2")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_14"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_15" type="StaticBody2D" parent="."]
+position = Vector2(2848, 2272)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_15"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p03_arbol_3")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_15"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_16" type="StaticBody2D" parent="."]
+position = Vector2(736, 2912)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_16"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p00_arbol_0")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_16"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_17" type="StaticBody2D" parent="."]
+position = Vector2(2336, 2976)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_17"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p01_arbol_1")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_17"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_18" type="StaticBody2D" parent="."]
+position = Vector2(2336, 2304)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_18"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p02_arbol_2")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_18"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_19" type="StaticBody2D" parent="."]
+position = Vector2(2240, 2496)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_19"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p03_arbol_3")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_19"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_20" type="StaticBody2D" parent="."]
+position = Vector2(1088, 2496)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_20"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p00_arbol_0")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_20"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_21" type="StaticBody2D" parent="."]
+position = Vector2(704, 2272)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_21"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p01_arbol_1")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_21"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_22" type="StaticBody2D" parent="."]
+position = Vector2(2144, 3104)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_22"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p02_arbol_2")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_22"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_23" type="StaticBody2D" parent="."]
+position = Vector2(3296, 2848)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_23"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p03_arbol_3")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_23"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_24" type="StaticBody2D" parent="."]
+position = Vector2(2848, 3104)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_24"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p00_arbol_0")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_24"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_25" type="StaticBody2D" parent="."]
+position = Vector2(1312, 2496)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_25"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p01_arbol_1")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_25"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="ARBOLX_26" type="StaticBody2D" parent="."]
+position = Vector2(3040, 2304)
+
+[node name="Sprite2D" type="Sprite2D" parent="ARBOLX_26"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("p02_arbol_2")
+
+[node name="Colision" type="CollisionShape2D" parent="ARBOLX_26"]
+position = Vector2(32, 32)
+shape = SubResource("Shape_pz_24x24")
+
+[node name="BANCOX_01" type="StaticBody2D" parent="."]
+position = Vector2(1056, 2816)
+
+[node name="Sprite2D" type="Sprite2D" parent="BANCOX_01"]
+scale = Vector2(2, 2)
+texture = ExtResource("p06_banco_2")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="BANCOX_01"]
+position = Vector2(64, 16)
+shape = SubResource("Shape_pz_128x32")
+
+[node name="BANCOX_02" type="StaticBody2D" parent="."]
+position = Vector2(1440, 2816)
+
+[node name="Sprite2D" type="Sprite2D" parent="BANCOX_02"]
+scale = Vector2(2, 2)
+texture = ExtResource("p04_banco_0")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="BANCOX_02"]
+position = Vector2(64, 16)
+shape = SubResource("Shape_pz_128x32")
+
+[node name="BANCOX_03" type="StaticBody2D" parent="."]
+position = Vector2(2592, 2656)
+
+[node name="Sprite2D" type="Sprite2D" parent="BANCOX_03"]
+scale = Vector2(2, 2)
+texture = ExtResource("p06_banco_2")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="BANCOX_03"]
+position = Vector2(64, 16)
+shape = SubResource("Shape_pz_128x32")
+
+[node name="BANCOX_04" type="StaticBody2D" parent="."]
+position = Vector2(2816, 2656)
+
+[node name="Sprite2D" type="Sprite2D" parent="BANCOX_04"]
+scale = Vector2(2, 2)
+texture = ExtResource("p06_banco_2")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="BANCOX_04"]
+position = Vector2(64, 16)
+shape = SubResource("Shape_pz_128x32")
+
+[node name="Farola01" parent="." instance=ExtResource("32_farola")]
+position = Vector2(1648, 2240)
+
+[node name="Farola02" parent="." instance=ExtResource("32_farola")]
+position = Vector2(1712, 2496)
+rota = true
+
+[node name="Farola03" parent="." instance=ExtResource("32_farola")]
+position = Vector2(2192, 2496)
+
+[node name="Farola04" parent="." instance=ExtResource("32_farola")]
+position = Vector2(1712, 3040)
+
+[node name="Farola05" parent="." instance=ExtResource("32_farola")]
+position = Vector2(2128, 3040)
+rota = true
+
+[node name="Farola06" parent="." instance=ExtResource("32_farola")]
+position = Vector2(1712, 3300)
+
+[node name="Farola07" parent="." instance=ExtResource("32_farola")]
+position = Vector2(2128, 3300)
+
+[node name="Farola08" parent="." instance=ExtResource("32_farola")]
+position = Vector2(900, 2680)
+rota = true
+
+[node name="Farola09" parent="." instance=ExtResource("32_farola")]
+position = Vector2(1050, 2944)
+
+[node name="Farola10" parent="." instance=ExtResource("32_farola")]
+position = Vector2(1200, 2616)
+
+[node name="Farola11" parent="." instance=ExtResource("32_farola")]
+position = Vector2(1414, 2880)
+rota = true
+
+[node name="Farola12" parent="." instance=ExtResource("32_farola")]
+position = Vector2(1564, 2680)
+
+[node name="Farola13" parent="." instance=ExtResource("32_farola")]
+position = Vector2(1650, 2880)
+
+[node name="Farola14" parent="." instance=ExtResource("32_farola")]
+position = Vector2(2400, 2680)
+rota = true
+
+[node name="Farola15" parent="." instance=ExtResource("32_farola")]
+position = Vector2(2550, 2880)
+
+[node name="Farola16" parent="." instance=ExtResource("32_farola")]
+position = Vector2(2700, 2616)
+
+[node name="Farola17" parent="." instance=ExtResource("32_farola")]
+position = Vector2(2850, 2880)
+rota = true
+
+[node name="Farola18" parent="." instance=ExtResource("32_farola")]
+position = Vector2(3000, 2680)
+
+[node name="Farola19" parent="." instance=ExtResource("32_farola")]
+position = Vector2(3150, 2880)
+
+[node name="Farola20" parent="." instance=ExtResource("32_farola")]
+position = Vector2(3300, 2680)
+rota = true
+
+[node name="Farola21" parent="." instance=ExtResource("32_farola")]
+position = Vector2(3450, 2880)
+
+[node name="ESCOMBRO_01" type="StaticBody2D" parent="."]
+position = Vector2(3552, 2496)
+
+[node name="Sprite2D" type="Sprite2D" parent="ESCOMBRO_01"]
+scale = Vector2(2, 2)
+texture = ExtResource("p11_escombro_1")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="ESCOMBRO_01"]
+position = Vector2(32, 18)
+shape = SubResource("Shape_pz_56x24")
+
+[node name="ESCOMBRO_02" type="StaticBody2D" parent="."]
+position = Vector2(1312, 3264)
+
+[node name="Sprite2D" type="Sprite2D" parent="ESCOMBRO_02"]
+scale = Vector2(2, 2)
+texture = ExtResource("p12_escombro_2")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="ESCOMBRO_02"]
+position = Vector2(24, 18)
+shape = SubResource("Shape_pz_40x24")
+
+[node name="ESCOMBRO_03" type="StaticBody2D" parent="."]
+position = Vector2(1664, 3136)
+
+[node name="Sprite2D" type="Sprite2D" parent="ESCOMBRO_03"]
+scale = Vector2(2, 2)
+texture = ExtResource("p10_escombro_0")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="ESCOMBRO_03"]
+position = Vector2(24, 18)
+shape = SubResource("Shape_pz_40x24")
+
+[node name="ESCOMBRO_04" type="StaticBody2D" parent="."]
+position = Vector2(3008, 3296)
+
+[node name="Sprite2D" type="Sprite2D" parent="ESCOMBRO_04"]
+scale = Vector2(2, 2)
+texture = ExtResource("p10_escombro_0")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="ESCOMBRO_04"]
+position = Vector2(24, 18)
+shape = SubResource("Shape_pz_40x24")
+
+[node name="ESCOMBRO_05" type="StaticBody2D" parent="."]
+position = Vector2(1152, 2880)
+
+[node name="Sprite2D" type="Sprite2D" parent="ESCOMBRO_05"]
+scale = Vector2(2, 2)
+texture = ExtResource("p10_escombro_0")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="ESCOMBRO_05"]
+position = Vector2(24, 18)
+shape = SubResource("Shape_pz_40x24")
+
+[node name="ESCOMBRO_06" type="StaticBody2D" parent="."]
+position = Vector2(1120, 2432)
+
+[node name="Sprite2D" type="Sprite2D" parent="ESCOMBRO_06"]
+scale = Vector2(2, 2)
+texture = ExtResource("p10_escombro_0")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="ESCOMBRO_06"]
+position = Vector2(24, 18)
+shape = SubResource("Shape_pz_40x24")
+
+[node name="ESCOMBRO_07" type="StaticBody2D" parent="."]
+position = Vector2(1216, 2272)
+
+[node name="Sprite2D" type="Sprite2D" parent="ESCOMBRO_07"]
+scale = Vector2(2, 2)
+texture = ExtResource("p10_escombro_0")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="ESCOMBRO_07"]
+position = Vector2(24, 18)
+shape = SubResource("Shape_pz_40x24")
+
+[node name="ESCOMBRO_08" type="StaticBody2D" parent="."]
+position = Vector2(2464, 2752)
+
+[node name="Sprite2D" type="Sprite2D" parent="ESCOMBRO_08"]
+scale = Vector2(2, 2)
+texture = ExtResource("p11_escombro_1")
+centered = false
+
+[node name="Colision" type="CollisionShape2D" parent="ESCOMBRO_08"]
+position = Vector2(32, 18)
+shape = SubResource("Shape_pz_56x24")
+
+[node name="Vagabundo01" parent="." instance=ExtResource("4_enemigo")]
+position = Vector2(1250, 2420)
+vida = 5
+velocidad = 85.0
+rangoDeteccion = 300.0
+variante = 0
+
+[node name="Vagabundo02" parent="." instance=ExtResource("4_enemigo")]
+position = Vector2(2560, 2340)
+vida = 5
+velocidad = 85.0
+rangoDeteccion = 300.0
+variante = 1
+
+[node name="Vagabundo03" parent="." instance=ExtResource("4_enemigo")]
+position = Vector2(980, 3060)
+vida = 5
+velocidad = 85.0
+rangoDeteccion = 300.0
+variante = 2
+
+[node name="Vagabundo04" parent="." instance=ExtResource("4_enemigo")]
+position = Vector2(2330, 2810)
+vida = 5
+velocidad = 85.0
+rangoDeteccion = 300.0
+variante = 0
+
+[node name="Vagabundo05" parent="." instance=ExtResource("4_enemigo")]
+position = Vector2(3000, 2570)
+vida = 5
+velocidad = 85.0
+rangoDeteccion = 300.0
+variante = 1
+
+[node name="Vagabundo06" parent="." instance=ExtResource("4_enemigo")]
+position = Vector2(2900, 3010)
+vida = 5
+velocidad = 85.0
+rangoDeteccion = 300.0
+variante = 2
+
+[node name="Vagabundo07" parent="." instance=ExtResource("4_enemigo")]
+position = Vector2(1500, 3210)
+vida = 5
+velocidad = 85.0
+rangoDeteccion = 300.0
+variante = 0
+
+[node name="Vagabundo08" parent="." instance=ExtResource("4_enemigo")]
+position = Vector2(3450, 2700)
+vida = 5
+velocidad = 85.0
+rangoDeteccion = 300.0
+variante = 1
+
+[node name="PuntoCarga3" parent="." instance=ExtResource("20_carga")]
+position = Vector2(1472, 2740)
+
+[node name="FACHADA_IZQ" type="StaticBody2D" parent="."]
+position = Vector2(256, 2080)
+
+[node name="Colision" type="CollisionShape2D" parent="FACHADA_IZQ"]
+position = Vector2(720, 32)
+shape = SubResource("Shape_pz_1440x64")
+
+[node name="FACHADA_DER" type="StaticBody2D" parent="."]
+position = Vector2(2144, 2080)
+
+[node name="Colision" type="CollisionShape2D" parent="FACHADA_DER"]
+position = Vector2(848, 32)
+shape = SubResource("Shape_pz_1696x64")
+
+[node name="KioscoAlfajor" parent="." instance=ExtResource("50_consumible")]
+position = Vector2(800, 654)
+curacion = 1.0
+nombreConsumible = "Alfajor"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/alfajor-01-negro.png"
+
+[node name="KioscoGolosina1" parent="." instance=ExtResource("50_consumible")]
+position = Vector2(896, 654)
+curacion = 1.0
+nombreConsumible = "Golosina"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/golosina-02.png"
+
+[node name="KioscoGolosina2" parent="." instance=ExtResource("50_consumible")]
+position = Vector2(992, 654)
+curacion = 1.0
+nombreConsumible = "Golosina"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/golosina-01.png"
+
+[node name="Cartel01" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(2440, 800)
+titulo = "ESTACIÓN CONSTITUCIÓN"
+texto = "La salida queda al sur, pasando los molinetes: necesitás la SUBE. Tu celular es tu linterna, cuidá la batería (Q la apaga). Se rumorea que en algún lugar del mapa hay un cargador portátil (powerbank): con él tenés 100% de batería el resto del juego, sin volver a cargar. Aparece más o menos a la mitad del recorrido."
+rutaTextura = "res://assets/carteles/cartel_bateria.png"
+
+[node name="Cartel02" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(1620, 1990)
+titulo = "MOLINETES"
+texto = "Pasá con la SUBE. ¿No la encontraste? Podés forzar los molinetes igual: con una ganzúa jugás a la cerradura, y sin ganzúa tenés que hacerlo a mano con los pernos. Acercate al molinete y apretá F."
+rutaTextura = "res://assets/carteles/cartel_llave.png"
+
+[node name="Cartel03" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(2180, 1680)
+titulo = "PUNTO DE CARGA"
+texto = "Mantené F cerca de un poste celeste para cargar el celular: de 0 a 100% tarda unos 20 segundos. Hay postes en la estación, en la plaza y en el McDonald's."
+rutaTextura = "res://assets/carteles/cartel_info.png"
+
+[node name="Cartel04" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(668, 700)
+titulo = "KIOSCO"
+texto = "Golosinas y alfajores, todo tirado ahí en el mostrador. Cada golosina te cura 1 de vida. Acercate y apretá F para comer."
+rutaTextura = "res://assets/carteles/cartel_alerta.png"
+
+[node name="Cartel05" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(1660, 2322)
+titulo = "PLAZA CONSTITUCIÓN"
+texto = "Cuidado con los vagabundos: son agresivos y te persiguen. A veces dejan una bebida al caer: tomala para curarte 0,5. Las golosinas curan 1 y las hamburguesas 2."
+rutaTextura = "res://assets/carteles/cartel_alerta.png"
+
+[node name="Cartel06" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(830, 2670)
+titulo = "McDONALD'S"
+texto = "Cerrado con llave. Alguien la dejó tirada en algún lugar de la plaza. Si no la encontrás, no hay otra forma de entrar."
+rutaTextura = "res://assets/carteles/cartel_llave.png"
+
+[node name="Cartel07" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(1700, 2610)
+titulo = "RUMORES"
+texto = "Dicen que a mitad de camino hay un cargador portátil (powerbank). Con él, tu celular queda siempre al 100% de batería y no tenés que cargarlo nunca más."
+rutaTextura = "res://assets/carteles/cartel_bateria.png"
+
 [node name="PUERTA_MCDONALDS" type="Node2D" parent="." unique_id=1589970161]
 position = Vector2(652, 2696)
 
@@ -1092,7 +1757,8 @@ nombreObjeto = "Llave del McDonalds"
 position = Vector2(1917, 2048)
 script = ExtResource("2_puerta")
 idLlaveRequerida = "sube"
-mensajeAbierta = "Pasaste los molinetes con la SUBE"
+mensajeAbierta = "Pasaste los molinetes"
+textoAviso = "F para pasar (SUBE o forzar)"
 forzarSiNoHayLlave = true
 idTutorialAlAbrir = "combate"
 bloqueosExtra = Array[NodePath]([NodePath("../MOLINETE_01/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_02/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_03/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_04/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_05/StaticBody2D/CollisionShape2D"), NodePath("../MOLINETE_06/StaticBody2D/CollisionShape2D")])
@@ -1115,18 +1781,23 @@ idTutorial = "final"
 
 [node name="Enemigo1" parent="." unique_id=1552811569 instance=ExtResource("4_enemigo")]
 position = Vector2(1300, 2900)
+variante = 1
 
 [node name="Enemigo2" parent="." unique_id=1231592335 instance=ExtResource("4_enemigo")]
 position = Vector2(2700, 3000)
+variante = 2
 
 [node name="Enemigo3" parent="." unique_id=1239546411 instance=ExtResource("4_enemigo")]
 position = Vector2(1900, 3500)
+variante = 0
 
 [node name="Enemigo4" parent="." unique_id=1742777604 instance=ExtResource("4_enemigo")]
 position = Vector2(1000, 3900)
+variante = 1
 
 [node name="Enemigo5" parent="." unique_id=1856224343 instance=ExtResource("4_enemigo")]
 position = Vector2(2900, 4000)
+variante = 2
 
 [node name="Piedra1" parent="." unique_id=1115322859 instance=ExtResource("8_piedra")]
 position = Vector2(2060, 1841)
