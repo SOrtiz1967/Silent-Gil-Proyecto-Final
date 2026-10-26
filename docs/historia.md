@@ -12,9 +12,10 @@ nivel_1 (estación + plaza) -> nivel_mc (McDonald's, 2 pisos) -> nivel_1 (reja d
 ```
 
 Cambios respecto del borrador anterior:
-- La llave del parque (`llaveMc`) abre directo el McDonald's. La comisaría (`nivel_3` y `nivel_3_celda`) está modelada pero todavía no está conectada a la plaza. **[?]** decidir si se conecta o se saca.
-- El Cliente suelta la `llaveSubte` al morir. Es un enemigo grande, sin ataques especiales todavía.
-- El powerbank está en la oficina del segundo piso del Mc y no dispara a los bichos de la cocina todavía.
+- La llave de la plaza (`llaveMc`) abre directo el McDonald's. La comisaría (`nivel_3` y `nivel_3_celda`) es opcional: tiene la puerta en la plaza y ahí se consigue la pistola de bengalas, que sirve contra lo del Mc y el subte.
+- El Cliente suelta la `llaveSubte` al morir. Es un enemigo grande, sin ataques especiales todavía. Las hamburguesas del Mc curan 2.
+- El powerbank está en la oficina del segundo piso del Mc. Al agarrarlo salen los bichos de la cocina.
+- El Guarda y los pálidos del subte se mueven solo si tenés la linterna prendida. El Guarda suelta el silbato que hace falta, junto con la SUBE, para salir.
 - El celular tiene una llamada perdida de «Casa» a las 3:07. Se avisa en la estación y se vuelve a ver en la casa.
 - Cada nivel deja una nota firmada a las 3:07 por alguien que pasó antes («no agarren las hamburguesas», «se quedan quietos mientras no los alumbrás», «el guarda quiere que te quedes»). Así la historia se cuenta sin gente.
 - En el Mc hay un ticket del pedido 307 que nunca se entregó. **[?]** darlo como alternativa a la pelea con el Cliente.
