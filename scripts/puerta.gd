@@ -43,6 +43,7 @@ func abrir():
 	for ruta in bloqueosExtra:
 		get_node(ruta).disabled = true
 	Inventario.mostrarMensaje(mensajeAbierta)
+	get_tree().call_group("pathfinding", "actualizar")
 	if idTutorialAlAbrir != "":
 		Tutorial.mostrar(idTutorialAlAbrir)
 func alEntrarCuerpo(cuerpo):
