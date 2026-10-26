@@ -17,6 +17,12 @@ La historia completa está en [docs/historia.md](docs/historia.md).
 | H | ayuda con todos los controles |
 | Esc | pausa |
 
+## Ayuda dentro del juego
+
+- Arriba a la derecha siempre se muestra el **objetivo** del momento y hacia dónde queda (se actualiza solo según las llaves que tengas).
+- Al entrar a cada nivel por primera vez sale un texto con la historia y qué hacer.
+- **H** muestra todos los controles.
+
 ## Recorrido
 
 | Nivel | Escena | Qué hay |

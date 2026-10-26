@@ -64,6 +64,8 @@ size = Vector2(1536, 32)
 
 [node name="NivelCelda" type="Node2D"]
 script = ExtResource("nivel")
+tituloIntro = "LA CELDA"
+textoIntro = "La puerta se cerró sola. Son las 3:07 y el celular sigue gastando batería. Agarrá la ganzúa que está en la celda (F) y sacá los pernos de la rejilla del fondo (F). Por el conducto llegás al depósito de evidencia."
 
 [node name="Oscuridad" type="CanvasModulate" parent="."]
 color = Color(0.05, 0.05, 0.07, 1)

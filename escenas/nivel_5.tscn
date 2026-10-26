@@ -87,6 +87,8 @@ size = Vector2(2432, 32)
 
 [node name="NivelSubteLineaC" type="Node2D"]
 script = ExtResource("nivel")
+tituloIntro = "SUBTE LÍNEA C"
+textoIntro = "Es lo más oscuro que vas a ver y no hay donde cargar el celular: sin powerbank se te acaba la batería (si pasa, subí por la escalera). Seguí el andén y los túneles hasta la puerta de servicio, al fondo a la derecha. Los pálidos solo se mueven si la linterna (Q) está prendida: apagala para pasar de largo."
 
 [node name="Oscuridad" type="CanvasModulate" parent="."]
 color = Color(0.04, 0.04, 0.06, 1)

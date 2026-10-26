@@ -59,6 +59,8 @@ size = Vector2(1248, 32)
 
 [node name="NivelCasa" type="Node2D"]
 script = ExtResource("nivel")
+tituloIntro = "TU CASA"
+textoIntro = "Llegaste. Las llaves entran en la cerradura y las luces andan. Entrá a la cocina."
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("pathfinding")

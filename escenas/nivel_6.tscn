@@ -96,6 +96,8 @@ size = Vector2(2720, 32)
 
 [node name="NivelEstacionquenoexiste" type="Node2D"]
 script = ExtResource("nivel")
+tituloIntro = "LA ESTACIÓN QUE NO EXISTE"
+textoIntro = "El cartel dice Constitución, pero ya saliste de ahí. Las puertas de las salas te devuelven a la misma sala: el camino es el túnel largo que sale hacia abajo. Si te devuelve al principio, cruzalo con la linterna apagada (Q). Al final espera el Guarda, que te ve solo con la linterna prendida. Para salir hace falta la SUBE y su silbato."
 
 [node name="Oscuridad" type="CanvasModulate" parent="."]
 color = Color(0.08, 0.08, 0.12, 1)
