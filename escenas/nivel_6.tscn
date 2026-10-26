@@ -1,6 +1,16 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://scripts/nivel.gd" id="nivel"]
+[ext_resource type="Script" path="res://scripts/pathfinding.gd" id="pathfinding"]
 [ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador.tscn" id="1_jugador"]
+[ext_resource type="PackedScene" path="res://escenas/puerta.tscn" id="e1"]
+[ext_resource type="PackedScene" path="res://escenas/objetoClave.tscn" id="e2"]
+[ext_resource type="PackedScene" path="res://escenas/entradaNivel.tscn" id="e3"]
+[ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="e4"]
+[ext_resource type="PackedScene" path="res://escenas/enemigo.tscn" id="e5"]
+
+[sub_resource type="RectangleShape2D" id="Shape_32x32"]
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="Shape_32x64"]
 size = Vector2(32, 64)
@@ -10,6 +20,9 @@ size = Vector2(32, 96)
 
 [sub_resource type="RectangleShape2D" id="Shape_32x128"]
 size = Vector2(32, 128)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x160"]
+size = Vector2(32, 160)
 
 [sub_resource type="RectangleShape2D" id="Shape_32x192"]
 size = Vector2(32, 192)
@@ -38,23 +51,17 @@ size = Vector2(32, 1216)
 [sub_resource type="RectangleShape2D" id="Shape_64x64"]
 size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="Shape_120x140"]
-size = Vector2(120, 140)
-
-[sub_resource type="RectangleShape2D" id="Shape_128x32"]
-size = Vector2(128, 32)
-
 [sub_resource type="RectangleShape2D" id="Shape_128x128"]
 size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="Shape_160x32"]
 size = Vector2(160, 32)
 
-[sub_resource type="RectangleShape2D" id="Shape_192x32"]
-size = Vector2(192, 32)
-
 [sub_resource type="RectangleShape2D" id="Shape_192x64"]
 size = Vector2(192, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_224x32"]
+size = Vector2(224, 32)
 
 [sub_resource type="RectangleShape2D" id="Shape_256x96"]
 size = Vector2(256, 96)
@@ -77,8 +84,8 @@ size = Vector2(704, 32)
 [sub_resource type="RectangleShape2D" id="Shape_800x32"]
 size = Vector2(800, 32)
 
-[sub_resource type="RectangleShape2D" id="Shape_1376x32"]
-size = Vector2(1376, 32)
+[sub_resource type="RectangleShape2D" id="Shape_1664x32"]
+size = Vector2(1664, 32)
 
 [sub_resource type="RectangleShape2D" id="Shape_2272x32"]
 size = Vector2(2272, 32)
@@ -89,7 +96,11 @@ size = Vector2(2432, 32)
 [sub_resource type="RectangleShape2D" id="Shape_2720x32"]
 size = Vector2(2720, 32)
 
-[node name="Nivel6" type="Node2D"]
+[node name="NivelEstacionquenoexiste" type="Node2D"]
+script = ExtResource("nivel")
+
+[node name="Pathfinding" type="Node" parent="."]
+script = ExtResource("pathfinding")
 
 [node name="PISOS" type="Node2D" parent="."]
 
@@ -153,15 +164,15 @@ position = Vector2(2208, 960)
 color = Color(0.45, 0.45, 0.4, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
 
-[node name="PASO_REJILLA" type="Polygon2D" parent="PISOS"]
-position = Vector2(2496, 1280)
+[node name="PASO_ALACENA" type="Polygon2D" parent="PISOS"]
+position = Vector2(2752, 992)
 color = Color(0.2, 0.2, 0.22, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
 
 [node name="ALACENA" type="Polygon2D" parent="PISOS"]
-position = Vector2(2496, 1312)
+position = Vector2(2784, 960)
 color = Color(0.2, 0.2, 0.22, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 192, 0, 192)
+polygon = PackedVector2Array(0, 0, 160, 0, 160, 160, 0, 160)
 
 [node name="PUERTA_TUNEL" type="Polygon2D" parent="PISOS"]
 position = Vector2(480, 736)
@@ -185,282 +196,300 @@ polygon = PackedVector2Array(0, 0, 640, 0, 640, 544, 0, 544)
 
 [node name="PAREDES" type="StaticBody2D" parent="."]
 
-[node name="Pared1" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_01" type="Polygon2D" parent="PAREDES"]
 position = Vector2(64, 64)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 2720, 0, 2720, 32, 0, 32)
 
-[node name="Colision1" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_01" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(1424, 80)
 shape = SubResource("Shape_2720x32")
 
-[node name="Pared2" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_02" type="Polygon2D" parent="PAREDES"]
 position = Vector2(64, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 640, 0, 640)
 
-[node name="Colision2" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_02" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(80, 416)
 shape = SubResource("Shape_32x640")
 
-[node name="Pared3" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_03" type="Polygon2D" parent="PAREDES"]
 position = Vector2(1120, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
 
-[node name="Colision3" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_03" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(1136, 192)
 shape = SubResource("Shape_32x192")
 
-[node name="Pared4" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_04" type="Polygon2D" parent="PAREDES"]
 position = Vector2(1664, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
 
-[node name="Colision4" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_04" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(1680, 192)
 shape = SubResource("Shape_32x192")
 
-[node name="Pared5" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_05" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2208, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
 
-[node name="Colision5" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_05" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(2224, 192)
 shape = SubResource("Shape_32x192")
 
-[node name="Pared6" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_06" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2752, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 640, 0, 640)
 
-[node name="Colision6" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_06" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(2768, 416)
 shape = SubResource("Shape_32x640")
 
-[node name="Pared7" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_07" type="Polygon2D" parent="PAREDES"]
 position = Vector2(1120, 416)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
 
-[node name="Colision7" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_07" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(1136, 576)
 shape = SubResource("Shape_32x320")
 
-[node name="Pared8" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_08" type="Polygon2D" parent="PAREDES"]
 position = Vector2(1664, 416)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
 
-[node name="Colision8" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_08" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(1680, 576)
 shape = SubResource("Shape_32x320")
 
-[node name="Pared9" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_09" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2208, 416)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
 
-[node name="Colision9" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_09" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(2224, 576)
 shape = SubResource("Shape_32x320")
 
-[node name="Pared10" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_10" type="Polygon2D" parent="PAREDES"]
 position = Vector2(64, 736)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 416, 0, 416, 32, 0, 32)
 
-[node name="Colision10" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_10" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(272, 752)
 shape = SubResource("Shape_416x32")
 
-[node name="Pared11" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_11" type="Polygon2D" parent="PAREDES"]
 position = Vector2(608, 736)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 672, 0, 672, 32, 0, 32)
 
-[node name="Colision11" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_11" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(944, 752)
 shape = SubResource("Shape_672x32")
 
-[node name="Pared12" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_12" type="Polygon2D" parent="PAREDES"]
 position = Vector2(1408, 736)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 448, 0, 448, 32, 0, 32)
 
-[node name="Colision12" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_12" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(1632, 752)
 shape = SubResource("Shape_448x32")
 
-[node name="Pared13" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_13" type="Polygon2D" parent="PAREDES"]
 position = Vector2(1984, 736)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 800, 0, 800, 32, 0, 32)
 
-[node name="Colision13" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_13" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(2384, 752)
 shape = SubResource("Shape_800x32")
 
-[node name="Pared14" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_14" type="Polygon2D" parent="PAREDES"]
 position = Vector2(448, 768)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 1216, 0, 1216)
 
-[node name="Colision14" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_14" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(464, 1376)
 shape = SubResource("Shape_32x1216")
 
-[node name="Pared15" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_15" type="Polygon2D" parent="PAREDES"]
 position = Vector2(608, 768)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 1056, 0, 1056)
 
-[node name="Colision15" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_15" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(624, 1296)
 shape = SubResource("Shape_32x1056")
 
-[node name="Pared16" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_16" type="Polygon2D" parent="PAREDES"]
 position = Vector2(1120, 768)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 512, 0, 512)
 
-[node name="Colision16" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_16" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(1136, 1024)
 shape = SubResource("Shape_32x512")
 
-[node name="Pared17" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_17" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2208, 768)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
 
-[node name="Colision17" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_17" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(2224, 864)
 shape = SubResource("Shape_32x192")
 
-[node name="Pared18" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_18" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2752, 768)
 color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 512, 0, 512)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 160, 0, 160)
 
-[node name="Colision18" type="CollisionShape2D" parent="PAREDES"]
-position = Vector2(2768, 1024)
-shape = SubResource("Shape_32x512")
+[node name="COLISION_18" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2768, 848)
+shape = SubResource("Shape_32x160")
 
-[node name="Pared19" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_19" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2752, 928)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 224, 0, 224, 32, 0, 32)
+
+[node name="COLISION_19" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2864, 944)
+shape = SubResource("Shape_224x32")
+
+[node name="PARED_20" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2752, 960)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 32, 0, 32)
+
+[node name="COLISION_20" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2768, 976)
+shape = SubResource("Shape_32x32")
+
+[node name="PARED_21" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2944, 960)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 160, 0, 160)
+
+[node name="COLISION_21" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2960, 1040)
+shape = SubResource("Shape_32x160")
+
+[node name="PARED_22" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2208, 1088)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
 
-[node name="Colision19" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_22" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(2224, 1184)
 shape = SubResource("Shape_32x192")
 
-[node name="Pared20" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_23" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2752, 1088)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 32, 0, 32)
+
+[node name="COLISION_23" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2768, 1104)
+shape = SubResource("Shape_32x32")
+
+[node name="PARED_24" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2752, 1120)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 224, 0, 224, 32, 0, 32)
+
+[node name="COLISION_24" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2864, 1136)
+shape = SubResource("Shape_224x32")
+
+[node name="PARED_25" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2752, 1152)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="COLISION_25" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2768, 1216)
+shape = SubResource("Shape_32x128")
+
+[node name="PARED_26" type="Polygon2D" parent="PAREDES"]
 position = Vector2(1120, 1280)
 color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 1376, 0, 1376, 32, 0, 32)
+polygon = PackedVector2Array(0, 0, 1664, 0, 1664, 32, 0, 32)
 
-[node name="Colision20" type="CollisionShape2D" parent="PAREDES"]
-position = Vector2(1808, 1296)
-shape = SubResource("Shape_1376x32")
+[node name="COLISION_26" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1952, 1296)
+shape = SubResource("Shape_1664x32")
 
-[node name="Pared21" type="Polygon2D" parent="PAREDES"]
-position = Vector2(2624, 1280)
-color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 160, 0, 160, 32, 0, 32)
-
-[node name="Colision21" type="CollisionShape2D" parent="PAREDES"]
-position = Vector2(2704, 1296)
-shape = SubResource("Shape_160x32")
-
-[node name="Pared22" type="Polygon2D" parent="PAREDES"]
-position = Vector2(2464, 1312)
-color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
-
-[node name="Colision22" type="CollisionShape2D" parent="PAREDES"]
-position = Vector2(2480, 1408)
-shape = SubResource("Shape_32x192")
-
-[node name="Pared23" type="Polygon2D" parent="PAREDES"]
-position = Vector2(2624, 1312)
-color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
-
-[node name="Colision23" type="CollisionShape2D" parent="PAREDES"]
-position = Vector2(2640, 1408)
-shape = SubResource("Shape_32x192")
-
-[node name="Pared24" type="Polygon2D" parent="PAREDES"]
-position = Vector2(2464, 1504)
-color = Color(0.8, 0.8, 0.8, 1)
-polygon = PackedVector2Array(0, 0, 192, 0, 192, 32, 0, 32)
-
-[node name="Colision24" type="CollisionShape2D" parent="PAREDES"]
-position = Vector2(2560, 1520)
-shape = SubResource("Shape_192x32")
-
-[node name="Pared25" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_27" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2848, 1536)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 704, 0, 704, 32, 0, 32)
 
-[node name="Colision25" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_27" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(3200, 1552)
 shape = SubResource("Shape_704x32")
 
-[node name="Pared26" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_28" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2848, 1568)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 256, 0, 256)
 
-[node name="Colision26" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_28" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(2864, 1696)
 shape = SubResource("Shape_32x256")
 
-[node name="Pared27" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_29" type="Polygon2D" parent="PAREDES"]
 position = Vector2(3520, 1568)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 544, 0, 544)
 
-[node name="Colision27" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_29" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(3536, 1840)
 shape = SubResource("Shape_32x544")
 
-[node name="Pared28" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_30" type="Polygon2D" parent="PAREDES"]
 position = Vector2(608, 1824)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 2272, 0, 2272, 32, 0, 32)
 
-[node name="Colision28" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_30" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(1744, 1840)
 shape = SubResource("Shape_2272x32")
 
-[node name="Pared29" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_31" type="Polygon2D" parent="PAREDES"]
 position = Vector2(448, 1984)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 2432, 0, 2432, 32, 0, 32)
 
-[node name="Colision29" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_31" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(1664, 2000)
 shape = SubResource("Shape_2432x32")
 
-[node name="Pared30" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_32" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2848, 2016)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
 
-[node name="Colision30" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_32" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(2864, 2064)
 shape = SubResource("Shape_32x96")
 
-[node name="Pared31" type="Polygon2D" parent="PAREDES"]
+[node name="PARED_33" type="Polygon2D" parent="PAREDES"]
 position = Vector2(2848, 2112)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 704, 0, 704, 32, 0, 32)
 
-[node name="Colision31" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_33" type="CollisionShape2D" parent="PAREDES"]
 position = Vector2(3200, 2128)
 shape = SubResource("Shape_704x32")
 
@@ -478,32 +507,6 @@ position = Vector2(16, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MOLINETE_UNICO/StaticBody2D"]
 shape = SubResource("Shape_32x64")
-
-[node name="PUERTA_CERRADURA" type="Node2D" parent="OBJETOS"]
-position = Vector2(2208, 960)
-
-[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/PUERTA_CERRADURA"]
-color = Color(0.5, 0.45, 0.2, 1)
-polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/PUERTA_CERRADURA"]
-position = Vector2(16, 64)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/PUERTA_CERRADURA/StaticBody2D"]
-shape = SubResource("Shape_32x128")
-
-[node name="REJILLA_PERNOS" type="Node2D" parent="OBJETOS"]
-position = Vector2(2496, 1280)
-
-[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/REJILLA_PERNOS"]
-color = Color(0.55, 0.45, 0.2, 1)
-polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/REJILLA_PERNOS"]
-position = Vector2(64, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/REJILLA_PERNOS/StaticBody2D"]
-shape = SubResource("Shape_128x32")
 
 [node name="BANCO_VESTIBULO" type="Node2D" parent="OBJETOS"]
 position = Vector2(288, 560)
@@ -638,20 +641,7 @@ polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/TUNEL_LOOP_FIN"]
 shape = SubResource("Shape_128x128")
 
-[node name="ZONA_MOLINETE_SALIDA" type="Area2D" parent="ZONAS"]
-position = Vector2(3440, 1920)
-
-[node name="Polygon2D" type="Polygon2D" parent="ZONAS/ZONA_MOLINETE_SALIDA"]
-color = Color(0.9, 0.8, 0.2, 0.35)
-polygon = PackedVector2Array(-60, -70, 60, -70, 60, 70, -60, 70)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/ZONA_MOLINETE_SALIDA"]
-shape = SubResource("Shape_120x140")
-
 [node name="MARCADORES" type="Node2D" parent="."]
-
-[node name="ENTRADA_ESTACION" type="Marker2D" parent="MARCADORES"]
-position = Vector2(224, 320)
 
 [node name="TUNEL_REAPARICION" type="Marker2D" parent="MARCADORES"]
 position = Vector2(544, 800)
@@ -659,41 +649,104 @@ position = Vector2(544, 800)
 [node name="TUNEL_META" type="Marker2D" parent="MARCADORES"]
 position = Vector2(2820, 1920)
 
-[node name="GUARDA" type="Marker2D" parent="MARCADORES"]
+[node name="GUARDA_APARICION" type="Marker2D" parent="MARCADORES"]
 position = Vector2(3300, 1700)
 
-[node name="SALIDA_FINAL" type="Marker2D" parent="MARCADORES"]
-position = Vector2(3460, 1920)
+[node name="PuertaCuarto" parent="." instance=ExtResource("e1")]
+position = Vector2(2224, 1024)
+scale = Vector2(1, 2)
+forzar = true
+mensajeAbierta = "Abriste el cuarto cerrado"
 
-[node name="RELOJ_1" type="Marker2D" parent="MARCADORES"]
-position = Vector2(400, 200)
+[node name="RejillaAlacena" parent="." instance=ExtResource("e1")]
+position = Vector2(2768, 1040)
+scale = Vector2(1, 1.5)
+forzar = true
+mensajeAbierta = "Sacaste la rejilla"
 
-[node name="RELOJ_2" type="Marker2D" parent="MARCADORES"]
-position = Vector2(1400, 200)
+[node name="GanzuaObjetos" parent="." instance=ExtResource("e2")]
+position = Vector2(1700, 1210)
+esGanzua = true
+nombreObjeto = "Ganzua"
 
-[node name="RELOJ_3" type="Marker2D" parent="MARCADORES"]
-position = Vector2(1936, 600)
+[node name="MolineteSalida" parent="." instance=ExtResource("e3")]
+position = Vector2(3440, 1920)
+scale = Vector2(0.9375, 2.1875)
+rutaNivel = "res://escenas/nivel_7.tscn"
+puntoDestino = "PUNTO_APARICION_JUGADOR"
+textoAviso = "F para pasar el molinete"
+idLlaveRequerida = "sube"
+mensajeBloqueada = "El molinete no se abre. Hace falta la SUBE"
 
-[node name="RELOJ_4" type="Marker2D" parent="MARCADORES"]
-position = Vector2(2500, 200)
+[node name="CartelEstacion" parent="." instance=ExtResource("e4")]
+position = Vector2(400, 220)
+titulo = "CONSTITUCIÓN"
+texto = "El cartel dice «Constitución». Ya saliste de Constitución. El reloj de arriba marca las 3:07."
+rutaTextura = "res://assets/carteles/cartel_info.png"
 
-[node name="NOTA_1" type="Marker2D" parent="MARCADORES"]
-position = Vector2(1344, 1000)
+[node name="CartelMolinete" parent="." instance=ExtResource("e4")]
+position = Vector2(640, 560)
+titulo = "MOLINETE"
+texto = "De todos los molinetes de esta estación, este es el único que anda con tu SUBE. Y es la única salida."
+rutaTextura = "res://assets/carteles/cartel_llave.png"
 
-[node name="NOTA_2" type="Marker2D" parent="MARCADORES"]
-position = Vector2(1700, 1120)
+[node name="CartelLoop" parent="." instance=ExtResource("e4")]
+position = Vector2(1430, 590)
+titulo = "NOTA"
+texto = "«La puerta de esta sala da a esta sala. Lo probé cuatro veces». Está firmada con la hora: 3:07."
+rutaTextura = "res://assets/carteles/cartel_madera.png"
 
-[node name="NOTA_3" type="Marker2D" parent="MARCADORES"]
-position = Vector2(2560, 1420)
+[node name="CartelOscuro" parent="." instance=ExtResource("e4")]
+position = Vector2(1936, 590)
+titulo = "NOTA"
+texto = "«El túnel largo solo cambia si caminás a oscuras. Apagá el celular (Q) y no mires atrás»."
+rutaTextura = "res://assets/carteles/cartel_bateria.png"
 
-[node name="FISURA_PALIDO_01" type="Marker2D" parent="MARCADORES"]
+[node name="CartelGuarda" parent="." instance=ExtResource("e4")]
+position = Vector2(2940, 1620)
+titulo = "NOTA"
+texto = "«El último tren no te dejó acá por error. El guarda quiere que te quedes. Última estación, todos bajan»."
+rutaTextura = "res://assets/carteles/cartel_alerta.png"
+
+[node name="CartelAlacena" parent="." instance=ExtResource("e4")]
+position = Vector2(2864, 1030)
+titulo = "ALACENA"
+texto = "Hay una mochila con un llavero y una campera de colegio. Nadie vino a buscarlas. En el llavero hay un nombre tachado."
+rutaTextura = "res://assets/carteles/cartel_madera.png"
+
+[node name="Fisura01" parent="." instance=ExtResource("e5")]
 position = Vector2(1936, 200)
+vida = 12
+dano = 1.5
+variante = 2
+colorNormal = Color(0.78, 0.84, 1, 1)
+rangoDeteccion = 300
 
-[node name="FISURA_PALIDO_02" type="Marker2D" parent="MARCADORES"]
+[node name="Fisura02" parent="." instance=ExtResource("e5")]
 position = Vector2(1400, 900)
+vida = 12
+dano = 1.5
+variante = 2
+colorNormal = Color(0.78, 0.84, 1, 1)
+rangoDeteccion = 300
 
-[node name="FISURA_PALIDO_03" type="Marker2D" parent="MARCADORES"]
+[node name="Fisura03" parent="." instance=ExtResource("e5")]
 position = Vector2(2500, 700)
+vida = 12
+dano = 1.5
+variante = 2
+colorNormal = Color(0.78, 0.84, 1, 1)
+rangoDeteccion = 300
+
+[node name="Guarda" parent="." instance=ExtResource("e5")]
+position = Vector2(3300, 1700)
+vida = 40
+dano = 2
+velocidad = 70
+rangoDeteccion = 600
+rangoAtaque = 60
+variante = 1
+scale = Vector2(1.5, 1.5)
 
 [node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
 position = Vector2(224, 320)
