@@ -14,6 +14,7 @@ static var muertesSinBotin = 0
 @export var dano = 1
 @export var rangoDeteccion = 250.0
 @export var idLlaveBotin = ""
+@export var soloConLuz = false
 @export var nombreLlaveBotin = "Llave"
 var persiguiendo = false
 var ruta = []
@@ -39,6 +40,11 @@ func _process(delta):
 func _physics_process(delta):
 	if jugador:
 		var distancia = global_position.distance_to(jugador.global_position)
+		if soloConLuz and not jugador.linternaEncendida:
+			persiguiendo = false
+			velocity = Vector2.ZERO
+			move_and_slide()
+			return
 		if not persiguiendo and distancia <= rangoDeteccion:
 			persiguiendo = true
 		if not persiguiendo:

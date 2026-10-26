@@ -1,5 +1,6 @@
 extends Area2D
 @export var idLlaveRequerida = ""
+@export var idLlaveExtra = ""
 @export var rutaNivel = ""
 @export var puntoDestino = ""
 @export var mensajeBloqueada = "Esta cerrada con llave"
@@ -10,6 +11,9 @@ func _process(delta):
 		intentarEntrar()
 func intentarEntrar():
 	if idLlaveRequerida != "" and not Inventario.tieneLlave(idLlaveRequerida):
+		Inventario.mostrarMensaje(mensajeBloqueada)
+		return
+	if idLlaveExtra != "" and not Inventario.tieneLlave(idLlaveExtra):
 		Inventario.mostrarMensaje(mensajeBloqueada)
 		return
 	jugadorCerca = false
