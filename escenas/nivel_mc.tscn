@@ -4,6 +4,10 @@
 [ext_resource type="Script" path="res://scripts/nivel_mc.gd" id="2_nivel"]
 [ext_resource type="Script" path="res://scripts/entradaNivel.gd" id="3_entrada"]
 [ext_resource type="Script" path="res://scripts/escalera.gd" id="4_escalera"]
+[ext_resource type="Script" path="res://scripts/pathfinding.gd" id="8_pathfinding"]
+[ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="10_cartel"]
+[ext_resource type="PackedScene" path="res://escenas/enemigo.tscn" id="11_enemigo"]
+[ext_resource type="PackedScene" path="res://escenas/powerbank.tscn" id="12_powerbank"]
 
 [sub_resource type="RectangleShape2D" id="Shape_4096x32"]
 size = Vector2(4096, 32)
@@ -2457,6 +2461,43 @@ textoAviso = "F para bajar"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaEscaleraBajar"]
 shape = SubResource("Shape_256x192")
+
+[node name="Pathfinding" type="Node" parent="."]
+script = ExtResource("8_pathfinding")
+
+[node name="CartelPedido" parent="." instance=ExtResource("10_cartel")]
+position = Vector2(900, 1210)
+titulo = "PEDIDO 307"
+texto = "El parlante repite siempre el mismo número: «pedido 307, pedido 307». Hay bandejas servidas en todas las mesas y la comida no se pudre."
+rutaTextura = "res://assets/carteles/cartel_alerta.png"
+
+[node name="CartelHamburguesas" parent="." instance=ExtResource("10_cartel")]
+position = Vector2(1760, 1250)
+titulo = "NOTA"
+texto = "Escrita a las apuradas, 3:07: «no agarren las hamburguesas. Son de él». Más abajo: «tiene la llave del candado y no la suelta»."
+rutaTextura = "res://assets/carteles/cartel_madera.png"
+
+[node name="CartelTicket" parent="." instance=ExtResource("10_cartel")]
+position = Vector2(2960, 420)
+titulo = "OFICINA"
+texto = "Un ticket de pedido, el 307, pegado con cinta en el escritorio. Nunca se entregó. Detrás de la caja fuerte hay un cargador portátil."
+rutaTextura = "res://assets/carteles/cartel_info.png"
+
+[node name="Cliente" parent="." instance=ExtResource("11_enemigo")]
+position = Vector2(1800, 1100)
+scale = Vector2(1.5, 1.5)
+vida = 30
+velocidad = 70
+rangoAtaque = 55
+dano = 2
+rangoDeteccion = 350
+idLlaveBotin = "llaveSubte"
+nombreLlaveBotin = "Llave del candado"
+variante = 1
+colorNormal = Color(1, 0.75, 0.6, 1)
+
+[node name="Powerbank" parent="." instance=ExtResource("12_powerbank")]
+position = Vector2(3100, 440)
 
 [node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
 position = Vector2(1088, 1184)

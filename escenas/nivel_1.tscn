@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" path="res://assets/plaza/subte.png" id="p15_subte"]
 [ext_resource type="PackedScene" path="res://escenas/consumible.tscn" id="50_consumible"]
 [ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="51_cartel"]
+[ext_resource type="Script" path="res://scripts/pathfinding.gd" id="60_pathfinding"]
+[ext_resource type="PackedScene" path="res://escenas/entradaNivel.tscn" id="61_entrada_nivel"]
 
 [sub_resource type="RectangleShape2D" id="Shape_4096x32"]
 size = Vector2(4096, 32)
@@ -1732,6 +1734,30 @@ textoAviso = "F para entrar al McDonalds"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntradaMcDonalds" unique_id=2105753215]
 shape = SubResource("Shape_EntradaMc")
+
+[node name="Pathfinding" type="Node" parent="."]
+script = ExtResource("60_pathfinding")
+
+[node name="CartelReloj" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(2200, 1850)
+titulo = "RELOJ"
+texto = "El reloj de la estación está clavado en las 3:07. Tu celular marca lo mismo, y tenés una llamada perdida de «Casa» de esa hora. El tren que te dejó se fue despacio y no vuelve."
+rutaTextura = "res://assets/carteles/cartel_info.png"
+
+[node name="CartelSubte" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(3440, 2500)
+titulo = "LÍNEA C"
+texto = "CERRADO POR OBRAS. Llaves en custodia del local de la esquina. No dice cuál. El único local de la esquina es el McDonald's. Por las avenidas no se puede salir: la niebla te devuelve a la plaza."
+rutaTextura = "res://assets/carteles/cartel_llave.png"
+
+[node name="EntradaSubte" parent="." instance=ExtResource("61_entrada_nivel")]
+position = Vector2(3264, 2512)
+scale = Vector2(1.5, 1)
+idLlaveRequerida = "llaveSubte"
+rutaNivel = "res://escenas/nivel_5.tscn"
+puntoDestino = "PUNTO_APARICION_JUGADOR"
+mensajeBloqueada = "El candado es enorme y no cede. Hace falta la llave"
+textoAviso = "F para bajar al subte"
 
 [node name="PUNTO_SALIDA_MC" type="Marker2D" parent="." unique_id=897896742]
 position = Vector2(730, 2745)
