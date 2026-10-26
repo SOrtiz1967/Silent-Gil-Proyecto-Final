@@ -10,6 +10,7 @@ radius = 14.0
 height = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_golpe"]
+size = Vector2(40, 40)
 
 [node name="Jugador" type="CharacterBody2D" unique_id=1593424449 groups=["jugador"]]
 script = ExtResource("1_script")

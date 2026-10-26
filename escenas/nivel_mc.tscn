@@ -2495,6 +2495,7 @@ rangoAtaque = 55
 dano = 2
 rangoDeteccion = 350
 idLlaveBotin = "llaveSubte"
+tiempoAturdido = 0.0
 nombreLlaveBotin = "Llave del candado"
 variante = 1
 colorNormal = Color(1, 0.75, 0.6, 1)

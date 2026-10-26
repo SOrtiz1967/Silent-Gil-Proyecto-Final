@@ -6,7 +6,7 @@ const anchoBarra = 200.0
 
 @export var velocidad = 200.0
 @export var duracion_golpe = 0.3
-@export var distancia_golpe = 24.0
+@export var distancia_golpe = 32.0
 @export var distancia_disparo = 20.0
 @export var dano = 3
 @export var vidaMaxima = 5

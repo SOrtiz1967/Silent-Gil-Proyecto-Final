@@ -16,11 +16,19 @@ static var muertesSinBotin = 0
 @export var idLlaveBotin = ""
 @export var soloConLuz = false
 @export var nombreLlaveBotin = "Llave"
+@export var tiempoPreparacion = 0.5
+@export var tiempoAturdido = 0.25
+@export var fuerzaEmpuje = 220.0
 var persiguiendo = false
+var preparando = false
+var preparacion = 0.0
+var aturdido = 0.0
+var empuje = Vector2.ZERO
 var ruta = []
 var tiempoRuta = 0.0
 @export var colorNormal: Color = Color(1, 1, 1)
 @export var colorDano: Color = Color(3, 3, 3)
+@export var colorAviso: Color = Color(1.6, 0.6, 0.6)
 @export var fps = 6.0
 var tiempoAnim = 0.0
 @export var variante = 0
@@ -40,7 +48,13 @@ func _process(delta):
 func _physics_process(delta):
 	if jugador:
 		var distancia = global_position.distance_to(jugador.global_position)
+		if aturdido > 0.0:
+			aturdido -= delta
+			velocity = empuje
+			move_and_slide()
+			return
 		if soloConLuz and not jugador.linternaEncendida:
+			cancelarPreparacion()
 			persiguiendo = false
 			velocity = Vector2.ZERO
 			move_and_slide()
@@ -50,15 +64,39 @@ func _physics_process(delta):
 		if not persiguiendo:
 			velocity = Vector2.ZERO
 		elif distancia > rangoAtaque:
+			cancelarPreparacion()
 			velocity = direccionAlJugador(delta) * velocidad
 		else:
 			velocity = Vector2.ZERO
-			if temporizador_ataque.is_stopped():
-				jugador.recibirDano(dano)
-				temporizador_ataque.start()
+			atacar(delta)
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
+func atacar(delta):
+	if not temporizador_ataque.is_stopped():
+		return
+	if not preparando:
+		preparando = true
+		preparacion = tiempoPreparacion
+		sprite.modulate = colorAviso
+		return
+	preparacion -= delta
+	if preparacion > 0.0:
+		return
+	cancelarPreparacion()
+	if global_position.distance_to(jugador.global_position) <= rangoAtaque * 1.3:
+		jugador.recibirDano(dano)
+	temporizador_ataque.start()
+func cancelarPreparacion():
+	if preparando:
+		preparando = false
+		sprite.modulate = colorNormal
+func aturdir():
+	if tiempoAturdido <= 0.0 or jugador == null:
+		return
+	cancelarPreparacion()
+	aturdido = tiempoAturdido
+	empuje = jugador.global_position.direction_to(global_position) * fuerzaEmpuje
 func direccionAlJugador(delta):
 	var mapa = get_tree().get_first_node_in_group("pathfinding")
 	if mapa == null:
@@ -83,6 +121,7 @@ func recibirDano(cantidad):
 			soltarBotin()
 		queue_free()
 		return
+	aturdir()
 	mostrarFlash()
 func mostrarFlash():
 	sprite.modulate = colorDano
