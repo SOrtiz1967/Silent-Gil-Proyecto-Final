@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const Proyectil = preload("res://escenas/proyectil.tscn")
+const Bengala = preload("res://escenas/bengala.tscn")
 const anchoBarra = 200.0
 
 @export var velocidad = 200.0
@@ -152,6 +153,9 @@ func actualizarPiedras():
 	etiquetaPiedras.text = "Piedras: " + str(cantidad_piedras)
 
 func disparar():
+	if Inventario.pistola and Inventario.bengalas > 0:
+		dispararBengala()
+		return
 	if cantidad_piedras <= 0:
 		return
 	cantidad_piedras -= 1
@@ -162,6 +166,16 @@ func disparar():
 	get_parent().add_child(proyectil)
 	proyectil.global_position = global_position + direccion_mirando() * distancia_disparo
 	proyectil.direccion = direccion_mirando()
+
+func dispararBengala():
+	Inventario.bengalas -= 1
+	Inventario.mostrarMensaje("Bengalas: " + str(Inventario.bengalas))
+	animacion.play("lanzar_" + mirando)
+	bloqueoAnim = 0.2
+	var bengala = Bengala.instantiate()
+	get_parent().add_child(bengala)
+	bengala.global_position = global_position + direccion_mirando() * distancia_disparo
+	bengala.direccion = direccion_mirando()
 
 func _on_temporizador_golpe_timeout():
 	golpeando = false

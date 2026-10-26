@@ -6,6 +6,8 @@ var ganzuas = 0
 var bateria = 100.0
 var vida = -1.0
 var piedras = 0
+var pistola = false
+var bengalas = 0
 var inventarioAbierto = false
 @onready var etiquetaMensaje = $EtiquetaMensaje
 @onready var etiquetaAviso = $EtiquetaAviso
@@ -72,6 +74,8 @@ func textoInventario():
 		texto += "POWERBANK: conseguido (el celular se queda al 100%)\n\n"
 	else:
 		texto += "Celular: " + str(int(bateria)) + "%\n\n"
+	if pistola:
+		texto += "Pistola de bengalas: " + str(bengalas) + " bengalas\n\n"
 	texto += "Llaves:\n"
 	var hayLlaves = false
 	for idLlave in llaves:
