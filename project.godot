@@ -27,6 +27,7 @@ Pernos="*res://escenas/pernos.tscn"
 Tutorial="*res://escenas/tutorial.tscn"
 MenuPausa="*res://escenas/menu_pausa.tscn"
 CambioNivel="*res://scripts/cambio_nivel.gd"
+Objetivo="*res://escenas/objetivo.tscn"
 
 [input]
 
