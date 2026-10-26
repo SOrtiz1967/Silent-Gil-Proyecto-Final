@@ -9,6 +9,7 @@ extends CanvasLayer
 @export_multiline var textoCombate = "Pasaste los molinetes. Afuera te esperan los fisuras: vagabundos agresivos que te persiguen y te golpean. Espacio para golpear de cerca, E para tirar piedras. Al caer, algunos sueltan una bebida que te cura. Si necesitas curarte, volve: dentro de la estacion hay un kiosco con provisiones."
 @export_multiline var textoCelular = "Tu celular es tu linterna y su bateria se gasta mientras esta prendida. Apreta Q para apagarla y ahorrar. Busca los puntos de carga (los postes celestes) y mantene F para cargarlo."
 @export_multiline var textoPowerbank = "Un powerbank. Con esto el celular se carga solo, de a poco, hasta llegar al 100%, y ahi se queda: la bateria ya no se gasta."
+@export_multiline var textoFin = "Llegaste a tu casa. El reloj de la cocina marca las 3:07 y no hay nadie. Fin."
 @export_multiline var textoFinal = "Llegaste al final de este recorrido de prueba."
 var activo = false
 var vistos = []
@@ -63,6 +64,8 @@ func textoDe(idTutorial):
 			return textoPowerbank
 		"final":
 			return textoFinal
+		"fin":
+			return textoFin
 		_:
 			return ""
 func _process(delta):

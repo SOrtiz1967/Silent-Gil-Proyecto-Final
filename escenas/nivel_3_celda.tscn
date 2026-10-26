@@ -369,12 +369,12 @@ position = Vector2(1200, 464)
 scale = Vector2(1.25, 1.5)
 rutaNivel = "res://escenas/nivel_3.tscn"
 puntoDestino = "MARCADORES/DEPOSITO_ARMA"
-textoAviso = "F para salir al depósito"
+textoAviso = "F para salir al depÃ³sito"
 
 [node name="CartelPared" parent="." instance=ExtResource("e4")]
 position = Vector2(460, 900)
 titulo = "RAYADO EN LA PARED"
-texto = "Alguien rayó la pared con una llave: «cada vez que cierran la puerta son las 3:07». Más abajo: «la rejilla sale, probé»."
+texto = "Alguien rayÃ³ la pared con una llave: Â«cada vez que cierran la puerta son las 3:07Â». MÃ¡s abajo: Â«la rejilla sale, probÃ©Â»."
 rutaTextura = "res://assets/carteles/cartel_madera.png"
 
 [node name="Fisura01" parent="." instance=ExtResource("e5")]

@@ -646,7 +646,7 @@ position = Vector2(380, 300)
 position = Vector2(720, 352)
 scale = Vector2(1, 2)
 forzar = true
-mensajeAbierta = "Forzaste la puerta del depÛsito"
+mensajeAbierta = "Forzaste la puerta del dep√≥sito"
 
 [node name="EntradaCalabozos" parent="." instance=ExtResource("e2")]
 position = Vector2(1856, 480)
@@ -658,25 +658,25 @@ textoAviso = "F para entrar a los calabozos"
 [node name="CartelAviso" parent="." instance=ExtResource("e3")]
 position = Vector2(1640, 1010)
 titulo = "AVISO A LA GUARDIA"
-texto = "El McDonald's est· lleno de lo que ya sabÈs. No se entra solo con piedras. Lo que sirve est· en el depÛsito de evidencia."
+texto = "El McDonald's est√° lleno de lo que ya sab√©s. No se entra solo con piedras. Lo que sirve est√° en el dep√≥sito de evidencia."
 rutaTextura = "res://assets/carteles/cartel_alerta.png"
 
 [node name="CartelSeBusca" parent="." instance=ExtResource("e3")]
 position = Vector2(1860, 1010)
 titulo = "SE BUSCA"
-texto = "Un cartel de SE BUSCA pegado con cinta. La cara est· borrada, como si la hubieran raspado con una llave. Abajo, a mano: 3:07."
+texto = "Un cartel de SE BUSCA pegado con cinta. La cara est√° borrada, como si la hubieran raspado con una llave. Abajo, a mano: 3:07."
 rutaTextura = "res://assets/carteles/cartel_madera.png"
 
 [node name="CartelLibro" parent="." instance=ExtResource("e3")]
 position = Vector2(1376, 440)
 titulo = "LIBRO DE GUARDIA"
-texto = "Todas las entradas de la noche est·n anotadas a las 3:07. La letra cambia de una hoja a otra, pero la hora no."
+texto = "Todas las entradas de la noche est√°n anotadas a las 3:07. La letra cambia de una hoja a otra, pero la hora no."
 rutaTextura = "res://assets/carteles/cartel_info.png"
 
 [node name="CartelCelda" parent="." instance=ExtResource("e3")]
 position = Vector2(2160, 560)
 titulo = "CELDA ABIERTA"
-texto = "La puerta de esta celda est· abierta. Pero la cerradura est· del lado de adentro: se abriÛ desde adentro."
+texto = "La puerta de esta celda est√° abierta. Pero la cerradura est√° del lado de adentro: se abri√≥ desde adentro."
 rutaTextura = "res://assets/carteles/cartel_alerta.png"
 
 [node name="Fisura01" parent="." instance=ExtResource("e4")]

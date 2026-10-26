@@ -650,7 +650,7 @@ position = Vector2(544, 800)
 position = Vector2(2820, 1920)
 
 [node name="GUARDA_APARICION" type="Marker2D" parent="MARCADORES"]
-position = Vector2(3300, 1700)
+position = Vector2(3168, 1810)
 
 [node name="PuertaCuarto" parent="." instance=ExtResource("e1")]
 position = Vector2(2224, 1024)
@@ -663,6 +663,12 @@ position = Vector2(2768, 1040)
 scale = Vector2(1, 1.5)
 forzar = true
 mensajeAbierta = "Sacaste la rejilla"
+
+[node name="SubeAlacena" parent="." instance=ExtResource("e2")]
+position = Vector2(2900, 1090)
+idLlave = "sube"
+nombreObjeto = "SUBE"
+idTutorialPersonalizado = "sube"
 
 [node name="GanzuaObjetos" parent="." instance=ExtResource("e2")]
 position = Vector2(1700, 1210)
@@ -680,38 +686,38 @@ mensajeBloqueada = "El molinete no se abre. Hace falta la SUBE"
 
 [node name="CartelEstacion" parent="." instance=ExtResource("e4")]
 position = Vector2(400, 220)
-titulo = "CONSTITUCIÓN"
-texto = "El cartel dice «Constitución». Ya saliste de Constitución. El reloj de arriba marca las 3:07."
+titulo = "CONSTITUCIÃ“N"
+texto = "El cartel dice Â«ConstituciÃ³nÂ». Ya saliste de ConstituciÃ³n. El reloj de arriba marca las 3:07."
 rutaTextura = "res://assets/carteles/cartel_info.png"
 
 [node name="CartelMolinete" parent="." instance=ExtResource("e4")]
 position = Vector2(640, 560)
 titulo = "MOLINETE"
-texto = "De todos los molinetes de esta estación, este es el único que anda con tu SUBE. Y es la única salida."
+texto = "De todos los molinetes de esta estaciÃ³n, este es el Ãºnico que anda con tu SUBE. Y es la Ãºnica salida."
 rutaTextura = "res://assets/carteles/cartel_llave.png"
 
 [node name="CartelLoop" parent="." instance=ExtResource("e4")]
 position = Vector2(1430, 590)
 titulo = "NOTA"
-texto = "«La puerta de esta sala da a esta sala. Lo probé cuatro veces». Está firmada con la hora: 3:07."
+texto = "Â«La puerta de esta sala da a esta sala. Lo probÃ© cuatro vecesÂ». EstÃ¡ firmada con la hora: 3:07."
 rutaTextura = "res://assets/carteles/cartel_madera.png"
 
 [node name="CartelOscuro" parent="." instance=ExtResource("e4")]
 position = Vector2(1936, 590)
 titulo = "NOTA"
-texto = "«El túnel largo solo cambia si caminás a oscuras. Apagá el celular (Q) y no mires atrás»."
+texto = "Â«El tÃºnel largo solo cambia si caminÃ¡s a oscuras. ApagÃ¡ el celular (Q) y no mires atrÃ¡sÂ»."
 rutaTextura = "res://assets/carteles/cartel_bateria.png"
 
 [node name="CartelGuarda" parent="." instance=ExtResource("e4")]
 position = Vector2(2940, 1620)
 titulo = "NOTA"
-texto = "«El último tren no te dejó acá por error. El guarda quiere que te quedes. Última estación, todos bajan»."
+texto = "Â«El Ãºltimo tren no te dejÃ³ acÃ¡ por error. El guarda quiere que te quedes. Ãšltima estaciÃ³n, todos bajanÂ»."
 rutaTextura = "res://assets/carteles/cartel_alerta.png"
 
 [node name="CartelAlacena" parent="." instance=ExtResource("e4")]
 position = Vector2(2864, 1030)
 titulo = "ALACENA"
-texto = "Hay una mochila con un llavero y una campera de colegio. Nadie vino a buscarlas. En el llavero hay un nombre tachado."
+texto = "Hay una mochila con una campera de colegio, un llavero con un nombre tachado y una SUBE. Nadie vino a buscarlas."
 rutaTextura = "res://assets/carteles/cartel_madera.png"
 
 [node name="Fisura01" parent="." instance=ExtResource("e5")]
@@ -739,7 +745,7 @@ colorNormal = Color(0.78, 0.84, 1, 1)
 rangoDeteccion = 300
 
 [node name="Guarda" parent="." instance=ExtResource("e5")]
-position = Vector2(3300, 1700)
+position = Vector2(3168, 1810)
 vida = 40
 dano = 2
 velocidad = 70

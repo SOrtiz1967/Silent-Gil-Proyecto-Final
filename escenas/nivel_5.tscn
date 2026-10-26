@@ -776,26 +776,26 @@ textoAviso = "F para abrir la puerta de servicio"
 
 [node name="CartelLinea" parent="." instance=ExtResource("e2")]
 position = Vector2(224, 330)
-titulo = "LÍNEA C"
-texto = "Cabecera Constitución. Última estación. Hace rato que no pasa nadie por acá, pero el cartel de «próximo tren» sigue contando."
+titulo = "LÃNEA C"
+texto = "Cabecera ConstituciÃ³n. Ãšltima estaciÃ³n. Hace rato que no pasa nadie por acÃ¡, pero el cartel de Â«prÃ³ximo trenÂ» sigue contando."
 rutaTextura = "res://assets/carteles/cartel_info.png"
 
 [node name="CartelNombre" parent="." instance=ExtResource("e2")]
 position = Vector2(1120, 530)
-titulo = "ANDÉN"
-texto = "El cartel del andén dice «Próxima estación: Constitución». Venís de Constitución."
+titulo = "ANDÃ‰N"
+texto = "El cartel del andÃ©n dice Â«PrÃ³xima estaciÃ³n: ConstituciÃ³nÂ». VenÃ­s de ConstituciÃ³n."
 rutaTextura = "res://assets/carteles/cartel_alerta.png"
 
 [node name="CartelNota" parent="." instance=ExtResource("e2")]
 position = Vector2(1930, 530)
 titulo = "NOTA EN LA COLUMNA"
-texto = "Escrito con fibrón, 3:07: «se quedan quietos mientras no los alumbrás. Pasá por al lado sin mirarlos»."
+texto = "Escrito con fibrÃ³n, 3:07: Â«se quedan quietos mientras no los alumbrÃ¡s. PasÃ¡ por al lado sin mirarlosÂ»."
 rutaTextura = "res://assets/carteles/cartel_madera.png"
 
 [node name="CartelTren" parent="." instance=ExtResource("e2")]
-position = Vector2(2700, 1340)
-titulo = "VÍAS"
-texto = "Pasó un tren sin nadie adentro. Ni conductor. Las ventanas estaban prendidas y las luces de los vagones, apagadas."
+position = Vector2(2800, 1360)
+titulo = "VÃAS"
+texto = "PasÃ³ un tren sin nadie adentro. Ni conductor. Las ventanas estaban prendidas y las luces de los vagones, apagadas."
 rutaTextura = "res://assets/carteles/cartel_alerta.png"
 
 [node name="CartelServicio" parent="." instance=ExtResource("e2")]
@@ -829,7 +829,7 @@ colorNormal = Color(0.78, 0.84, 1, 1)
 rangoDeteccion = 300
 
 [node name="Fisura04" parent="." instance=ExtResource("e3")]
-position = Vector2(2600, 560)
+position = Vector2(2700, 650)
 vida = 12
 dano = 1.5
 variante = 2
@@ -837,7 +837,7 @@ colorNormal = Color(0.78, 0.84, 1, 1)
 rangoDeteccion = 300
 
 [node name="Fisura05" parent="." instance=ExtResource("e3")]
-position = Vector2(3000, 1300)
+position = Vector2(3100, 1340)
 vida = 12
 dano = 1.5
 variante = 2

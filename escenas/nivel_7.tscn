@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/pathfinding.gd" id="pathfinding"]
 [ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador.tscn" id="1_jugador"]
 [ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="e1"]
+[ext_resource type="PackedScene" path="res://escenas/zonaTutorial.tscn" id="e2"]
 
 [sub_resource type="RectangleShape2D" id="Shape_32x128"]
 size = Vector2(32, 128)
@@ -403,20 +404,24 @@ position = Vector2(1120, 1056)
 [node name="CartelEntrada" parent="." instance=ExtResource("e1")]
 position = Vector2(1120, 920)
 titulo = "TU CASA"
-texto = "Las llaves entran en la cerradura. Todo está donde lo dejaste. Las luces andan. No hay nadie."
+texto = "Las llaves entran en la cerradura. Todo estÃ¡ donde lo dejaste. Las luces andan. No hay nadie."
 rutaTextura = "res://assets/carteles/cartel_llave.png"
 
 [node name="CartelLiving" parent="." instance=ExtResource("e1")]
 position = Vector2(460, 280)
 titulo = "CELULAR"
-texto = "Tenés una llamada perdida de «Casa». Es de las 3:07."
+texto = "TenÃ©s una llamada perdida de Â«CasaÂ». Es de las 3:07."
 rutaTextura = "res://assets/carteles/cartel_info.png"
 
 [node name="CartelReloj" parent="." instance=ExtResource("e1")]
 position = Vector2(1056, 250)
 titulo = "RELOJ DE LA COCINA"
-texto = "El reloj de la cocina marca las 3:07. La llamada perdida sigue en el celular, de hace un rato. Ya no sabés quién llamó a quién."
+texto = "El reloj de la cocina marca las 3:07. La llamada perdida sigue en el celular, de hace un rato. Ya no sabÃ©s quiÃ©n llamÃ³ a quiÃ©n."
 rutaTextura = "res://assets/carteles/cartel_alerta.png"
+
+[node name="ZonaFin" parent="." instance=ExtResource("e2")]
+position = Vector2(1056, 330)
+idTutorial = "fin"
 
 [node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
 position = Vector2(1120, 1000)
