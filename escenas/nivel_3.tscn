@@ -1,0 +1,686 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador.tscn" id="1_jugador"]
+
+[sub_resource type="RectangleShape2D" id="Shape_32x64"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x96"]
+size = Vector2(32, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x128"]
+size = Vector2(32, 128)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x224"]
+size = Vector2(32, 224)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x256"]
+size = Vector2(32, 256)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x288"]
+size = Vector2(32, 288)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x320"]
+size = Vector2(32, 320)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x384"]
+size = Vector2(32, 384)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x448"]
+size = Vector2(32, 448)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x480"]
+size = Vector2(32, 480)
+
+[sub_resource type="RectangleShape2D" id="Shape_96x64"]
+size = Vector2(96, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_128x32"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_192x64"]
+size = Vector2(192, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_256x96"]
+size = Vector2(256, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_352x32"]
+size = Vector2(352, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_384x64"]
+size = Vector2(384, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_416x32"]
+size = Vector2(416, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_608x64"]
+size = Vector2(608, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_704x32"]
+size = Vector2(704, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_768x32"]
+size = Vector2(768, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_832x32"]
+size = Vector2(832, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_1120x32"]
+size = Vector2(1120, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_2336x32"]
+size = Vector2(2336, 32)
+
+[node name="Nivel3" type="Node2D"]
+
+[node name="PISOS" type="Node2D" parent="."]
+
+[node name="HALL" type="Polygon2D" parent="PISOS"]
+position = Vector2(64, 928)
+color = Color(0.38, 0.36, 0.34, 1)
+polygon = PackedVector2Array(0, 0, 2272, 0, 2272, 448, 0, 448)
+
+[node name="DEPOSITO_EVIDENCIA" type="Polygon2D" parent="PISOS"]
+position = Vector2(64, 64)
+color = Color(0.3, 0.3, 0.33, 1)
+polygon = PackedVector2Array(0, 0, 640, 0, 640, 480, 0, 480)
+
+[node name="OFICINA_1" type="Polygon2D" parent="PISOS"]
+position = Vector2(64, 576)
+color = Color(0.36, 0.34, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 640, 0, 640, 320, 0, 320)
+
+[node name="CORREDOR" type="Polygon2D" parent="PISOS"]
+position = Vector2(736, 64)
+color = Color(0.33, 0.33, 0.33, 1)
+polygon = PackedVector2Array(0, 0, 320, 0, 320, 832, 0, 832)
+
+[node name="GUARDIA" type="Polygon2D" parent="PISOS"]
+position = Vector2(1088, 64)
+color = Color(0.36, 0.34, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 608, 0, 608, 832, 0, 832)
+
+[node name="PASILLO_CALABOZOS" type="Polygon2D" parent="PISOS"]
+position = Vector2(1728, 64)
+color = Color(0.3, 0.3, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 224, 0, 224, 832, 0, 832)
+
+[node name="CELDA_1" type="Polygon2D" parent="PISOS"]
+position = Vector2(1984, 64)
+color = Color(0.28, 0.28, 0.28, 1)
+polygon = PackedVector2Array(0, 0, 352, 0, 352, 288, 0, 288)
+
+[node name="CELDA_2" type="Polygon2D" parent="PISOS"]
+position = Vector2(1984, 384)
+color = Color(0.28, 0.28, 0.28, 1)
+polygon = PackedVector2Array(0, 0, 352, 0, 352, 256, 0, 256)
+
+[node name="CELDA_3" type="Polygon2D" parent="PISOS"]
+position = Vector2(1984, 672)
+color = Color(0.28, 0.28, 0.28, 1)
+polygon = PackedVector2Array(0, 0, 352, 0, 352, 224, 0, 224)
+
+[node name="VEREDA" type="Polygon2D" parent="PISOS"]
+position = Vector2(1024, 1408)
+color = Color(0.3, 0.3, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 352, 0, 352, 128, 0, 128)
+
+[node name="PUERTA_CORREDOR_HALL" type="Polygon2D" parent="PISOS"]
+position = Vector2(800, 896)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 32, 0, 32)
+
+[node name="PUERTA_GUARDIA_HALL" type="Polygon2D" parent="PISOS"]
+position = Vector2(1344, 896)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 32, 0, 32)
+
+[node name="PUERTA_DEPOSITO" type="Polygon2D" parent="PISOS"]
+position = Vector2(704, 288)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="PUERTA_OFICINA" type="Polygon2D" parent="PISOS"]
+position = Vector2(704, 704)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="PUERTA_GUARDIA" type="Polygon2D" parent="PISOS"]
+position = Vector2(1056, 400)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="PUERTA_CALABOZOS" type="Polygon2D" parent="PISOS"]
+position = Vector2(1696, 400)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="PUERTA_CELDA_1" type="Polygon2D" parent="PISOS"]
+position = Vector2(1952, 160)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="PUERTA_CELDA_2" type="Polygon2D" parent="PISOS"]
+position = Vector2(1952, 448)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="PUERTA_CELDA_3" type="Polygon2D" parent="PISOS"]
+position = Vector2(1952, 736)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="PUERTA_CALLE" type="Polygon2D" parent="PISOS"]
+position = Vector2(1152, 1376)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 32, 0, 32)
+
+[node name="PAREDES" type="StaticBody2D" parent="."]
+
+[node name="Pared1" type="Polygon2D" parent="PAREDES"]
+position = Vector2(32, 32)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 2336, 0, 2336, 32, 0, 32)
+
+[node name="Colision1" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1200, 48)
+shape = SubResource("Shape_2336x32")
+
+[node name="Pared2" type="Polygon2D" parent="PAREDES"]
+position = Vector2(32, 64)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 480, 0, 480)
+
+[node name="Colision2" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(48, 304)
+shape = SubResource("Shape_32x480")
+
+[node name="Pared3" type="Polygon2D" parent="PAREDES"]
+position = Vector2(704, 64)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 224, 0, 224)
+
+[node name="Colision3" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(720, 176)
+shape = SubResource("Shape_32x224")
+
+[node name="Pared4" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1056, 64)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
+
+[node name="Colision4" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1072, 224)
+shape = SubResource("Shape_32x320")
+
+[node name="Pared5" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1696, 64)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
+
+[node name="Colision5" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1712, 224)
+shape = SubResource("Shape_32x320")
+
+[node name="Pared6" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1952, 64)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="Colision6" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1968, 112)
+shape = SubResource("Shape_32x96")
+
+[node name="Pared7" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2336, 64)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
+
+[node name="Colision7" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2352, 208)
+shape = SubResource("Shape_32x288")
+
+[node name="Pared8" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1952, 256)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="Colision8" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1968, 304)
+shape = SubResource("Shape_32x96")
+
+[node name="Pared9" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1952, 352)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 416, 0, 416, 32, 0, 32)
+
+[node name="Colision9" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2160, 368)
+shape = SubResource("Shape_416x32")
+
+[node name="Pared10" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1952, 384)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="Colision10" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1968, 416)
+shape = SubResource("Shape_32x64")
+
+[node name="Pared11" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2336, 384)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 256, 0, 256)
+
+[node name="Colision11" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2352, 512)
+shape = SubResource("Shape_32x256")
+
+[node name="Pared12" type="Polygon2D" parent="PAREDES"]
+position = Vector2(704, 416)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="Colision12" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(720, 480)
+shape = SubResource("Shape_32x128")
+
+[node name="Pared13" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1056, 512)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 384, 0, 384)
+
+[node name="Colision13" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1072, 704)
+shape = SubResource("Shape_32x384")
+
+[node name="Pared14" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1696, 512)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 384, 0, 384)
+
+[node name="Colision14" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1712, 704)
+shape = SubResource("Shape_32x384")
+
+[node name="Pared15" type="Polygon2D" parent="PAREDES"]
+position = Vector2(32, 544)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 704, 0, 704, 32, 0, 32)
+
+[node name="Colision15" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(384, 560)
+shape = SubResource("Shape_704x32")
+
+[node name="Pared16" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1952, 544)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="Colision16" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1968, 592)
+shape = SubResource("Shape_32x96")
+
+[node name="Pared17" type="Polygon2D" parent="PAREDES"]
+position = Vector2(32, 576)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
+
+[node name="Colision17" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(48, 736)
+shape = SubResource("Shape_32x320")
+
+[node name="Pared18" type="Polygon2D" parent="PAREDES"]
+position = Vector2(704, 576)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="Colision18" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(720, 640)
+shape = SubResource("Shape_32x128")
+
+[node name="Pared19" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1952, 640)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 416, 0, 416, 32, 0, 32)
+
+[node name="Colision19" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2160, 656)
+shape = SubResource("Shape_416x32")
+
+[node name="Pared20" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1952, 672)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="Colision20" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1968, 704)
+shape = SubResource("Shape_32x64")
+
+[node name="Pared21" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2336, 672)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 224, 0, 224)
+
+[node name="Colision21" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2352, 784)
+shape = SubResource("Shape_32x224")
+
+[node name="Pared22" type="Polygon2D" parent="PAREDES"]
+position = Vector2(704, 832)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="Colision22" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(720, 864)
+shape = SubResource("Shape_32x64")
+
+[node name="Pared23" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1952, 832)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="Colision23" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1968, 864)
+shape = SubResource("Shape_32x64")
+
+[node name="Pared24" type="Polygon2D" parent="PAREDES"]
+position = Vector2(32, 896)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 768, 0, 768, 32, 0, 32)
+
+[node name="Colision24" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(416, 912)
+shape = SubResource("Shape_768x32")
+
+[node name="Pared25" type="Polygon2D" parent="PAREDES"]
+position = Vector2(992, 896)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 352, 0, 352, 32, 0, 32)
+
+[node name="Colision25" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1168, 912)
+shape = SubResource("Shape_352x32")
+
+[node name="Pared26" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1536, 896)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 832, 0, 832, 32, 0, 32)
+
+[node name="Colision26" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1952, 912)
+shape = SubResource("Shape_832x32")
+
+[node name="Pared27" type="Polygon2D" parent="PAREDES"]
+position = Vector2(32, 928)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 448, 0, 448)
+
+[node name="Colision27" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(48, 1152)
+shape = SubResource("Shape_32x448")
+
+[node name="Pared28" type="Polygon2D" parent="PAREDES"]
+position = Vector2(2336, 928)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 448, 0, 448)
+
+[node name="Colision28" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2352, 1152)
+shape = SubResource("Shape_32x448")
+
+[node name="Pared29" type="Polygon2D" parent="PAREDES"]
+position = Vector2(32, 1376)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 1120, 0, 1120, 32, 0, 32)
+
+[node name="Colision29" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(592, 1392)
+shape = SubResource("Shape_1120x32")
+
+[node name="Pared30" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1248, 1376)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 1120, 0, 1120, 32, 0, 32)
+
+[node name="Colision30" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1808, 1392)
+shape = SubResource("Shape_1120x32")
+
+[node name="Pared31" type="Polygon2D" parent="PAREDES"]
+position = Vector2(992, 1408)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="Colision31" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1008, 1472)
+shape = SubResource("Shape_32x128")
+
+[node name="Pared32" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1376, 1408)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="Colision32" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1392, 1472)
+shape = SubResource("Shape_32x128")
+
+[node name="Pared33" type="Polygon2D" parent="PAREDES"]
+position = Vector2(992, 1536)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 416, 0, 416, 32, 0, 32)
+
+[node name="Colision33" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1200, 1552)
+shape = SubResource("Shape_416x32")
+
+[node name="OBJETOS" type="Node2D" parent="."]
+
+[node name="MESA_ENTRADAS" type="Node2D" parent="OBJETOS"]
+position = Vector2(896, 1120)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESA_ENTRADAS"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 608, 0, 608, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESA_ENTRADAS"]
+position = Vector2(304, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESA_ENTRADAS/StaticBody2D"]
+shape = SubResource("Shape_608x64")
+
+[node name="BANCO_ESPERA_1" type="Node2D" parent="OBJETOS"]
+position = Vector2(192, 1264)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/BANCO_ESPERA_1"]
+color = Color(0.45, 0.3, 0.15, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/BANCO_ESPERA_1"]
+position = Vector2(64, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/BANCO_ESPERA_1/StaticBody2D"]
+shape = SubResource("Shape_128x32")
+
+[node name="BANCO_ESPERA_2" type="Node2D" parent="OBJETOS"]
+position = Vector2(448, 1264)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/BANCO_ESPERA_2"]
+color = Color(0.45, 0.3, 0.15, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/BANCO_ESPERA_2"]
+position = Vector2(64, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/BANCO_ESPERA_2/StaticBody2D"]
+shape = SubResource("Shape_128x32")
+
+[node name="BANCO_ESPERA_3" type="Node2D" parent="OBJETOS"]
+position = Vector2(1728, 1264)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/BANCO_ESPERA_3"]
+color = Color(0.45, 0.3, 0.15, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/BANCO_ESPERA_3"]
+position = Vector2(64, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/BANCO_ESPERA_3/StaticBody2D"]
+shape = SubResource("Shape_128x32")
+
+[node name="BANCO_ESPERA_4" type="Node2D" parent="OBJETOS"]
+position = Vector2(1984, 1264)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/BANCO_ESPERA_4"]
+color = Color(0.45, 0.3, 0.15, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/BANCO_ESPERA_4"]
+position = Vector2(64, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/BANCO_ESPERA_4/StaticBody2D"]
+shape = SubResource("Shape_128x32")
+
+[node name="ESCRITORIO_1" type="Node2D" parent="OBJETOS"]
+position = Vector2(128, 640)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/ESCRITORIO_1"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/ESCRITORIO_1"]
+position = Vector2(96, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/ESCRITORIO_1/StaticBody2D"]
+shape = SubResource("Shape_192x64")
+
+[node name="ESCRITORIO_2" type="Node2D" parent="OBJETOS"]
+position = Vector2(416, 768)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/ESCRITORIO_2"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/ESCRITORIO_2"]
+position = Vector2(96, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/ESCRITORIO_2/StaticBody2D"]
+shape = SubResource("Shape_192x64")
+
+[node name="MESA_GUARDIA" type="Node2D" parent="OBJETOS"]
+position = Vector2(1248, 288)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESA_GUARDIA"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 256, 0, 256, 96, 0, 96)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESA_GUARDIA"]
+position = Vector2(128, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESA_GUARDIA/StaticBody2D"]
+shape = SubResource("Shape_256x96")
+
+[node name="ARCHIVERO" type="Node2D" parent="OBJETOS"]
+position = Vector2(1120, 96)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/ARCHIVERO"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/ARCHIVERO"]
+position = Vector2(48, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/ARCHIVERO/StaticBody2D"]
+shape = SubResource("Shape_96x64")
+
+[node name="ESTANTE_EVIDENCIA_1" type="Node2D" parent="OBJETOS"]
+position = Vector2(96, 96)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/ESTANTE_EVIDENCIA_1"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 384, 0, 384, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/ESTANTE_EVIDENCIA_1"]
+position = Vector2(192, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/ESTANTE_EVIDENCIA_1/StaticBody2D"]
+shape = SubResource("Shape_384x64")
+
+[node name="ESTANTE_EVIDENCIA_2" type="Node2D" parent="OBJETOS"]
+position = Vector2(96, 448)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/ESTANTE_EVIDENCIA_2"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 384, 0, 384, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/ESTANTE_EVIDENCIA_2"]
+position = Vector2(192, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/ESTANTE_EVIDENCIA_2/StaticBody2D"]
+shape = SubResource("Shape_384x64")
+
+[node name="ZONAS" type="Node2D" parent="."]
+
+[node name="ZONA_PUERTA_DEPOSITO" type="Area2D" parent="ZONAS"]
+position = Vector2(720, 352)
+
+[node name="Polygon2D" type="Polygon2D" parent="ZONAS/ZONA_PUERTA_DEPOSITO"]
+color = Color(0.9, 0.8, 0.2, 0.35)
+polygon = PackedVector2Array(-16, -64, 16, -64, 16, 64, -16, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/ZONA_PUERTA_DEPOSITO"]
+shape = SubResource("Shape_32x128")
+
+[node name="ZONA_ENTRADA_CELDA" type="Area2D" parent="ZONAS"]
+position = Vector2(1968, 496)
+
+[node name="Polygon2D" type="Polygon2D" parent="ZONAS/ZONA_ENTRADA_CELDA"]
+color = Color(0.9, 0.8, 0.2, 0.35)
+polygon = PackedVector2Array(-16, -48, 16, -48, 16, 48, -16, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/ZONA_ENTRADA_CELDA"]
+shape = SubResource("Shape_32x96")
+
+[node name="MARCADORES" type="Node2D" parent="."]
+
+[node name="ENTRADA_PLAZA" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1200, 1488)
+
+[node name="SALIDA_MC" type="Marker2D" parent="MARCADORES"]
+position = Vector2(880, 112)
+
+[node name="LIBRO_GUARDIA" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1376, 336)
+
+[node name="CARTEL_SE_BUSCA" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1800, 960)
+
+[node name="CARTEL_AVISO_MC" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1100, 1000)
+
+[node name="CELDA_ABIERTA" type="Marker2D" parent="MARCADORES"]
+position = Vector2(2160, 512)
+
+[node name="DEPOSITO_ARMA" type="Marker2D" parent="MARCADORES"]
+position = Vector2(380, 300)
+
+[node name="FISURA_01" type="Marker2D" parent="MARCADORES"]
+position = Vector2(400, 1200)
+
+[node name="FISURA_02" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1800, 1200)
+
+[node name="FISURA_03" type="Marker2D" parent="MARCADORES"]
+position = Vector2(880, 600)
+
+[node name="FISURA_04" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1376, 640)
+
+[node name="FISURA_05" type="Marker2D" parent="MARCADORES"]
+position = Vector2(2144, 200)
+
+[node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
+position = Vector2(1200, 1280)
+
+[node name="Jugador" parent="." instance=ExtResource("1_jugador")]
+position = Vector2(1200, 1280)

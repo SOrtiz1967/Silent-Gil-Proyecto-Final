@@ -1,0 +1,426 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador.tscn" id="1_jugador"]
+
+[sub_resource type="RectangleShape2D" id="Shape_32x128"]
+size = Vector2(32, 128)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x192"]
+size = Vector2(32, 192)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x288"]
+size = Vector2(32, 288)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x512"]
+size = Vector2(32, 512)
+
+[sub_resource type="RectangleShape2D" id="Shape_64x64"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_128x64"]
+size = Vector2(128, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_160x32"]
+size = Vector2(160, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_192x32"]
+size = Vector2(192, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_192x64"]
+size = Vector2(192, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_192x96"]
+size = Vector2(192, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_192x128"]
+size = Vector2(192, 128)
+
+[sub_resource type="RectangleShape2D" id="Shape_224x32"]
+size = Vector2(224, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_224x96"]
+size = Vector2(224, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_256x96"]
+size = Vector2(256, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_352x32"]
+size = Vector2(352, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_448x64"]
+size = Vector2(448, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_608x32"]
+size = Vector2(608, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_1248x32"]
+size = Vector2(1248, 32)
+
+[node name="Nivel7" type="Node2D"]
+
+[node name="PISOS" type="Node2D" parent="."]
+
+[node name="LIVING" type="Polygon2D" parent="PISOS"]
+position = Vector2(96, 96)
+color = Color(0.45, 0.38, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 640, 0, 640, 512, 0, 512)
+
+[node name="COCINA" type="Polygon2D" parent="PISOS"]
+position = Vector2(768, 96)
+color = Color(0.5, 0.5, 0.48, 1)
+polygon = PackedVector2Array(0, 0, 512, 0, 512, 512, 0, 512)
+
+[node name="PASILLO" type="Polygon2D" parent="PISOS"]
+position = Vector2(96, 640)
+color = Color(0.4, 0.35, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 1184, 0, 1184, 128, 0, 128)
+
+[node name="DORMITORIO" type="Polygon2D" parent="PISOS"]
+position = Vector2(96, 800)
+color = Color(0.42, 0.36, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 512, 0, 512, 288, 0, 288)
+
+[node name="BANO" type="Polygon2D" parent="PISOS"]
+position = Vector2(640, 800)
+color = Color(0.5, 0.5, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 288, 0, 288, 288, 0, 288)
+
+[node name="ENTRADA" type="Polygon2D" parent="PISOS"]
+position = Vector2(960, 800)
+color = Color(0.4, 0.35, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 320, 0, 320, 288, 0, 288)
+
+[node name="PUERTA_COCINA_LIVING" type="Polygon2D" parent="PISOS"]
+position = Vector2(736, 288)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="PUERTA_LIVING" type="Polygon2D" parent="PISOS"]
+position = Vector2(224, 608)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="PUERTA_COCINA" type="Polygon2D" parent="PISOS"]
+position = Vector2(960, 608)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="PUERTA_DORMITORIO" type="Polygon2D" parent="PISOS"]
+position = Vector2(224, 768)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="PUERTA_BANO" type="Polygon2D" parent="PISOS"]
+position = Vector2(704, 768)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 32, 0, 32)
+
+[node name="PUERTA_ENTRADA" type="Polygon2D" parent="PISOS"]
+position = Vector2(1024, 768)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 32, 0, 32)
+
+[node name="PAREDES" type="StaticBody2D" parent="."]
+
+[node name="Pared1" type="Polygon2D" parent="PAREDES"]
+position = Vector2(64, 64)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 1248, 0, 1248, 32, 0, 32)
+
+[node name="Colision1" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(688, 80)
+shape = SubResource("Shape_1248x32")
+
+[node name="Pared2" type="Polygon2D" parent="PAREDES"]
+position = Vector2(64, 96)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 512, 0, 512)
+
+[node name="Colision2" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(80, 352)
+shape = SubResource("Shape_32x512")
+
+[node name="Pared3" type="Polygon2D" parent="PAREDES"]
+position = Vector2(736, 96)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
+
+[node name="Colision3" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(752, 192)
+shape = SubResource("Shape_32x192")
+
+[node name="Pared4" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1280, 96)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 512, 0, 512)
+
+[node name="Colision4" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1296, 352)
+shape = SubResource("Shape_32x512")
+
+[node name="Pared5" type="Polygon2D" parent="PAREDES"]
+position = Vector2(736, 416)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
+
+[node name="Colision5" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(752, 512)
+shape = SubResource("Shape_32x192")
+
+[node name="Pared6" type="Polygon2D" parent="PAREDES"]
+position = Vector2(64, 608)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 160, 0, 160, 32, 0, 32)
+
+[node name="Colision6" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(144, 624)
+shape = SubResource("Shape_160x32")
+
+[node name="Pared7" type="Polygon2D" parent="PAREDES"]
+position = Vector2(352, 608)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 608, 0, 608, 32, 0, 32)
+
+[node name="Colision7" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(656, 624)
+shape = SubResource("Shape_608x32")
+
+[node name="Pared8" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1088, 608)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 224, 0, 224, 32, 0, 32)
+
+[node name="Colision8" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1200, 624)
+shape = SubResource("Shape_224x32")
+
+[node name="Pared9" type="Polygon2D" parent="PAREDES"]
+position = Vector2(64, 640)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="Colision9" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(80, 704)
+shape = SubResource("Shape_32x128")
+
+[node name="Pared10" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1280, 640)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="Colision10" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1296, 704)
+shape = SubResource("Shape_32x128")
+
+[node name="Pared11" type="Polygon2D" parent="PAREDES"]
+position = Vector2(64, 768)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 160, 0, 160, 32, 0, 32)
+
+[node name="Colision11" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(144, 784)
+shape = SubResource("Shape_160x32")
+
+[node name="Pared12" type="Polygon2D" parent="PAREDES"]
+position = Vector2(352, 768)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 352, 0, 352, 32, 0, 32)
+
+[node name="Colision12" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(528, 784)
+shape = SubResource("Shape_352x32")
+
+[node name="Pared13" type="Polygon2D" parent="PAREDES"]
+position = Vector2(800, 768)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 224, 0, 224, 32, 0, 32)
+
+[node name="Colision13" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(912, 784)
+shape = SubResource("Shape_224x32")
+
+[node name="Pared14" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1120, 768)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 32, 0, 32)
+
+[node name="Colision14" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1216, 784)
+shape = SubResource("Shape_192x32")
+
+[node name="Pared15" type="Polygon2D" parent="PAREDES"]
+position = Vector2(64, 800)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
+
+[node name="Colision15" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(80, 944)
+shape = SubResource("Shape_32x288")
+
+[node name="Pared16" type="Polygon2D" parent="PAREDES"]
+position = Vector2(608, 800)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
+
+[node name="Colision16" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(624, 944)
+shape = SubResource("Shape_32x288")
+
+[node name="Pared17" type="Polygon2D" parent="PAREDES"]
+position = Vector2(928, 800)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
+
+[node name="Colision17" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(944, 944)
+shape = SubResource("Shape_32x288")
+
+[node name="Pared18" type="Polygon2D" parent="PAREDES"]
+position = Vector2(1280, 800)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
+
+[node name="Colision18" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1296, 944)
+shape = SubResource("Shape_32x288")
+
+[node name="Pared19" type="Polygon2D" parent="PAREDES"]
+position = Vector2(64, 1088)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 1248, 0, 1248, 32, 0, 32)
+
+[node name="Colision19" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(688, 1104)
+shape = SubResource("Shape_1248x32")
+
+[node name="OBJETOS" type="Node2D" parent="."]
+
+[node name="SOFA" type="Node2D" parent="OBJETOS"]
+position = Vector2(128, 128)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/SOFA"]
+color = Color(0.4, 0.3, 0.35, 1)
+polygon = PackedVector2Array(0, 0, 256, 0, 256, 96, 0, 96)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/SOFA"]
+position = Vector2(128, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/SOFA/StaticBody2D"]
+shape = SubResource("Shape_256x96")
+
+[node name="MESA_LIVING" type="Node2D" parent="OBJETOS"]
+position = Vector2(192, 352)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESA_LIVING"]
+color = Color(0.45, 0.3, 0.15, 1)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 96, 0, 96)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESA_LIVING"]
+position = Vector2(96, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESA_LIVING/StaticBody2D"]
+shape = SubResource("Shape_192x96")
+
+[node name="MESADA" type="Node2D" parent="OBJETOS"]
+position = Vector2(800, 128)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESADA"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 448, 0, 448, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESADA"]
+position = Vector2(224, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESADA/StaticBody2D"]
+shape = SubResource("Shape_448x64")
+
+[node name="MESA_COCINA" type="Node2D" parent="OBJETOS"]
+position = Vector2(896, 352)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESA_COCINA"]
+color = Color(0.45, 0.3, 0.15, 1)
+polygon = PackedVector2Array(0, 0, 224, 0, 224, 96, 0, 96)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESA_COCINA"]
+position = Vector2(112, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESA_COCINA/StaticBody2D"]
+shape = SubResource("Shape_224x96")
+
+[node name="CAMA" type="Node2D" parent="OBJETOS"]
+position = Vector2(128, 832)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/CAMA"]
+color = Color(0.5, 0.4, 0.45, 1)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 128, 0, 128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/CAMA"]
+position = Vector2(96, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/CAMA/StaticBody2D"]
+shape = SubResource("Shape_192x128")
+
+[node name="PLACARD" type="Node2D" parent="OBJETOS"]
+position = Vector2(448, 832)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/PLACARD"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/PLACARD"]
+position = Vector2(64, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/PLACARD/StaticBody2D"]
+shape = SubResource("Shape_128x64")
+
+[node name="INODORO" type="Node2D" parent="OBJETOS"]
+position = Vector2(672, 832)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/INODORO"]
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/INODORO"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/INODORO/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="ZONAS" type="Node2D" parent="."]
+
+[node name="ZONA_RELOJ_COCINA" type="Area2D" parent="ZONAS"]
+position = Vector2(1056, 160)
+
+[node name="Polygon2D" type="Polygon2D" parent="ZONAS/ZONA_RELOJ_COCINA"]
+color = Color(0.9, 0.8, 0.2, 0.35)
+polygon = PackedVector2Array(-96, -64, 96, -64, 96, 64, -96, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/ZONA_RELOJ_COCINA"]
+shape = SubResource("Shape_192x128")
+
+[node name="ZONA_PUERTA_CALLE" type="Area2D" parent="ZONAS"]
+position = Vector2(1120, 1056)
+
+[node name="Polygon2D" type="Polygon2D" parent="ZONAS/ZONA_PUERTA_CALLE"]
+color = Color(0.9, 0.8, 0.2, 0.35)
+polygon = PackedVector2Array(-96, -32, 96, -32, 96, 32, -96, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/ZONA_PUERTA_CALLE"]
+shape = SubResource("Shape_192x64")
+
+[node name="MARCADORES" type="Node2D" parent="."]
+
+[node name="RELOJ_COCINA" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1056, 112)
+
+[node name="PUERTA_CALLE" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1120, 1056)
+
+[node name="FINAL" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1056, 450)
+
+[node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
+position = Vector2(1120, 1000)
+
+[node name="Jugador" parent="." instance=ExtResource("1_jugador")]
+position = Vector2(1120, 1000)
