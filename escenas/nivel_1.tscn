@@ -1814,6 +1814,30 @@ scale = Vector2(3.28125, 20.9375)
 destino = NodePath("../PUNTO_NIEBLA")
 mensaje = "La niebla es tan densa que terminás de vuelta en la plaza"
 
+[node name="Piedra8" parent="." instance=ExtResource("8_piedra")]
+position = Vector2(1484, 2350)
+
+[node name="Piedra9" parent="." instance=ExtResource("8_piedra")]
+position = Vector2(2300, 2350)
+
+[node name="Piedra10" parent="." instance=ExtResource("8_piedra")]
+position = Vector2(2768, 2600)
+
+[node name="Piedra11" parent="." instance=ExtResource("8_piedra")]
+position = Vector2(1000, 3000)
+
+[node name="Piedra12" parent="." instance=ExtResource("8_piedra")]
+position = Vector2(2000, 3000)
+
+[node name="Piedra13" parent="." instance=ExtResource("8_piedra")]
+position = Vector2(2900, 3000)
+
+[node name="Piedra14" parent="." instance=ExtResource("8_piedra")]
+position = Vector2(1284, 3300)
+
+[node name="Piedra15" parent="." instance=ExtResource("8_piedra")]
+position = Vector2(2500, 3250)
+
 [node name="PUNTO_NIEBLA" type="Marker2D" parent="."]
 position = Vector2(1900, 2900)
 
