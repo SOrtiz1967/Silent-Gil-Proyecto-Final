@@ -34,6 +34,10 @@
 [ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="51_cartel"]
 [ext_resource type="Script" path="res://scripts/pathfinding.gd" id="60_pathfinding"]
 [ext_resource type="PackedScene" path="res://escenas/entradaNivel.tscn" id="61_entrada_nivel"]
+[ext_resource type="PackedScene" path="res://escenas/teletransporte.tscn" id="62_teleport"]
+
+[sub_resource type="RectangleShape2D" id="Shape_Comisaria"]
+size = Vector2(288, 128)
 
 [sub_resource type="RectangleShape2D" id="Shape_4096x32"]
 size = Vector2(4096, 32)
@@ -1758,6 +1762,66 @@ rutaNivel = "res://escenas/nivel_5.tscn"
 puntoDestino = "PUNTO_APARICION_JUGADOR"
 mensajeBloqueada = "El candado es enorme y no cede. Hace falta la llave"
 textoAviso = "F para bajar al subte"
+
+[node name="COMISARIA_FACHADA" type="Node2D" parent="."]
+position = Vector2(2912, 3060)
+
+[node name="Polygon2D" type="Polygon2D" parent="COMISARIA_FACHADA"]
+color = Color(0.25, 0.3, 0.45, 1)
+polygon = PackedVector2Array(0, 0, 288, 0, 288, 128, 0, 128)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="COMISARIA_FACHADA"]
+position = Vector2(144, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COMISARIA_FACHADA/StaticBody2D"]
+shape = SubResource("Shape_Comisaria")
+
+[node name="PUERTA_COMISARIA" type="Node2D" parent="."]
+position = Vector2(2960, 3160)
+
+[node name="Polygon2D" type="Polygon2D" parent="PUERTA_COMISARIA"]
+color = Color(0.95, 0.78, 0.1, 1)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 28, 0, 28)
+
+[node name="EntradaComisaria" parent="." instance=ExtResource("61_entrada_nivel")]
+position = Vector2(3008, 3220)
+scale = Vector2(1, 0.75)
+rutaNivel = "res://escenas/nivel_3.tscn"
+puntoDestino = "PUNTO_APARICION_JUGADOR"
+textoAviso = "F para entrar a la comisaría"
+
+[node name="CartelComisaria" parent="." instance=ExtResource("51_cartel")]
+position = Vector2(2812, 3230)
+titulo = "COMISARÍA"
+texto = "La puerta no tiene traba. Adentro no hay policías ni detenidos: solo lo que quedó. Dicen que en el depósito de evidencia hay algo que sirve contra lo que anda por el McDonald's."
+rutaTextura = "res://assets/carteles/cartel_alerta.png"
+
+[node name="NieblaSur" parent="." instance=ExtResource("62_teleport")]
+position = Vector2(2048, 3436)
+scale = Vector2(32, 1.375)
+destino = NodePath("../PUNTO_NIEBLA")
+mensaje = "La niebla es tan densa que terminás de vuelta en la plaza"
+
+[node name="NieblaEste" parent="." instance=ExtResource("62_teleport")]
+position = Vector2(3710, 2770)
+scale = Vector2(0.78125, 20.9375)
+destino = NodePath("../PUNTO_NIEBLA")
+mensaje = "La niebla es tan densa que terminás de vuelta en la plaza"
+
+[node name="NieblaOeste" parent="." instance=ExtResource("62_teleport")]
+position = Vector2(210, 2770)
+scale = Vector2(3.28125, 20.9375)
+destino = NodePath("../PUNTO_NIEBLA")
+mensaje = "La niebla es tan densa que terminás de vuelta en la plaza"
+
+[node name="PUNTO_NIEBLA" type="Marker2D" parent="."]
+position = Vector2(1900, 2900)
+
+[node name="PUNTO_SALIDA_SUBTE" type="Marker2D" parent="."]
+position = Vector2(3264, 2590)
+
+[node name="PUNTO_SALIDA_COMISARIA" type="Marker2D" parent="."]
+position = Vector2(2956, 3300)
 
 [node name="PUNTO_SALIDA_MC" type="Marker2D" parent="." unique_id=897896742]
 position = Vector2(730, 2745)

@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="10_cartel"]
 [ext_resource type="PackedScene" path="res://escenas/enemigo.tscn" id="11_enemigo"]
 [ext_resource type="PackedScene" path="res://escenas/powerbank.tscn" id="12_powerbank"]
+[ext_resource type="Script" path="res://scripts/aparicion.gd" id="13_aparicion"]
+[ext_resource type="PackedScene" path="res://escenas/consumible.tscn" id="14_consumible"]
+[ext_resource type="PackedScene" path="res://escenas/bengalas.tscn" id="15_bengalas"]
 
 [sub_resource type="RectangleShape2D" id="Shape_4096x32"]
 size = Vector2(4096, 32)
@@ -2498,6 +2501,49 @@ colorNormal = Color(1, 0.75, 0.6, 1)
 
 [node name="Powerbank" parent="." instance=ExtResource("12_powerbank")]
 position = Vector2(3104, 444)
+
+[node name="BichosCocina" type="Node2D" parent="."]
+script = ExtResource("13_aparicion")
+escena = ExtResource("11_enemigo")
+idLlaveDisparadora = "powerbank"
+idAparicion = "bichosCocina"
+
+[node name="Bicho1" type="Marker2D" parent="BichosCocina"]
+position = Vector2(3522, 378)
+
+[node name="Bicho2" type="Marker2D" parent="BichosCocina"]
+position = Vector2(3522, 442)
+
+[node name="Bicho3" type="Marker2D" parent="BichosCocina"]
+position = Vector2(3586, 378)
+
+[node name="Bicho4" type="Marker2D" parent="BichosCocina"]
+position = Vector2(3586, 442)
+
+[node name="Hamburguesa1" parent="." instance=ExtResource("14_consumible")]
+position = Vector2(1704, 924)
+curacion = 2.0
+nombreConsumible = "Hamburguesa"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/milanga-sanguche.png"
+
+[node name="Hamburguesa2" parent="." instance=ExtResource("14_consumible")]
+position = Vector2(1704, 988)
+curacion = 2.0
+nombreConsumible = "Hamburguesa"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/milanga-sanguche.png"
+
+[node name="Hamburguesa3" parent="." instance=ExtResource("14_consumible")]
+position = Vector2(1640, 860)
+curacion = 2.0
+nombreConsumible = "Hamburguesa"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/milanga-sanguche.png"
+
+[node name="CajaBengalas" parent="." instance=ExtResource("15_bengalas")]
+position = Vector2(3140, 356)
+cantidad = 3
 
 [node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
 position = Vector2(1088, 1184)

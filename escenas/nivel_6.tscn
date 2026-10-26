@@ -3,11 +3,15 @@
 [ext_resource type="Script" path="res://scripts/nivel.gd" id="nivel"]
 [ext_resource type="Script" path="res://scripts/pathfinding.gd" id="pathfinding"]
 [ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador.tscn" id="1_jugador"]
-[ext_resource type="PackedScene" path="res://escenas/puerta.tscn" id="e1"]
-[ext_resource type="PackedScene" path="res://escenas/objetoClave.tscn" id="e2"]
-[ext_resource type="PackedScene" path="res://escenas/entradaNivel.tscn" id="e3"]
-[ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="e4"]
-[ext_resource type="PackedScene" path="res://escenas/enemigo.tscn" id="e5"]
+[ext_resource type="PackedScene" path="res://escenas/teletransporte.tscn" id="e1"]
+[ext_resource type="PackedScene" path="res://escenas/piedra.tscn" id="e2"]
+[ext_resource type="PackedScene" path="res://escenas/consumible.tscn" id="e3"]
+[ext_resource type="PackedScene" path="res://escenas/bengalas.tscn" id="e4"]
+[ext_resource type="PackedScene" path="res://escenas/puerta.tscn" id="e5"]
+[ext_resource type="PackedScene" path="res://escenas/objetoClave.tscn" id="e6"]
+[ext_resource type="PackedScene" path="res://escenas/entradaNivel.tscn" id="e7"]
+[ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="e8"]
+[ext_resource type="PackedScene" path="res://escenas/enemigo.tscn" id="e9"]
 
 [sub_resource type="RectangleShape2D" id="Shape_32x32"]
 size = Vector2(32, 32)
@@ -51,14 +55,8 @@ size = Vector2(32, 1216)
 [sub_resource type="RectangleShape2D" id="Shape_64x64"]
 size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="Shape_128x128"]
-size = Vector2(128, 128)
-
 [sub_resource type="RectangleShape2D" id="Shape_160x32"]
 size = Vector2(160, 32)
-
-[sub_resource type="RectangleShape2D" id="Shape_192x64"]
-size = Vector2(192, 64)
 
 [sub_resource type="RectangleShape2D" id="Shape_224x32"]
 size = Vector2(224, 32)
@@ -98,6 +96,9 @@ size = Vector2(2720, 32)
 
 [node name="NivelEstacionquenoexiste" type="Node2D"]
 script = ExtResource("nivel")
+
+[node name="Oscuridad" type="CanvasModulate" parent="."]
+color = Color(0.08, 0.08, 0.12, 1)
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("pathfinding")
@@ -193,6 +194,21 @@ polygon = PackedVector2Array(0, 0, 2272, 0, 2272, 128, 0, 128)
 position = Vector2(2880, 1568)
 color = Color(0.3, 0.3, 0.32, 1)
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 544, 0, 544)
+
+[node name="PUERTA_FALSA_A" type="Polygon2D" parent="PISOS"]
+position = Vector2(1344, 96)
+color = Color(0.5, 0.4, 0.2, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="PUERTA_FALSA_B" type="Polygon2D" parent="PISOS"]
+position = Vector2(1888, 96)
+color = Color(0.5, 0.4, 0.2, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="PUERTA_FALSA_C" type="Polygon2D" parent="PISOS"]
+position = Vector2(2432, 96)
+color = Color(0.5, 0.4, 0.2, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
 [node name="PAREDES" type="StaticBody2D" parent="."]
 
@@ -601,47 +617,16 @@ shape = SubResource("Shape_64x64")
 
 [node name="ZONAS" type="Node2D" parent="."]
 
-[node name="PUERTA_LOOP_A" type="Area2D" parent="ZONAS"]
-position = Vector2(1408, 704)
-
-[node name="Polygon2D" type="Polygon2D" parent="ZONAS/PUERTA_LOOP_A"]
-color = Color(0.6, 0.3, 0.9, 0.4)
-polygon = PackedVector2Array(-96, -32, 96, -32, 96, 32, -96, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/PUERTA_LOOP_A"]
-shape = SubResource("Shape_192x64")
-
-[node name="PUERTA_LOOP_B" type="Area2D" parent="ZONAS"]
-position = Vector2(1952, 672)
-
-[node name="Polygon2D" type="Polygon2D" parent="ZONAS/PUERTA_LOOP_B"]
-color = Color(0.6, 0.3, 0.9, 0.4)
-polygon = PackedVector2Array(-96, -32, 96, -32, 96, 32, -96, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/PUERTA_LOOP_B"]
-shape = SubResource("Shape_192x64")
-
-[node name="PUERTA_LOOP_C" type="Area2D" parent="ZONAS"]
-position = Vector2(2496, 704)
-
-[node name="Polygon2D" type="Polygon2D" parent="ZONAS/PUERTA_LOOP_C"]
-color = Color(0.6, 0.3, 0.9, 0.4)
-polygon = PackedVector2Array(-96, -32, 96, -32, 96, 32, -96, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/PUERTA_LOOP_C"]
-shape = SubResource("Shape_192x64")
-
-[node name="TUNEL_LOOP_FIN" type="Area2D" parent="ZONAS"]
-position = Vector2(2784, 1920)
-
-[node name="Polygon2D" type="Polygon2D" parent="ZONAS/TUNEL_LOOP_FIN"]
-color = Color(0.6, 0.3, 0.9, 0.4)
-polygon = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZONAS/TUNEL_LOOP_FIN"]
-shape = SubResource("Shape_128x128")
-
 [node name="MARCADORES" type="Node2D" parent="."]
+
+[node name="LOOP_A_DESTINO" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1408, 600)
+
+[node name="LOOP_B_DESTINO" type="Marker2D" parent="MARCADORES"]
+position = Vector2(1952, 600)
+
+[node name="LOOP_C_DESTINO" type="Marker2D" parent="MARCADORES"]
+position = Vector2(2496, 600)
 
 [node name="TUNEL_REAPARICION" type="Marker2D" parent="MARCADORES"]
 position = Vector2(544, 800)
@@ -652,99 +637,155 @@ position = Vector2(2820, 1920)
 [node name="GUARDA_APARICION" type="Marker2D" parent="MARCADORES"]
 position = Vector2(3168, 1810)
 
-[node name="PuertaCuarto" parent="." instance=ExtResource("e1")]
+[node name="LoopA" parent="." instance=ExtResource("e1")]
+position = Vector2(1408, 160)
+scale = Vector2(1, 1)
+destino = NodePath("../MARCADORES/LOOP_A_DESTINO")
+mensaje = "La puerta te devolvio a la misma sala"
+
+[node name="LoopB" parent="." instance=ExtResource("e1")]
+position = Vector2(1952, 160)
+scale = Vector2(1, 1)
+destino = NodePath("../MARCADORES/LOOP_B_DESTINO")
+mensaje = "La puerta te devolvio a la misma sala"
+
+[node name="LoopC" parent="." instance=ExtResource("e1")]
+position = Vector2(2496, 160)
+scale = Vector2(1, 1)
+destino = NodePath("../MARCADORES/LOOP_C_DESTINO")
+mensaje = "La puerta te devolvio a la misma sala"
+
+[node name="TunelLoop" parent="." instance=ExtResource("e1")]
+position = Vector2(2784, 1920)
+scale = Vector2(1, 2)
+destino = NodePath("../MARCADORES/TUNEL_REAPARICION")
+mensaje = "El tunel te devolvio al principio. Proba a oscuras (Q)"
+soloConLuz = true
+
+[node name="Piedra1" parent="." instance=ExtResource("e2")]
+position = Vector2(300, 500)
+
+[node name="Piedra2" parent="." instance=ExtResource("e2")]
+position = Vector2(1200, 200)
+
+[node name="Piedra3" parent="." instance=ExtResource("e2")]
+position = Vector2(1500, 900)
+
+[node name="Milanga" parent="." instance=ExtResource("e3")]
+position = Vector2(1250, 1000)
+curacion = 2
+nombreConsumible = "Milanga"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/milanga.png"
+
+[node name="Alfajor" parent="." instance=ExtResource("e3")]
+position = Vector2(2000, 200)
+curacion = 1
+nombreConsumible = "Alfajor"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/alfajor-03-mani.png"
+
+[node name="CajaBengalas" parent="." instance=ExtResource("e4")]
+position = Vector2(1300, 1100)
+cantidad = 3
+
+[node name="PuertaCuarto" parent="." instance=ExtResource("e5")]
 position = Vector2(2224, 1024)
 scale = Vector2(1, 2)
 forzar = true
 mensajeAbierta = "Abriste el cuarto cerrado"
 
-[node name="RejillaAlacena" parent="." instance=ExtResource("e1")]
+[node name="RejillaAlacena" parent="." instance=ExtResource("e5")]
 position = Vector2(2768, 1040)
 scale = Vector2(1, 1.5)
 forzar = true
 mensajeAbierta = "Sacaste la rejilla"
 
-[node name="SubeAlacena" parent="." instance=ExtResource("e2")]
+[node name="SubeAlacena" parent="." instance=ExtResource("e6")]
 position = Vector2(2900, 1090)
 idLlave = "sube"
 nombreObjeto = "SUBE"
 idTutorialPersonalizado = "sube"
 
-[node name="GanzuaObjetos" parent="." instance=ExtResource("e2")]
+[node name="GanzuaObjetos" parent="." instance=ExtResource("e6")]
 position = Vector2(1700, 1210)
 esGanzua = true
 nombreObjeto = "Ganzua"
 
-[node name="MolineteSalida" parent="." instance=ExtResource("e3")]
+[node name="MolineteSalida" parent="." instance=ExtResource("e7")]
 position = Vector2(3440, 1920)
 scale = Vector2(0.9375, 2.1875)
 rutaNivel = "res://escenas/nivel_7.tscn"
 puntoDestino = "PUNTO_APARICION_JUGADOR"
 textoAviso = "F para pasar el molinete"
 idLlaveRequerida = "sube"
-mensajeBloqueada = "El molinete no se abre. Hace falta la SUBE"
+idLlaveExtra = "silbato"
+mensajeBloqueada = "El molinete no se abre. Hace falta la SUBE y el silbato del guarda"
 
-[node name="CartelEstacion" parent="." instance=ExtResource("e4")]
+[node name="CartelEstacion" parent="." instance=ExtResource("e8")]
 position = Vector2(400, 220)
 titulo = "CONSTITUCIÓN"
 texto = "El cartel dice «Constitución». Ya saliste de Constitución. El reloj de arriba marca las 3:07."
 rutaTextura = "res://assets/carteles/cartel_info.png"
 
-[node name="CartelMolinete" parent="." instance=ExtResource("e4")]
+[node name="CartelMolinete" parent="." instance=ExtResource("e8")]
 position = Vector2(640, 560)
 titulo = "MOLINETE"
 texto = "De todos los molinetes de esta estación, este es el único que anda con tu SUBE. Y es la única salida."
 rutaTextura = "res://assets/carteles/cartel_llave.png"
 
-[node name="CartelLoop" parent="." instance=ExtResource("e4")]
+[node name="CartelLoop" parent="." instance=ExtResource("e8")]
 position = Vector2(1430, 590)
 titulo = "NOTA"
 texto = "«La puerta de esta sala da a esta sala. Lo probé cuatro veces». Está firmada con la hora: 3:07."
 rutaTextura = "res://assets/carteles/cartel_madera.png"
 
-[node name="CartelOscuro" parent="." instance=ExtResource("e4")]
+[node name="CartelOscuro" parent="." instance=ExtResource("e8")]
 position = Vector2(1936, 590)
 titulo = "NOTA"
 texto = "«El túnel largo solo cambia si caminás a oscuras. Apagá el celular (Q) y no mires atrás»."
 rutaTextura = "res://assets/carteles/cartel_bateria.png"
 
-[node name="CartelGuarda" parent="." instance=ExtResource("e4")]
+[node name="CartelGuarda" parent="." instance=ExtResource("e8")]
 position = Vector2(2940, 1620)
 titulo = "NOTA"
 texto = "«El último tren no te dejó acá por error. El guarda quiere que te quedes. Última estación, todos bajan»."
 rutaTextura = "res://assets/carteles/cartel_alerta.png"
 
-[node name="CartelAlacena" parent="." instance=ExtResource("e4")]
+[node name="CartelAlacena" parent="." instance=ExtResource("e8")]
 position = Vector2(2864, 1030)
 titulo = "ALACENA"
 texto = "Hay una mochila con una campera de colegio, un llavero con un nombre tachado y una SUBE. Nadie vino a buscarlas."
 rutaTextura = "res://assets/carteles/cartel_madera.png"
 
-[node name="Fisura01" parent="." instance=ExtResource("e5")]
+[node name="Fisura01" parent="." instance=ExtResource("e9")]
 position = Vector2(1936, 200)
 vida = 12
 dano = 1.5
 variante = 2
 colorNormal = Color(0.78, 0.84, 1, 1)
 rangoDeteccion = 300
+soloConLuz = true
 
-[node name="Fisura02" parent="." instance=ExtResource("e5")]
+[node name="Fisura02" parent="." instance=ExtResource("e9")]
 position = Vector2(1400, 900)
 vida = 12
 dano = 1.5
 variante = 2
 colorNormal = Color(0.78, 0.84, 1, 1)
 rangoDeteccion = 300
+soloConLuz = true
 
-[node name="Fisura03" parent="." instance=ExtResource("e5")]
+[node name="Fisura03" parent="." instance=ExtResource("e9")]
 position = Vector2(2500, 700)
 vida = 12
 dano = 1.5
 variante = 2
 colorNormal = Color(0.78, 0.84, 1, 1)
 rangoDeteccion = 300
+soloConLuz = true
 
-[node name="Guarda" parent="." instance=ExtResource("e5")]
+[node name="Guarda" parent="." instance=ExtResource("e9")]
 position = Vector2(3168, 1810)
 vida = 40
 dano = 2
@@ -753,6 +794,9 @@ rangoDeteccion = 600
 rangoAtaque = 60
 variante = 1
 scale = Vector2(1.5, 1.5)
+soloConLuz = true
+idLlaveBotin = "silbato"
+nombreLlaveBotin = "Silbato del guarda"
 
 [node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
 position = Vector2(224, 320)

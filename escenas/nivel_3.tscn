@@ -5,8 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador.tscn" id="1_jugador"]
 [ext_resource type="PackedScene" path="res://escenas/puerta.tscn" id="e1"]
 [ext_resource type="PackedScene" path="res://escenas/entradaNivel.tscn" id="e2"]
-[ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="e3"]
-[ext_resource type="PackedScene" path="res://escenas/enemigo.tscn" id="e4"]
+[ext_resource type="PackedScene" path="res://escenas/piedra.tscn" id="e3"]
+[ext_resource type="PackedScene" path="res://escenas/consumible.tscn" id="e4"]
+[ext_resource type="PackedScene" path="res://escenas/puntoCarga.tscn" id="e5"]
+[ext_resource type="PackedScene" path="res://escenas/bengalas.tscn" id="e6"]
+[ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="e7"]
+[ext_resource type="PackedScene" path="res://escenas/enemigo.tscn" id="e8"]
 
 [sub_resource type="RectangleShape2D" id="Shape_32x64"]
 size = Vector2(32, 64)
@@ -79,6 +83,9 @@ size = Vector2(2336, 32)
 
 [node name="NivelComisaria" type="Node2D"]
 script = ExtResource("nivel")
+
+[node name="Oscuridad" type="CanvasModulate" parent="."]
+color = Color(0.1, 0.1, 0.14, 1)
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("pathfinding")
@@ -655,47 +662,94 @@ rutaNivel = "res://escenas/nivel_3_celda.tscn"
 puntoDestino = "PUNTO_APARICION_JUGADOR"
 textoAviso = "F para entrar a los calabozos"
 
-[node name="CartelAviso" parent="." instance=ExtResource("e3")]
+[node name="SalidaCalle" parent="." instance=ExtResource("e2")]
+position = Vector2(1200, 1408)
+scale = Vector2(1.25, 0.75)
+rutaNivel = "res://escenas/nivel_1.tscn"
+puntoDestino = "PUNTO_SALIDA_COMISARIA"
+textoAviso = "F para salir a la plaza"
+
+[node name="Piedra1" parent="." instance=ExtResource("e3")]
+position = Vector2(300, 1100)
+
+[node name="Piedra2" parent="." instance=ExtResource("e3")]
+position = Vector2(1600, 1250)
+
+[node name="Piedra3" parent="." instance=ExtResource("e3")]
+position = Vector2(900, 500)
+
+[node name="Piedra4" parent="." instance=ExtResource("e3")]
+position = Vector2(1500, 600)
+
+[node name="Alfajor" parent="." instance=ExtResource("e4")]
+position = Vector2(1400, 200)
+curacion = 1
+nombreConsumible = "Alfajor"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/alfajor-01-negro.png"
+
+[node name="Empanada" parent="." instance=ExtResource("e4")]
+position = Vector2(330, 860)
+curacion = 1
+nombreConsumible = "Empanada"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/empanada.png"
+
+[node name="Pastafrola" parent="." instance=ExtResource("e4")]
+position = Vector2(2200, 1100)
+curacion = 1
+nombreConsumible = "Pastafrola"
+verbo = "comer"
+rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/pastafrola.png"
+
+[node name="PuntoCarga1" parent="." instance=ExtResource("e5")]
+position = Vector2(1900, 1100)
+
+[node name="CajaBengalas" parent="." instance=ExtResource("e6")]
+position = Vector2(1500, 140)
+cantidad = 3
+
+[node name="CartelAviso" parent="." instance=ExtResource("e7")]
 position = Vector2(1640, 1010)
 titulo = "AVISO A LA GUARDIA"
 texto = "El McDonald's está lleno de lo que ya sabés. No se entra solo con piedras. Lo que sirve está en el depósito de evidencia."
 rutaTextura = "res://assets/carteles/cartel_alerta.png"
 
-[node name="CartelSeBusca" parent="." instance=ExtResource("e3")]
+[node name="CartelSeBusca" parent="." instance=ExtResource("e7")]
 position = Vector2(1860, 1010)
 titulo = "SE BUSCA"
 texto = "Un cartel de SE BUSCA pegado con cinta. La cara está borrada, como si la hubieran raspado con una llave. Abajo, a mano: 3:07."
 rutaTextura = "res://assets/carteles/cartel_madera.png"
 
-[node name="CartelLibro" parent="." instance=ExtResource("e3")]
+[node name="CartelLibro" parent="." instance=ExtResource("e7")]
 position = Vector2(1376, 440)
 titulo = "LIBRO DE GUARDIA"
 texto = "Todas las entradas de la noche están anotadas a las 3:07. La letra cambia de una hoja a otra, pero la hora no."
 rutaTextura = "res://assets/carteles/cartel_info.png"
 
-[node name="CartelCelda" parent="." instance=ExtResource("e3")]
+[node name="CartelCelda" parent="." instance=ExtResource("e7")]
 position = Vector2(2160, 560)
 titulo = "CELDA ABIERTA"
 texto = "La puerta de esta celda está abierta. Pero la cerradura está del lado de adentro: se abrió desde adentro."
 rutaTextura = "res://assets/carteles/cartel_alerta.png"
 
-[node name="Fisura01" parent="." instance=ExtResource("e4")]
+[node name="Fisura01" parent="." instance=ExtResource("e8")]
 position = Vector2(400, 1200)
 vida = 8
 
-[node name="Fisura02" parent="." instance=ExtResource("e4")]
+[node name="Fisura02" parent="." instance=ExtResource("e8")]
 position = Vector2(1800, 1200)
 vida = 8
 
-[node name="Fisura03" parent="." instance=ExtResource("e4")]
+[node name="Fisura03" parent="." instance=ExtResource("e8")]
 position = Vector2(880, 600)
 vida = 8
 
-[node name="Fisura04" parent="." instance=ExtResource("e4")]
+[node name="Fisura04" parent="." instance=ExtResource("e8")]
 position = Vector2(1376, 640)
 vida = 8
 
-[node name="Fisura05" parent="." instance=ExtResource("e4")]
+[node name="Fisura05" parent="." instance=ExtResource("e8")]
 position = Vector2(2144, 200)
 vida = 8
 
