@@ -43,6 +43,19 @@ text = "Reiniciar"
 layout_mode = 2
 text = "Salir"
 
+[node name="Controles" type="Label" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+text = "WASD o flechas: moverte
+Espacio: golpear
+E: tirar piedras o bengalas
+F: agarrar, abrir, leer, entrar y cargar el celular (mantener)
+T: inventario
+Q: prender o apagar la linterna del celular
+H: esta ayuda      Esc: pausa"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/BotonContinuar" to="." method="_on_boton_continuar_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/BotonReiniciar" to="." method="_on_boton_reiniciar_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/BotonSalir" to="." method="_on_boton_salir_pressed"]

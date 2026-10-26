@@ -14,6 +14,7 @@ La historia completa está en [docs/historia.md](docs/historia.md).
 | F | agarrar, abrir, leer, cargar el celular |
 | T | inventario |
 | Q | apagar o prender la linterna del celular |
+| H | ayuda con todos los controles |
 | Esc | pausa |
 
 ## Recorrido
