@@ -3,4 +3,4 @@ func _ready():
 	CambioNivel.ubicarJugador(self)
 	if not Inventario.yaRecogido("intro_nivel_mc"):
 		Inventario.marcarRecogido("intro_nivel_mc")
-		Tutorial.mostrarTexto("McDONALD'S", "Está vacío y el parlante repite el pedido 307. El Cliente, sentado a la derecha de la planta baja, tiene la llave del candado del subte: pegale con Espacio (se pone rojo antes de pegar). En el piso de arriba hay un powerbank: escalera con F.")
+		Tutorial.mostrarTexto("McDONALD'S", "Está a oscuras y el parlante repite el pedido 307. Sentado a la derecha de la planta baja hay un fisura comiendo: el Cliente. Tiene la llave del candado del subte. Hablale con F. Leé la nota de la entrada antes. En el piso de arriba hay un powerbank (escalera, F).")

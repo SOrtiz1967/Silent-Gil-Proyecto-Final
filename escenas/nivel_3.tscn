@@ -87,7 +87,7 @@ tituloIntro = "COMISARÍA"
 textoIntro = "Abandonada y a oscuras: no hay policías ni detenidos, solo lo que quedó. La pistola de bengalas está en el depósito de evidencia (arriba a la izquierda), pero la puerta está cerrada. Entrá a los calabozos (arriba a la derecha, F) y buscá cómo salir. Con Q prendés o apagás la linterna del celular."
 
 [node name="Oscuridad" type="CanvasModulate" parent="."]
-color = Color(0.1, 0.1, 0.14, 1)
+color = Color(0.03, 0.03, 0.045, 1)
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("pathfinding")

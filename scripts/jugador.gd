@@ -36,6 +36,7 @@ var bateriaAnterior = 100.0
 @onready var animacion = $Animacion
 @onready var rellenoBateria = $Hud/RellenoBateria
 @onready var etiquetaBateria = $Hud/EtiquetaBateria
+@onready var etiquetaHamburguesas = $Hud/EtiquetaHamburguesas
 
 func _ready():
 	posicionAnterior = global_position
@@ -49,6 +50,24 @@ func _ready():
 func _process(delta):
 	actualizarLinterna(delta)
 	actualizarAnimacion(delta)
+	if Input.is_action_just_pressed("comer") and not get_tree().paused:
+		comerHamburguesa()
+	actualizarHamburguesas()
+
+func actualizarHamburguesas():
+	etiquetaHamburguesas.visible = Inventario.hamburguesas > 0
+	etiquetaHamburguesas.text = "Hamburguesas: " + str(Inventario.hamburguesas) + " (C para comer)"
+
+func comerHamburguesa():
+	if Inventario.hamburguesas <= 0:
+		return
+	Inventario.hamburguesas -= 1
+	curar(vidaMaxima)
+	if Inventario.clienteEnojado:
+		Inventario.mostrarMensaje("Te comiste otra hamburguesa: vida llena")
+		return
+	Inventario.clienteEnojado = true
+	Inventario.mostrarMensaje("Te comiste su hamburguesa: vida llena. El Cliente se levanta...")
 
 func actualizarAnimacion(delta):
 	var movio = global_position.distance_to(posicionAnterior) > 0.2

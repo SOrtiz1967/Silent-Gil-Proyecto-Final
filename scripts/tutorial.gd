@@ -9,8 +9,9 @@ extends CanvasLayer
 @export_multiline var textoCombate = "Pasaste los molinetes. Afuera te esperan los fisuras: vagabundos agresivos que te persiguen y te golpean. Espacio para golpear de cerca, E para tirar piedras. Al caer, algunos sueltan una bebida que te cura. Si necesitas curarte, volve: dentro de la estacion hay un kiosco con provisiones."
 @export_multiline var textoCelular = "Tu celular es tu linterna y su bateria se gasta mientras esta prendida. Apreta Q para apagarla y ahorrar. Busca los puntos de carga (los postes celestes) y mantene F para cargarlo."
 @export_multiline var textoPowerbank = "Un powerbank. Con esto el celular se carga solo, de a poco, hasta llegar al 100%, y ahi se queda: la bateria ya no se gasta."
+@export_multiline var textoHamburguesa = "Encontraste una de las hamburguesas del Cliente. Si se la llevas (F cerca de el) te acercas a la llave del subte. Si te la comes con C te cura toda la vida, pero rompes el trato y el Cliente te pelea a muerte."
 @export_multiline var textoFin = "Llegaste a tu casa. El reloj de la cocina marca las 3:07 y no hay nadie. Fin."
-@export_multiline var textoAyuda = "WASD o flechas: moverte\nEspacio: golpear\nE: tirar piedras o bengalas\nF: agarrar, abrir, leer, entrar y cargar el celular (mantener)\nT: inventario\nQ: prender o apagar la linterna del celular\nH: esta ayuda      Esc: pausa"
+@export_multiline var textoAyuda = "WASD o flechas: moverte\nEspacio: golpear\nE: tirar piedras o bengalas\nF: agarrar, abrir, leer, entrar y cargar el celular (mantener)\nT: inventario\nC: comer una hamburguesa (cura toda la vida)\nQ: prender o apagar la linterna del celular\nH: esta ayuda      Esc: pausa"
 @export_multiline var textoFinal = "Llegaste al final de este recorrido de prueba."
 var activo = false
 var vistos = []
@@ -63,6 +64,8 @@ func textoDe(idTutorial):
 			return textoCelular
 		"powerbank":
 			return textoPowerbank
+		"hamburguesa":
+			return textoHamburguesa
 		"final":
 			return textoFinal
 		"fin":
