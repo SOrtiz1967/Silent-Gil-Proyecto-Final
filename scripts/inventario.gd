@@ -8,6 +8,9 @@ var vida = -1.0
 var piedras = 0
 var pistola = false
 var bengalas = 0
+var hamburguesas = 0
+var hamburguesasEntregadas = 0
+var clienteEnojado = false
 var inventarioAbierto = false
 @onready var etiquetaMensaje = $EtiquetaMensaje
 @onready var etiquetaAviso = $EtiquetaAviso
@@ -76,6 +79,10 @@ func textoInventario():
 		texto += "Celular: " + str(int(bateria)) + "%\n\n"
 	if pistola:
 		texto += "Pistola de bengalas: " + str(bengalas) + " bengalas\n\n"
+	if hamburguesas > 0:
+		texto += "Hamburguesas: " + str(hamburguesas) + " (C para comer, cura toda la vida)\n\n"
+	if hamburguesasEntregadas > 0 and hamburguesasEntregadas < 3 and not clienteEnojado:
+		texto += "Hamburguesas entregadas al Cliente: " + str(hamburguesasEntregadas) + "/3\n\n"
 	texto += "Llaves:\n"
 	var hayLlaves = false
 	for idLlave in llaves:

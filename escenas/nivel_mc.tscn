@@ -11,6 +11,11 @@
 [ext_resource type="Script" path="res://scripts/aparicion.gd" id="13_aparicion"]
 [ext_resource type="PackedScene" path="res://escenas/consumible.tscn" id="14_consumible"]
 [ext_resource type="PackedScene" path="res://escenas/bengalas.tscn" id="15_bengalas"]
+[ext_resource type="Script" path="res://scripts/cliente.gd" id="16_cliente"]
+[ext_resource type="PackedScene" path="res://escenas/escondite.tscn" id="17_escondite"]
+[ext_resource type="PackedScene" path="res://escenas/puntoCarga.tscn" id="18_carga"]
+[ext_resource type="Script" path="res://scripts/luz_parpadeo.gd" id="19_parpadeo"]
+[ext_resource type="GradientTexture2D" path="res://assets/estacion/luz_radial.tres" id="20_luz"]
 
 [sub_resource type="RectangleShape2D" id="Shape_4096x32"]
 size = Vector2(4096, 32)
@@ -65,6 +70,9 @@ size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="Shape_80x112"]
 size = Vector2(80, 112)
+
+[sub_resource type="RectangleShape2D" id="Shape_96x40"]
+size = Vector2(96, 40)
 
 [sub_resource type="RectangleShape2D" id="Shape_200x40"]
 size = Vector2(200, 40)
@@ -128,6 +136,9 @@ size = Vector2(128, 48)
 
 [node name="NivelMc" type="Node2D"]
 script = ExtResource("2_nivel")
+[node name="Oscuridad" type="CanvasModulate" parent="."]
+color = Color(0.035, 0.035, 0.045, 1)
+
 [node name="FONDO" type="Node2D" parent="."]
 position = Vector2(0, 0)
 
@@ -462,6 +473,23 @@ position = Vector2(48, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HELADERA_COCINA_02_PB/StaticBody2D"]
 shape = SubResource("Shape_96x64")
 
+[node name="HORNO_PB" type="Node2D" parent="."]
+position = Vector2(1168, 256)
+
+[node name="Polygon2D" type="Polygon2D" parent="HORNO_PB"]
+color = Color(0.28, 0.28, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 64, 0, 64)
+
+[node name="Puerta" type="Polygon2D" parent="HORNO_PB"]
+color = Color(0.12, 0.1, 0.08, 1)
+polygon = PackedVector2Array(12, 20, 84, 20, 84, 56, 12, 56)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="HORNO_PB"]
+position = Vector2(48, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HORNO_PB/StaticBody2D"]
+shape = SubResource("Shape_96x64")
+
 [node name="MESADA_COCINA_PB" type="Node2D" parent="."]
 position = Vector2(448, 384)
 
@@ -620,20 +648,20 @@ position = Vector2(1328, 456)
 
 [node name="Polygon2D" type="Polygon2D" parent="BANO_HOMBRES_LAVABOS_PB"]
 color = Color(0.85, 0.9, 0.95, 1)
-polygon = PackedVector2Array(0, 0, 200, 0, 200, 40, 0, 40)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 40, 0, 40)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BANO_HOMBRES_LAVABOS_PB"]
-position = Vector2(100, 20)
+position = Vector2(48, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BANO_HOMBRES_LAVABOS_PB/StaticBody2D"]
-shape = SubResource("Shape_200x40")
+shape = SubResource("Shape_96x40")
 
 [node name="BANO_HOMBRES_ESPEJO_PB" type="Node2D" parent="."]
 position = Vector2(1328, 432)
 
 [node name="Polygon2D" type="Polygon2D" parent="BANO_HOMBRES_ESPEJO_PB"]
 color = Color(0.7, 0.85, 0.95, 1)
-polygon = PackedVector2Array(0, 0, 200, 0, 200, 12, 0, 12)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 12, 0, 12)
 
 [node name="BANO_MUJERES_CABINA_1_PB" type="Node2D" parent="."]
 position = Vector2(1664, 240)
@@ -700,20 +728,20 @@ position = Vector2(1664, 456)
 
 [node name="Polygon2D" type="Polygon2D" parent="BANO_MUJERES_LAVABOS_PB"]
 color = Color(0.85, 0.9, 0.95, 1)
-polygon = PackedVector2Array(0, 0, 200, 0, 200, 40, 0, 40)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 40, 0, 40)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="BANO_MUJERES_LAVABOS_PB"]
-position = Vector2(100, 20)
+position = Vector2(48, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BANO_MUJERES_LAVABOS_PB/StaticBody2D"]
-shape = SubResource("Shape_200x40")
+shape = SubResource("Shape_96x40")
 
 [node name="BANO_MUJERES_ESPEJO_PB" type="Node2D" parent="."]
 position = Vector2(1664, 432)
 
 [node name="Polygon2D" type="Polygon2D" parent="BANO_MUJERES_ESPEJO_PB"]
 color = Color(0.7, 0.85, 0.95, 1)
-polygon = PackedVector2Array(0, 0, 200, 0, 200, 12, 0, 12)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 12, 0, 12)
 
 [node name="ESCALERA_SUBIR_PB" type="Node2D" parent="."]
 position = Vector2(1696, 576)
@@ -2477,7 +2505,7 @@ rutaTextura = "res://assets/carteles/cartel_alerta.png"
 [node name="CartelHamburguesas" parent="." instance=ExtResource("10_cartel")]
 position = Vector2(1748, 1254)
 titulo = "NOTA"
-texto = "Escrita a las apuradas, 3:07: «no agarren las hamburguesas. Son de él». Más abajo: «tiene la llave del candado y no la suelta»."
+texto = "Escrita a las apuradas, 3:07: «El de la mesa tiene la llave del candado. Te la da si le juntás sus 3 hamburguesas: las escondieron acá adentro y él te dice dónde». Más abajo, subrayado: «NO TE COMAS NINGUNA. Te curan toda la vida, pero si te comés una no hay más trato: te pelea a muerte»."
 rutaTextura = "res://assets/carteles/cartel_madera.png"
 
 [node name="CartelTicket" parent="." instance=ExtResource("10_cartel")]
@@ -2487,6 +2515,7 @@ texto = "Un ticket de pedido, el 307, pegado con cinta en el escritorio. Nunca s
 rutaTextura = "res://assets/carteles/cartel_info.png"
 
 [node name="Cliente" parent="." instance=ExtResource("11_enemigo")]
+script = ExtResource("16_cliente")
 position = Vector2(1708, 1104)
 scale = Vector2(1.5, 1.5)
 vida = 30
@@ -2521,30 +2550,94 @@ position = Vector2(3586, 378)
 [node name="Bicho4" type="Marker2D" parent="BichosCocina"]
 position = Vector2(3586, 442)
 
-[node name="Hamburguesa1" parent="." instance=ExtResource("14_consumible")]
-position = Vector2(1704, 924)
-curacion = 2.0
-nombreConsumible = "Hamburguesa"
-verbo = "comer"
-rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/milanga-sanguche.png"
-
-[node name="Hamburguesa2" parent="." instance=ExtResource("14_consumible")]
-position = Vector2(1704, 988)
-curacion = 2.0
-nombreConsumible = "Hamburguesa"
-verbo = "comer"
-rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/milanga-sanguche.png"
-
-[node name="Hamburguesa3" parent="." instance=ExtResource("14_consumible")]
-position = Vector2(1640, 860)
-curacion = 2.0
-nombreConsumible = "Hamburguesa"
-verbo = "comer"
-rutaTextura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/milanga-sanguche.png"
-
 [node name="CajaBengalas" parent="." instance=ExtResource("15_bengalas")]
 position = Vector2(3140, 356)
 cantidad = 3
+
+[node name="EsconditeHorno" parent="." instance=ExtResource("17_escondite")]
+position = Vector2(1216, 344)
+textoAviso = "F para revisar el horno"
+
+[node name="EsconditeBano" parent="." instance=ExtResource("17_escondite")]
+position = Vector2(1880, 366)
+textoAviso = "F para revisar el inodoro"
+
+[node name="EsconditeSillon" parent="." instance=ExtResource("17_escondite")]
+position = Vector2(3696, 1072)
+textoAviso = "F para revisar debajo del sillón"
+
+[node name="PuntoCarga1" parent="." instance=ExtResource("18_carga")]
+position = Vector2(1250, 1236)
+
+[node name="LuzSalon1" type="PointLight2D" parent="."]
+position = Vector2(600, 1000)
+color = Color(1, 0.92, 0.75, 1)
+energy = 0.75
+texture = ExtResource("20_luz")
+texture_scale = 2.4
+script = ExtResource("19_parpadeo")
+parpadea = true
+fuerte = false
+
+[node name="LuzSalon2" type="PointLight2D" parent="."]
+position = Vector2(1400, 1000)
+color = Color(1, 0.92, 0.75, 1)
+energy = 0.75
+texture = ExtResource("20_luz")
+texture_scale = 2.4
+script = ExtResource("19_parpadeo")
+parpadea = true
+fuerte = true
+
+[node name="LuzEntrada" type="PointLight2D" parent="."]
+position = Vector2(1088, 1180)
+color = Color(1, 0.92, 0.75, 1)
+energy = 0.75
+texture = ExtResource("20_luz")
+texture_scale = 2.4
+script = ExtResource("19_parpadeo")
+parpadea = false
+fuerte = false
+
+[node name="LuzCocina" type="PointLight2D" parent="."]
+position = Vector2(700, 330)
+color = Color(1, 0.92, 0.75, 1)
+energy = 0.75
+texture = ExtResource("20_luz")
+texture_scale = 2.4
+script = ExtResource("19_parpadeo")
+parpadea = true
+fuerte = true
+
+[node name="LuzBanos" type="PointLight2D" parent="."]
+position = Vector2(1620, 420)
+color = Color(1, 0.92, 0.75, 1)
+energy = 0.75
+texture = ExtResource("20_luz")
+texture_scale = 2.4
+script = ExtResource("19_parpadeo")
+parpadea = true
+fuerte = true
+
+[node name="LuzSalonArriba1" type="PointLight2D" parent="."]
+position = Vector2(2600, 960)
+color = Color(1, 0.92, 0.75, 1)
+energy = 0.75
+texture = ExtResource("20_luz")
+texture_scale = 2.4
+script = ExtResource("19_parpadeo")
+parpadea = true
+fuerte = false
+
+[node name="LuzSalonArriba2" type="PointLight2D" parent="."]
+position = Vector2(3350, 960)
+color = Color(1, 0.92, 0.75, 1)
+energy = 0.75
+texture = ExtResource("20_luz")
+texture_scale = 2.4
+script = ExtResource("19_parpadeo")
+parpadea = true
+fuerte = true
 
 [node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
 position = Vector2(1088, 1184)

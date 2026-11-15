@@ -27,7 +27,7 @@ shader_parameter/repeticion = Vector2(6, 3.5)
 [node name="EstacionVisual" type="Node2D"]
 
 [node name="Ambiente" type="CanvasModulate" parent="."]
-color = Color(0.085, 0.1, 0.135, 1)
+color = Color(0.03, 0.035, 0.05, 1)
 
 [node name="Tiles" type="Node2D" parent="."]
 scale = Vector2(2, 2)
