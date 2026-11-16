@@ -1,0 +1,1131 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/nivel.gd" id="nivel"]
+[ext_resource type="Script" path="res://scripts/pathfinding.gd" id="pathfinding"]
+[ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador/jugador.tscn" id="1_jugador"]
+[ext_resource type="PackedScene" path="res://escenas/mundo/entrada_nivel.tscn" id="e1"]
+[ext_resource type="PackedScene" path="res://escenas/objetos/piedra.tscn" id="e2"]
+[ext_resource type="PackedScene" path="res://escenas/objetos/consumible.tscn" id="e3"]
+[ext_resource type="PackedScene" path="res://escenas/objetos/bengalas.tscn" id="e4"]
+[ext_resource type="PackedScene" path="res://escenas/objetos/cartel.tscn" id="e5"]
+[ext_resource type="PackedScene" path="res://escenas/enemigos/enemigo.tscn" id="e6"]
+[ext_resource type="Script" path="res://scripts/tren_fantasma.gd" id="e10"]
+[ext_resource type="PackedScene" path="res://escenas/mundo/puerta.tscn" id="e11"]
+[ext_resource type="PackedScene" path="res://escenas/objetos/objeto_clave.tscn" id="e12"]
+[ext_resource type="Texture2D" path="res://assets/texturas/baldosa.png" id="tx_baldosa"]
+[ext_resource type="Texture2D" path="res://assets/texturas/concreto.png" id="tx_concreto"]
+[ext_resource type="Texture2D" path="res://assets/texturas/ladrillo.png" id="tx_ladrillo"]
+[ext_resource type="Texture2D" path="res://assets/texturas/madera.png" id="tx_madera"]
+[ext_resource type="Texture2D" path="res://assets/texturas/madera_piso.png" id="tx_madera_piso"]
+[ext_resource type="Texture2D" path="res://assets/texturas/metal.png" id="tx_metal"]
+
+[sub_resource type="RectangleShape2D" id="Shape_32x32"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x64"]
+size = Vector2(32, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x96"]
+size = Vector2(32, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x224"]
+size = Vector2(32, 224)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x288"]
+size = Vector2(32, 288)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x320"]
+size = Vector2(32, 320)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x384"]
+size = Vector2(32, 384)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x416"]
+size = Vector2(32, 416)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x512"]
+size = Vector2(32, 512)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x672"]
+size = Vector2(32, 672)
+
+[sub_resource type="RectangleShape2D" id="Shape_64x64"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_96x32"]
+size = Vector2(96, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_128x32"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_192x32"]
+size = Vector2(192, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_288x32"]
+size = Vector2(288, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_320x32"]
+size = Vector2(320, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_320x64"]
+size = Vector2(320, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_352x32"]
+size = Vector2(352, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_480x32"]
+size = Vector2(480, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_608x32"]
+size = Vector2(608, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_736x32"]
+size = Vector2(736, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_1056x32"]
+size = Vector2(1056, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_1248x32"]
+size = Vector2(1248, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_2048x32"]
+size = Vector2(2048, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_2432x32"]
+size = Vector2(2432, 32)
+
+[node name="NivelSubteLineaC" type="Node2D"]
+script = ExtResource("nivel")
+titulo_intro = "SUBTE LÍNEA C"
+texto_intro = "Es lo más oscuro que vas a ver y no hay donde cargar el celular: sin powerbank se te acaba la batería (si pasa, subí por la escalera). Hay que llegar a la puerta de servicio, al fondo a la derecha, pero está cerrada: la llave quedó en la cabina de señales del ramal. Ojo al cruzar las vías. Los malvivientes del subte solo se mueven si la linterna (Q) está prendida: apagala para pasar de largo."
+
+[node name="Oscuridad" type="CanvasModulate" parent="."]
+color = Color(0.012, 0.012, 0.018, 1)
+
+[node name="Pathfinding" type="Node" parent="."]
+script = ExtResource("pathfinding")
+
+[node name="PISOS" type="Node2D" parent="."]
+
+[node name="ESCALERA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(96, 96)
+color = Color(0.3, 0.3, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 288, 0, 288, 416, 0, 416)
+
+[node name="VESTIBULO" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
+position = Vector2(96, 544)
+color = Color(0.25, 0.25, 0.27, 1)
+polygon = PackedVector2Array(0, 0, 768, 0, 768, 512, 0, 512)
+
+[node name="PUERTA_ESCALERA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
+position = Vector2(160, 512)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="ANDEN_NORTE" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(896, 480)
+color = Color(0.3, 0.3, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 2368, 0, 2368, 320, 0, 320)
+
+[node name="PUERTA_ANDEN" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
+position = Vector2(864, 640)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="VIAS" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(896, 832)
+color = Color(0.05, 0.05, 0.05, 1)
+polygon = PackedVector2Array(0, 0, 2368, 0, 2368, 224, 0, 224)
+
+[node name="PASARELA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(2112, 800)
+color = Color(0.28, 0.28, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 288, 0, 288)
+
+[node name="ANDEN_SUR" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(896, 1088)
+color = Color(0.3, 0.3, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 2368, 0, 2368, 320, 0, 320)
+
+[node name="PUERTA_TUNEL" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
+position = Vector2(3264, 1184)
+color = Color(0.45, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
+
+[node name="TUNEL_1" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(3296, 1184)
+color = Color(0.2, 0.2, 0.22, 1)
+polygon = PackedVector2Array(0, 0, 832, 0, 832, 128, 0, 128)
+
+[node name="TUNEL_2" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(4000, 480)
+color = Color(0.2, 0.2, 0.22, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 832, 0, 832)
+
+[node name="TUNEL_3" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(4128, 480)
+color = Color(0.2, 0.2, 0.22, 1)
+polygon = PackedVector2Array(0, 0, 320, 0, 320, 128, 0, 128)
+
+[node name="SALA_SERVICIO" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
+position = Vector2(4448, 352)
+color = Color(0.3, 0.28, 0.25, 1)
+polygon = PackedVector2Array(0, 0, 256, 0, 256, 384, 0, 384)
+
+[node name="RAMAL" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(3552, 1312)
+color = Color(0.2, 0.2, 0.22, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 320, 0, 320)
+
+[node name="PAREDES" type="StaticBody2D" parent="."]
+
+[node name="PARED_01" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(64, 64)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 352, 0, 352, 32, 0, 32)
+
+[node name="COLISION_01" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(240, 80)
+shape = SubResource("Shape_352x32")
+
+[node name="PARED_02" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(64, 96)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 416, 0, 416)
+
+[node name="COLISION_02" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(80, 304)
+shape = SubResource("Shape_32x416")
+
+[node name="PARED_03" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(384, 96)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 416, 0, 416)
+
+[node name="COLISION_03" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(400, 304)
+shape = SubResource("Shape_32x416")
+
+[node name="PARED_04" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(4416, 320)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 320, 0, 320, 32, 0, 32)
+
+[node name="COLISION_04" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(4576, 336)
+shape = SubResource("Shape_320x32")
+
+[node name="PARED_05" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(4416, 352)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="COLISION_05" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(4432, 400)
+shape = SubResource("Shape_32x96")
+
+[node name="PARED_06" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(4704, 352)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 384, 0, 384)
+
+[node name="COLISION_06" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(4720, 544)
+shape = SubResource("Shape_32x384")
+
+[node name="PARED_07" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(864, 448)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 2432, 0, 2432, 32, 0, 32)
+
+[node name="COLISION_07" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2080, 464)
+shape = SubResource("Shape_2432x32")
+
+[node name="PARED_08" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3968, 448)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 480, 0, 480, 32, 0, 32)
+
+[node name="COLISION_08" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(4208, 464)
+shape = SubResource("Shape_480x32")
+
+[node name="PARED_09" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(864, 480)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 32, 0, 32)
+
+[node name="COLISION_09" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(880, 496)
+shape = SubResource("Shape_32x32")
+
+[node name="PARED_10" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3264, 480)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
+
+[node name="COLISION_10" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3280, 640)
+shape = SubResource("Shape_32x320")
+
+[node name="PARED_11" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3968, 480)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 672, 0, 672)
+
+[node name="COLISION_11" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3984, 816)
+shape = SubResource("Shape_32x672")
+
+[node name="PARED_12" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(64, 512)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 96, 0, 96, 32, 0, 32)
+
+[node name="COLISION_12" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(112, 528)
+shape = SubResource("Shape_96x32")
+
+[node name="PARED_13" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(288, 512)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 608, 0, 608, 32, 0, 32)
+
+[node name="COLISION_13" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(592, 528)
+shape = SubResource("Shape_608x32")
+
+[node name="PARED_14" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(64, 544)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 512, 0, 512)
+
+[node name="COLISION_14" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(80, 800)
+shape = SubResource("Shape_32x512")
+
+[node name="PARED_15" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(864, 544)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="COLISION_15" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(880, 592)
+shape = SubResource("Shape_32x96")
+
+[node name="PARED_16" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(4128, 608)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 320, 0, 320, 32, 0, 32)
+
+[node name="COLISION_16" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(4288, 624)
+shape = SubResource("Shape_320x32")
+
+[node name="PARED_17" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(4128, 640)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 672, 0, 672)
+
+[node name="COLISION_17" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(4144, 976)
+shape = SubResource("Shape_32x672")
+
+[node name="PARED_18" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(4416, 640)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="COLISION_18" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(4432, 688)
+shape = SubResource("Shape_32x96")
+
+[node name="PARED_19" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(4416, 736)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 320, 0, 320, 32, 0, 32)
+
+[node name="COLISION_19" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(4576, 752)
+shape = SubResource("Shape_320x32")
+
+[node name="PARED_20" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(864, 768)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 32, 0, 32)
+
+[node name="COLISION_20" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(880, 784)
+shape = SubResource("Shape_32x32")
+
+[node name="PARED_21" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(864, 800)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 1248, 0, 1248, 32, 0, 32)
+
+[node name="COLISION_21" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1488, 816)
+shape = SubResource("Shape_1248x32")
+
+[node name="PARED_22" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(2240, 800)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 1056, 0, 1056, 32, 0, 32)
+
+[node name="COLISION_22" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2768, 816)
+shape = SubResource("Shape_1056x32")
+
+[node name="PARED_23" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(864, 832)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 224, 0, 224)
+
+[node name="COLISION_23" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(880, 944)
+shape = SubResource("Shape_32x224")
+
+[node name="PARED_24" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(2080, 832)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 224, 0, 224)
+
+[node name="COLISION_24" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2096, 944)
+shape = SubResource("Shape_32x224")
+
+[node name="PARED_25" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(2240, 832)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 224, 0, 224)
+
+[node name="COLISION_25" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2256, 944)
+shape = SubResource("Shape_32x224")
+
+[node name="PARED_26" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(64, 1056)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 2048, 0, 2048, 32, 0, 32)
+
+[node name="COLISION_26" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(1088, 1072)
+shape = SubResource("Shape_2048x32")
+
+[node name="PARED_27" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(2240, 1056)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 1056, 0, 1056, 32, 0, 32)
+
+[node name="COLISION_27" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2768, 1072)
+shape = SubResource("Shape_1056x32")
+
+[node name="PARED_28" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(864, 1088)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
+
+[node name="COLISION_28" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(880, 1248)
+shape = SubResource("Shape_32x320")
+
+[node name="PARED_29" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3264, 1088)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="COLISION_29" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3280, 1120)
+shape = SubResource("Shape_32x64")
+
+[node name="PARED_30" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3264, 1152)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 736, 0, 736, 32, 0, 32)
+
+[node name="COLISION_30" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3632, 1168)
+shape = SubResource("Shape_736x32")
+
+[node name="PARED_31" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3264, 1312)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 288, 0, 288, 32, 0, 32)
+
+[node name="COLISION_31" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3408, 1328)
+shape = SubResource("Shape_288x32")
+
+[node name="PARED_32" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3680, 1312)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 480, 0, 480, 32, 0, 32)
+
+[node name="COLISION_32" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3920, 1328)
+shape = SubResource("Shape_480x32")
+
+[node name="PARED_33" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3264, 1344)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="COLISION_33" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3280, 1376)
+shape = SubResource("Shape_32x64")
+
+[node name="PARED_34" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3520, 1344)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
+
+[node name="COLISION_34" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3536, 1488)
+shape = SubResource("Shape_32x288")
+
+[node name="PARED_35" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3680, 1344)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
+
+[node name="COLISION_35" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3696, 1488)
+shape = SubResource("Shape_32x288")
+
+[node name="PARED_36" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(864, 1408)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 2432, 0, 2432, 32, 0, 32)
+
+[node name="COLISION_36" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(2080, 1424)
+shape = SubResource("Shape_2432x32")
+
+[node name="PARED_37" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(3520, 1632)
+color = Color(0.8, 0.8, 0.8, 1)
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 32, 0, 32)
+
+[node name="COLISION_37" type="CollisionShape2D" parent="PAREDES"]
+position = Vector2(3616, 1648)
+shape = SubResource("Shape_192x32")
+
+[node name="OBJETOS" type="Node2D" parent="."]
+
+[node name="MOLINETE_1" type="Node2D" parent="OBJETOS"]
+position = Vector2(192, 720)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MOLINETE_1"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MOLINETE_1"]
+position = Vector2(16, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MOLINETE_1/StaticBody2D"]
+shape = SubResource("Shape_32x64")
+
+[node name="MOLINETE_2" type="Node2D" parent="OBJETOS"]
+position = Vector2(352, 720)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MOLINETE_2"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MOLINETE_2"]
+position = Vector2(16, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MOLINETE_2/StaticBody2D"]
+shape = SubResource("Shape_32x64")
+
+[node name="MOLINETE_3" type="Node2D" parent="OBJETOS"]
+position = Vector2(512, 720)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MOLINETE_3"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MOLINETE_3"]
+position = Vector2(16, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MOLINETE_3/StaticBody2D"]
+shape = SubResource("Shape_32x64")
+
+[node name="MOLINETE_4" type="Node2D" parent="OBJETOS"]
+position = Vector2(672, 720)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MOLINETE_4"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MOLINETE_4"]
+position = Vector2(16, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MOLINETE_4/StaticBody2D"]
+shape = SubResource("Shape_32x64")
+
+[node name="BOLETERIA" type="Node2D" parent="OBJETOS"]
+position = Vector2(480, 960)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/BOLETERIA"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+color = Color(0.55, 0.55, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 320, 0, 320, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/BOLETERIA"]
+position = Vector2(160, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/BOLETERIA/StaticBody2D"]
+shape = SubResource("Shape_320x64")
+
+[node name="COLUMNA_N_1" type="Node2D" parent="OBJETOS"]
+position = Vector2(1056, 560)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_N_1"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_N_1"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_N_1/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_S_1" type="Node2D" parent="OBJETOS"]
+position = Vector2(1056, 1216)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_S_1"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_S_1"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_S_1/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_N_2" type="Node2D" parent="OBJETOS"]
+position = Vector2(1440, 560)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_N_2"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_N_2"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_N_2/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_S_2" type="Node2D" parent="OBJETOS"]
+position = Vector2(1440, 1216)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_S_2"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_S_2"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_S_2/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_N_3" type="Node2D" parent="OBJETOS"]
+position = Vector2(1824, 560)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_N_3"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_N_3"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_N_3/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_S_3" type="Node2D" parent="OBJETOS"]
+position = Vector2(1824, 1216)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_S_3"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_S_3"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_S_3/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_N_4" type="Node2D" parent="OBJETOS"]
+position = Vector2(2208, 560)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_N_4"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_N_4"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_N_4/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_S_4" type="Node2D" parent="OBJETOS"]
+position = Vector2(2208, 1216)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_S_4"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_S_4"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_S_4/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_N_5" type="Node2D" parent="OBJETOS"]
+position = Vector2(2592, 560)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_N_5"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_N_5"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_N_5/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_S_5" type="Node2D" parent="OBJETOS"]
+position = Vector2(2592, 1216)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_S_5"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_S_5"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_S_5/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_N_6" type="Node2D" parent="OBJETOS"]
+position = Vector2(2976, 560)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_N_6"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_N_6"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_N_6/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="COLUMNA_S_6" type="Node2D" parent="OBJETOS"]
+position = Vector2(2976, 1216)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_S_6"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/COLUMNA_S_6"]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/COLUMNA_S_6/StaticBody2D"]
+shape = SubResource("Shape_64x64")
+
+[node name="BANCO_N" type="Node2D" parent="OBJETOS"]
+position = Vector2(1600, 720)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/BANCO_N"]
+texture = ExtResource("tx_madera")
+texture_repeat = 2
+color = Color(0.45, 0.3, 0.15, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/BANCO_N"]
+position = Vector2(64, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/BANCO_N/StaticBody2D"]
+shape = SubResource("Shape_128x32")
+
+[node name="BANCO_S" type="Node2D" parent="OBJETOS"]
+position = Vector2(2560, 1344)
+
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/BANCO_S"]
+texture = ExtResource("tx_madera")
+texture_repeat = 2
+color = Color(0.45, 0.3, 0.15, 1)
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/BANCO_S"]
+position = Vector2(64, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/BANCO_S/StaticBody2D"]
+shape = SubResource("Shape_128x32")
+
+[node name="PUERTA_SERVICIO" type="Polygon2D" parent="OBJETOS"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+position = Vector2(4704, 496)
+color = Color(0.35, 0.45, 0.4, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
+
+[node name="ZONAS" type="Node2D" parent="."]
+
+[node name="MARCADORES" type="Node2D" parent="."]
+
+[node name="ENTRADA_SUBTE" type="Marker2D" parent="MARCADORES"]
+position = Vector2(224, 160)
+
+[node name="SubirPlaza" parent="." instance=ExtResource("e1")]
+position = Vector2(194, 332)
+scale = Vector2(1, 1)
+ruta_nivel = "res://escenas/niveles/nivel_1.tscn"
+punto_destino = "PUNTO_SALIDA_SUBTE"
+texto_aviso = "F para subir a la plaza"
+
+[node name="Piedra1" parent="." instance=ExtResource("e2")]
+position = Vector2(780, 620)
+
+[node name="Piedra2" parent="." instance=ExtResource("e2")]
+position = Vector2(1300, 640)
+
+[node name="Piedra3" parent="." instance=ExtResource("e2")]
+position = Vector2(3150, 620)
+
+[node name="Golosina1" parent="." instance=ExtResource("e3")]
+position = Vector2(1700, 1200)
+curacion = 1
+nombre_consumible = "Golosina"
+verbo = "comer"
+ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/golosina-01.png"
+
+[node name="Golosina2" parent="." instance=ExtResource("e3")]
+position = Vector2(3500, 1230)
+curacion = 1
+nombre_consumible = "Golosina"
+verbo = "comer"
+ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/golosina-02.png"
+
+[node name="Choripan" parent="." instance=ExtResource("e3")]
+position = Vector2(4350, 560)
+curacion = 2
+nombre_consumible = "Choripan"
+verbo = "comer"
+ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/choripan.png"
+
+[node name="CajaBengalas" parent="." instance=ExtResource("e4")]
+position = Vector2(3616, 1560)
+cantidad = 4
+
+[node name="PuertaServicio" parent="." instance=ExtResource("e1")]
+position = Vector2(4608, 544)
+scale = Vector2(1, 2)
+ruta_nivel = "res://escenas/niveles/nivel_6.tscn"
+punto_destino = "PUNTO_APARICION_JUGADOR"
+texto_aviso = "F para abrir la puerta de servicio"
+llave_requerida = "llaveServicio"
+mensaje_bloqueada = "Cerrada con llave. Hace falta la llave de servicio"
+
+[node name="CartelLinea" parent="." instance=ExtResource("e5")]
+position = Vector2(224, 330)
+titulo = "LÍNEA C"
+texto = "Cabecera Constitución. Última estación. Hace rato que no pasa nadie por acá, pero el cartel de «próximo tren» sigue contando."
+ruta_textura = "res://assets/carteles/cartel_info.png"
+
+[node name="CartelNombre" parent="." instance=ExtResource("e5")]
+position = Vector2(1120, 530)
+titulo = "ANDÉN"
+texto = "El cartel del andén dice «Próxima estación: Constitución». Venís de Constitución."
+ruta_textura = "res://assets/carteles/cartel_alerta.png"
+
+[node name="CartelNota" parent="." instance=ExtResource("e5")]
+position = Vector2(1930, 530)
+titulo = "NOTA EN LA COLUMNA"
+texto = "Escrito con fibrón, 3:07: «se quedan quietos mientras no los alumbrás. Pasá por al lado sin mirarlos»."
+ruta_textura = "res://assets/carteles/cartel_madera.png"
+
+[node name="CartelTren" parent="." instance=ExtResource("e5")]
+position = Vector2(2800, 1360)
+titulo = "VÍAS"
+texto = "Acaba de pasar un tren sin nadie adentro. Ni conductor. Las ventanas prendidas y no frenó en ningún andén. Las vías siguen calientes."
+ruta_textura = "res://assets/carteles/cartel_alerta.png"
+
+[node name="CartelServicio" parent="." instance=ExtResource("e5")]
+position = Vector2(4400, 560)
+titulo = "PUERTA DE SERVICIO"
+texto = "Solo personal autorizado. Cerrada con llave. Escrito con fibrón: «la llave quedó en la cabina de señales del ramal». Del otro lado se escucha un silbato, lejos."
+ruta_textura = "res://assets/carteles/cartel_llave.png"
+
+[node name="Fisura01" parent="." instance=ExtResource("e6")]
+position = Vector2(1000, 560)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura02" parent="." instance=ExtResource("e6")]
+position = Vector2(1500, 700)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura03" parent="." instance=ExtResource("e6")]
+position = Vector2(2000, 1200)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura04" parent="." instance=ExtResource("e6")]
+position = Vector2(2700, 650)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura05" parent="." instance=ExtResource("e6")]
+position = Vector2(3100, 1340)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura06" parent="." instance=ExtResource("e6")]
+position = Vector2(3100, 640)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura07" parent="." instance=ExtResource("e6")]
+position = Vector2(3700, 1248)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura08" parent="." instance=ExtResource("e6")]
+position = Vector2(4064, 900)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura09" parent="." instance=ExtResource("e6")]
+position = Vector2(4300, 544)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura10" parent="." instance=ExtResource("e6")]
+position = Vector2(600, 800)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="TrenFantasma" type="Node2D" parent="."]
+script = ExtResource("e10")
+
+[node name="PuertaCabina" parent="." instance=ExtResource("e11")]
+position = Vector2(3616, 1424)
+rotation = 1.5708
+scale = Vector2(1, 2)
+forzar = true
+mensaje_abierta = "Forzaste la puerta de la cabina de señales"
+texto_aviso = "F para forzar la cabina de señales"
+
+[node name="LlaveServicio" parent="." instance=ExtResource("e12")]
+position = Vector2(3600, 1606)
+id_llave = "llaveServicio"
+nombre_objeto = "Llave de servicio"
+
+[node name="CartelCabina" parent="." instance=ExtResource("e5")]
+position = Vector2(3580, 1500)
+titulo = "CABINA DE SEÑALES"
+texto = "Todas las señales del tablero marcan lo mismo: 3:07. Colgada de un clavo está la llave de la puerta de servicio. Al lado, una nota: «La puerta de servicio da a una estación que no está en ningún mapa. Si la abrís, no apagues el celular hasta que tengas que hacerlo»."
+
+[node name="Fisura11" parent="." instance=ExtResource("e6")]
+position = Vector2(3800, 1240)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="Fisura12" parent="." instance=ExtResource("e6")]
+position = Vector2(3430, 1240)
+vida = 12
+dano = 1.5
+variante = 2
+color_normal = Color(0.78, 0.84, 1, 1)
+rango_deteccion = 300
+solo_con_luz = true
+
+[node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
+position = Vector2(224, 224)
+
+[node name="Jugador" parent="." instance=ExtResource("1_jugador")]
+position = Vector2(224, 224)

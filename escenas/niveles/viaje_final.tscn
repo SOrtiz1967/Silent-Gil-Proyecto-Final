@@ -1,0 +1,186 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/viaje_final.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://escenas/mundo/tren.tscn" id="2_tren"]
+[ext_resource type="SpriteFrames" path="res://assets/personaje_principal/jugador_frames.tres" id="3_frames"]
+[ext_resource type="GradientTexture2D" path="res://assets/estacion/luz_radial.tres" id="4_luz"]
+[ext_resource type="Texture2D" path="res://assets/texturas/baldosa.png" id="tx_baldosa"]
+[ext_resource type="Texture2D" path="res://assets/texturas/concreto.png" id="tx_concreto"]
+[ext_resource type="Texture2D" path="res://assets/texturas/metal.png" id="tx_metal"]
+[ext_resource type="Texture2D" path="res://assets/texturas/ladrillo.png" id="tx_ladrillo"]
+
+[node name="ViajeFinal" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Oscuridad" type="CanvasModulate" parent="."]
+color = Color(0.3, 0.3, 0.38, 1)
+
+[node name="PISOS" type="Node2D" parent="."]
+
+[node name="VIAS_IDA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+color = Color(0.15, 0.15, 0.17, 1)
+polygon = PackedVector2Array(0, 0, 256, 0, 256, 1000, 0, 1000)
+
+[node name="RIEL_IDA_1" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+position = Vector2(84, 0)
+color = Color(0.5, 0.5, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 8, 0, 8, 1000, 0, 1000)
+
+[node name="RIEL_IDA_2" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+position = Vector2(164, 0)
+color = Color(0.5, 0.5, 0.55, 1)
+polygon = PackedVector2Array(0, 0, 8, 0, 8, 1000, 0, 1000)
+
+[node name="ANDEN_IDA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
+position = Vector2(256, 0)
+color = Color(0.35, 0.35, 0.42, 1)
+polygon = PackedVector2Array(0, 0, 896, 0, 896, 1000, 0, 1000)
+
+[node name="BORDE_IDA" type="Polygon2D" parent="PISOS"]
+position = Vector2(256, 0)
+color = Color(0.8, 0.7, 0.1, 1)
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 1000, 0, 1000)
+
+[node name="PARED_IDA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
+position = Vector2(1120, 0)
+color = Color(0.3, 0.25, 0.25, 1)
+polygon = PackedVector2Array(0, 0, 64, 0, 64, 1000, 0, 1000)
+
+[node name="VIAS_LLEGADA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(3000, 0)
+color = Color(0.18, 0.18, 0.2, 1)
+polygon = PackedVector2Array(0, 0, 256, 0, 256, 1000, 0, 1000)
+
+[node name="RIEL_LLEGADA_1" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+position = Vector2(3084, 0)
+color = Color(0.55, 0.55, 0.6, 1)
+polygon = PackedVector2Array(0, 0, 8, 0, 8, 1000, 0, 1000)
+
+[node name="RIEL_LLEGADA_2" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
+position = Vector2(3164, 0)
+color = Color(0.55, 0.55, 0.6, 1)
+polygon = PackedVector2Array(0, 0, 8, 0, 8, 1000, 0, 1000)
+
+[node name="ANDEN_LLEGADA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
+position = Vector2(3256, 0)
+color = Color(0.55, 0.5, 0.42, 1)
+polygon = PackedVector2Array(0, 0, 896, 0, 896, 1000, 0, 1000)
+
+[node name="BORDE_LLEGADA" type="Polygon2D" parent="PISOS"]
+position = Vector2(3256, 0)
+color = Color(0.85, 0.75, 0.15, 1)
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 1000, 0, 1000)
+
+[node name="SALIDA_LLEGADA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
+position = Vector2(4120, 440)
+color = Color(0.3, 0.3, 0.3, 1)
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 160, 0, 160)
+
+[node name="LUCES" type="Node2D" parent="."]
+
+[node name="LUZ_IDA" type="PointLight2D" parent="LUCES"]
+position = Vector2(700, 500)
+color = Color(0.6, 0.65, 1, 1)
+energy = 0.5
+texture = ExtResource("4_luz")
+texture_scale = 4.0
+
+[node name="LUZ_LLEGADA_1" type="PointLight2D" parent="LUCES"]
+position = Vector2(3550, 380)
+color = Color(1, 0.9, 0.7, 1)
+energy = 0.8
+texture = ExtResource("4_luz")
+texture_scale = 3.0
+
+[node name="LUZ_LLEGADA_2" type="PointLight2D" parent="LUCES"]
+position = Vector2(3900, 620)
+color = Color(1, 0.9, 0.7, 1)
+energy = 0.8
+texture = ExtResource("4_luz")
+texture_scale = 3.0
+
+[node name="Tren" parent="." instance=ExtResource("2_tren")]
+position = Vector2(64, -1000)
+
+[node name="Pasajero" type="AnimatedSprite2D" parent="."]
+position = Vector2(760, 520)
+sprite_frames = ExtResource("3_frames")
+animation = &"idle_izquierda"
+offset = Vector2(0, -10)
+
+[node name="MARCADORES" type="Node2D" parent="."]
+
+[node name="PUERTA_TREN_IDA" type="Marker2D" parent="MARCADORES"]
+position = Vector2(200, 520)
+
+[node name="PUERTA_TREN_LLEGADA" type="Marker2D" parent="MARCADORES"]
+position = Vector2(3200, 520)
+
+[node name="SALIDA_ESTACION" type="Marker2D" parent="MARCADORES"]
+position = Vector2(4100, 520)
+
+[node name="Camara" type="Camera2D" parent="."]
+position = Vector2(576, 500)
+
+[node name="Pantalla" type="CanvasLayer" parent="."]
+
+[node name="Negro" type="ColorRect" parent="Pantalla"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Texto" type="Label" parent="Pantalla"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_right = -96.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="Saltear" type="Label" parent="Pantalla"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -40.0
+offset_right = -16.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "F para saltear"
+horizontal_alignment = 2

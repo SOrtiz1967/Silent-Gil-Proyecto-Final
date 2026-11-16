@@ -1,58 +1,69 @@
 extends Area2D
+#cosas para curarse (alfajores, bebidas, etc). Se agarran con F
 @export var curacion = 1.0
-@export var nombreConsumible = "Golosina"
+@export var nombre_consumible = "Golosina"
 @export var verbo = "comer"
-@export_file("*.png") var rutaTextura = ""
+@export_file("*.png") var ruta_textura = ""
 @export var escala = 2.0
 @export var rotacion = 0.0
 @export var persistente = true
-@export var radioInteraccion = 48.0
-var idObjeto = ""
+@export var radio_interaccion = 48.0
+
+var id_objeto = ""
 var jugador = null
 var tiempo = 0.0
+
 @onready var sprite = $Sprite2D
 @onready var luz = $Luz
-func _ready():
-	if rutaTextura != "":
-		sprite.texture = load(rutaTextura)
+
+func _ready() -> void:
+	if ruta_textura != "":
+		sprite.texture = load(ruta_textura)
 	sprite.scale = Vector2(escala, escala)
 	sprite.rotation_degrees = rotacion
 	var forma = CircleShape2D.new()
-	forma.radius = radioInteraccion
+	forma.radius = radio_interaccion
 	$ColisionZona.shape = forma
 	tiempo = randf() * 6.0
-	if not persistente:
+	if persistente:
+		#los que vienen puestos en el mapa se acuerdan si ya los agarraste
+		id_objeto = str(get_path())
+		if Inventario.ya_recogido(id_objeto):
+			queue_free()
+	else:
+		#los que suelta un enemigo caen con un rebote
 		sprite.position.y = -26.0
 		var caida = create_tween()
 		caida.tween_property(sprite, "position:y", 0.0, 0.35).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-	if persistente:
-		idObjeto = str(get_path())
-		if Inventario.yaRecogido(idObjeto):
-			queue_free()
-func _process(delta):
+
+func _process(delta: float) -> void:
 	tiempo += delta
 	luz.energy = 0.5 + 0.12 * sin(tiempo * 3.0)
 	if jugador and Input.is_action_just_pressed("interactuar"):
 		consumir()
-func textoCuracion():
+
+func texto_curacion() -> String:
 	if curacion == floor(curacion):
 		return str(int(curacion))
 	return str(curacion).replace(".", ",")
-func consumir():
-	if jugador.vida >= jugador.vidaMaxima:
-		Inventario.mostrarMensaje("Tenes la vida llena")
+
+func consumir() -> void:
+	if jugador.vida >= jugador.vida_maxima:
+		Inventario.mostrar_mensaje("Tenes la vida llena")
 		return
 	jugador.curar(curacion)
-	Inventario.ocultarAviso()
-	Inventario.mostrarMensaje(nombreConsumible + ": +" + textoCuracion() + " de vida")
+	Inventario.ocultar_aviso()
+	Inventario.mostrar_mensaje(nombre_consumible + ": +" + texto_curacion() + " de vida")
 	if persistente:
-		Inventario.marcarRecogido(idObjeto)
+		Inventario.marcar_recogido(id_objeto)
 	queue_free()
-func alEntrarCuerpo(cuerpo):
-	if cuerpo.is_in_group("jugador"):
-		jugador = cuerpo
-		Inventario.mostrarAviso("F para " + verbo + " " + nombreConsumible + " (+" + textoCuracion() + " vida)")
-func alSalirCuerpo(cuerpo):
-	if cuerpo.is_in_group("jugador"):
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("jugador"):
+		jugador = body
+		Inventario.mostrar_aviso("F para " + verbo + " " + nombre_consumible + " (+" + texto_curacion() + " vida)")
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("jugador"):
 		jugador = null
-		Inventario.ocultarAviso()
+		Inventario.ocultar_aviso()

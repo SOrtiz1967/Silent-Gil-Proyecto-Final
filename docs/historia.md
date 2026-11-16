@@ -16,11 +16,11 @@ Cambios respecto del borrador anterior:
 - El Cliente ya no es una pelea obligatoria: es un fisura que tiene la `llaveSubte` y te la da a cambio de sus 3 hamburguesas, escondidas en el Mc (horno de la cocina, baño, debajo de un sillón de arriba). Te va dando una pista por vez. Cualquier hamburguesa se puede comer con C y cura toda la vida, pero rompe el trato: el Cliente pelea a muerte y suelta la llave al morir. Pegarle también rompe el trato.
 - La oscuridad importa de verdad: todos los interiores (estación, plaza, Mc, comisaría, celda, subte, estación que no existe) son casi negros. Sin batería solo se ve un círculo chico alrededor del personaje; con la linterna se ve bien. La casa queda iluminada.
 - En el subte pasa de verdad el tren vacío (si estás en la pasarela te tira contra el andén) y la puerta de servicio necesita la llave de la cabina de señales del ramal.
-- El Guarda se escucha antes de verlo (silbato lejano, pasos). A oscuras no te ve pero camina hacia donde vio tu luz, y si le pegás toca el silbato y te persigue igual.
+- El Guardia se escucha antes de verlo (silbato lejano, pasos). A oscuras no te ve pero camina hacia donde vio tu luz, y si le pegás toca el silbato y te persigue igual.
 - El powerbank está en la oficina del segundo piso del Mc. Al agarrarlo salen los bichos de la cocina.
-- El Guarda y los pálidos del subte se mueven solo si tenés la linterna prendida. El Guarda suelta el silbato que hace falta, junto con la SUBE, para salir.
+- El Guardia y los malvivientes del subte se mueven solo si tenés la linterna prendida. El Guardia suelta el silbato que hace falta, junto con la SUBE, para salir.
 - El celular tiene una llamada perdida de «Casa» a las 3:07. Se avisa en la estación y se vuelve a ver en la casa.
-- Cada nivel deja una nota firmada a las 3:07 por alguien que pasó antes («no te comas ninguna», «se quedan quietos mientras no los alumbrás», «el guarda quiere que te quedes»). Así la historia se cuenta sin gente.
+- Cada nivel deja una nota firmada a las 3:07 por alguien que pasó antes («no te comas ninguna», «se quedan quietos mientras no los alumbrás», «el guardia quiere que te quedes»). Así la historia se cuenta sin gente.
 - En el Mc hay un ticket del pedido 307 que nunca se entregó.
 
 ---
@@ -79,7 +79,7 @@ Mc:       Cliente (planta baja) -> 3 hamburguesas escondidas (o comerse una y pe
 Mc:       depósito / oficina (piso 2) -> powerbank -> enemigo molesto
 Plaza:    llave del candado -> reja del subte
 Subte:    andenes, tren vacío, cabina de señales del ramal -> llave de servicio -> puerta de servicio
-Estación que no existe: puzzles con la luz -> Guarda -> salida
+Estación que no existe: puzzles con la luz -> Guardia -> salida
 Casa:     el reloj marca 3:07
 ```
 
@@ -93,8 +93,8 @@ La dificultad sube de a poco y cada nivel enseña algo nuevo antes de pedirlo.
 | 2 | Plaza | Combate (golpes y piedras), curarse, buscar la llave | Fisuras agresivos | Peligro real |
 | 3 | Comisaría | Explorar un interior, conseguir el arma más poderosa | Fisuras, un poco más duros | Alivio y tensión |
 | 4 | McDonald's | Explorar dos pisos siguiendo pistas, elegir entre el trato y la pelea | El Cliente (si rompés el trato), bichos de la cocina | Lo raro se vuelve evidente |
-| 5 | Subte Línea C: andenes y túneles | Moverse casi a ciegas, gestionar batería al límite | Fisuras pálidos y más fuertes | Claustrofobia |
-| 6 | La estación que no existe | Resolver puzzles, jugar con la luz, pelea de boss | El Guarda | Irrealidad |
+| 5 | Subte Línea C: andenes y túneles | Moverse casi a ciegas, gestionar batería al límite | Malvivientes del subte, más fuertes | Claustrofobia |
+| 6 | La estación que no existe | Resolver puzzles, jugar con la luz, pelea de boss | El Guardia | Irrealidad |
 | 7 | La casa | Cierre | Ninguna | Final |
 
 ### Nivel 1: Estación Constitución
@@ -164,7 +164,7 @@ La dificultad sube de a poco y cada nivel enseña algo nuevo antes de pedirlo.
 Tono: combate y supervivencia, en la oscuridad.
 
 - Con la llave abre el candado y baja.
-- Los enemigos son una **variante nueva de fisuras**, distinta a los de la plaza: más pálidos, se mueven por el piso y las paredes, y se quedan quietos mientras no los alumbres. La linterna cambia cómo se juega acá.
+- Los enemigos son los **malvivientes del subte**, una variante nueva de fisuras distinta a los de la plaza: se mueven por el piso y las paredes, y se quedan quietos mientras no los alumbres. La linterna cambia cómo se juega acá.
 - Son **más fuertes** que los de la plaza: aguantan dos golpes más y pegan un poco más fuerte. Con los números actuales, los de la plaza tienen vida 6 y daño 1 (mueren con 2 golpes). Los del subte tendrían vida 12 (4 golpes) y daño 1.5.
 - Es el nivel más oscuro y no tiene puntos de carga. Con la powerbank el celular aguanta. Sin ella, la batería se gasta, el celular se apaga y el jugador queda a oscuras: tiene que volver al Mc a buscarla al depósito.
 - **[?]** Cuando el celular se apaga, se ve apenas una luz tenue en la entrada, para que el jugador entienda que tiene que volver y no sienta que el juego se rompió.
@@ -178,22 +178,22 @@ Tono: exploración y puzzles, con lo sobrenatural a la vista. Pocos combates, ha
 
 - Es una estación que no está en ningún mapa. El cartel dice "Constitución" aunque el jugador ya salió de ahí. Los relojes marcan las 3:07.
 - Las salas no cierran: una puerta lleva a la misma sala, y el túnel largo hace que el jugador reaparezca al principio.
-- **Puzzle de la luz (propuesta):** el túnel solo cambia, y deja pasar, cuando el jugador apaga la linterna y camina a oscuras. Se conecta con la mecánica del Guarda y es barato de programar (es una teletransportación según la linterna).
+- **Puzzle de la luz (propuesta):** el túnel solo cambia, y deja pasar, cuando el jugador apaga la linterna y camina a oscuras. Se conecta con la mecánica del Guardia y es barato de programar (es una teletransportación según la linterna).
 - **Puzzles de objetos:** una puerta con cerradura (ganzúa), una rejilla con pernos y notas sobre quién se quedó acá antes. Se usan las mecánicas que ya existen.
 - **[?]** La SUBE vuelve a servir: el molinete de esta estación es el único que se abre con ella, y es la única salida.
-- Pocos fisuras, pero los pálidos aparecen donde la luz está prendida.
-- Termina en el andén final, donde espera el Guarda.
+- Pocos fisuras, pero los malvivientes del subte aparecen donde la luz está prendida.
+- Termina en el andén final, donde espera el Guardia.
 
-**El Guarda (boss, andén final)**
-- Es el guarda del último tren, el que lo dejó en Constitución y no lo despertó. Quiere que se quede.
+**El Guardia (boss, andén final)**
+- Es el guardia del último tren, el que lo dejó en Constitución y no lo despertó. Quiere que se quede.
 - Se lo siente antes de verlo: un silbato lejano en el túnel, pasos en un andén, y un silbato muy cerca al llegar al andén final.
 - Su frase repetida, cuando te ve: *"Última estación. Todos bajan."*
-- Mecánica: reacciona a la luz del celular. Si la linterna está prendida, te ve de lejos y te persigue. Si está apagada no te ve, pero el jugador tampoco lo ve a él, y el Guarda camina despacio hacia donde vio la luz por última vez; si estás pegado a él, te pega igual. Si le pegás, toca el silbato y te persigue rápido unos segundos aunque estés a oscuras. Así la pelea obliga a elegir cuándo prender la luz.
+- Mecánica: reacciona a la luz del celular. Si la linterna está prendida, te ve de lejos y te persigue. Si está apagada no te ve, pero el jugador tampoco lo ve a él, y el Guardia camina despacio hacia donde vio la luz por última vez; si estás pegado a él, te pega igual. Si le pegás, toca el silbato y te persigue rápido unos segundos aunque estés a oscuras. Así la pelea obliga a elegir cuándo prender la luz.
 - Al derrotarlo se abre la salida del subte hacia la calle.
 
 ### Nivel 7: La casa
 
-- Es el nivel más corto, de cierre. Llega a su casa, todo parece normal, y el reloj de la cocina marca 3:07. No hay nadie.
+- Es el nivel más corto, de cierre. Después del Guardia se sube a un tren que esta vez frena y lo deja en su estación. Llega a su casa, todo parece normal, y el reloj de la cocina marca 3:07. No hay nadie.
 
 ## El final: ambiguo
 
@@ -211,15 +211,15 @@ Descartados: *el tren otra vez* (abre la puerta y se despierta en el tren que en
 ## Para decidir
 
 Ya decidido:
-- Siete niveles (estación, plaza, comisaría, Mc, subte, estación que no existe y casa). El Guarda es el boss; el Cliente solo pelea si rompés el trato.
+- Siete niveles (estación, plaza, comisaría, Mc, subte, estación que no existe y casa). El Guardia es el boss; el Cliente solo pelea si rompés el trato.
 - Los fisuras del subte tienen vida 12 y daño 1.5.
 - La comisaría tiene un subnivel: queda encerrado en una celda y escapa sacando los pernos de una rejilla de ventilación.
 - El nivel intermedio es la comisaría, y ahí se consigue la pistola de bengalas.
 - El candado solo abre con la llave. El Cliente es el custodio de la llave y la cambia por sus 3 hamburguesas; comerse una (cura toda la vida) o pegarle rompe el trato y hay pelea a muerte.
 - Los interiores son casi negros: sin batería solo se ve un círculo chico alrededor del personaje.
 - La powerbank está en el depósito o la oficina del segundo piso. Al agarrarla aparecen los bichos de la cocina.
-- El Guarda reacciona a la luz del celular, va hacia la última luz que vio y toca el silbato si le pegás.
-- Los fisuras del subte son una variante nueva: pálidos, quietos mientras no los alumbres y más fuertes que los de la plaza.
+- El Guardia reacciona a la luz del celular, va hacia la última luz que vio y toca el silbato si le pegás.
+- Los malvivientes del subte son una variante nueva de fisuras: quietos mientras no los alumbres y más fuertes que los de la plaza.
 - Final: **la casa está, pero...** El reloj de la cocina marca 3:07 y no hay nadie.
 - El docente no pidió nada específico.
 

@@ -1,57 +1,69 @@
 extends Area2D
-@export var idLlaveRequerida = ""
-@export var consumirLlave = false
-@export var mensajeBloqueada = "Esta cerrada"
-@export var mensajeAbierta = "Abriste la puerta"
-@export var textoAviso = "F para abrir"
+#puertas, rejas y molinetes. Se abren con llave o se fuerzan con la ganzua / los pernos
+@export var llave_requerida = ""
+@export var consumir_llave = false
+@export var mensaje_bloqueada = "Esta cerrada"
+@export var mensaje_abierta = "Abriste la puerta"
+@export var texto_aviso = "F para abrir"
 @export var forzar = false
-@export var forzarSiNoHayLlave = false
-@export var idTutorialAlAbrir = ""
-@export var bloqueosExtra:Array[NodePath] = []
-var jugadorCerca = false
+@export var forzar_sin_llave = false
+@export var tutorial_al_abrir = ""
+@export var bloqueos_extra: Array[NodePath] = []
+
+var jugador_cerca = false
 var abierta = false
+
 @onready var imagen = get_node_or_null("Sprite2D")
-@onready var colisionBloqueo = get_node_or_null("Bloqueo/ColisionBloqueo")
-func _process(delta):
-	if jugadorCerca and not abierta and Input.is_action_just_pressed("interactuar"):
-		intentarAbrir()
-func intentarAbrir():
+@onready var colision_bloqueo = get_node_or_null("Bloqueo/ColisionBloqueo")
+
+func _process(delta: float) -> void:
+	if jugador_cerca and not abierta and Input.is_action_just_pressed("interactuar"):
+		intentar_abrir()
+
+func intentar_abrir() -> void:
 	if forzar:
-		intentarForzar()
-	elif puedeAbrir():
+		intentar_forzar()
+	elif puede_abrir():
 		abrir()
-	elif forzarSiNoHayLlave:
-		intentarForzar()
+	elif forzar_sin_llave:
+		intentar_forzar()
 	else:
-		Inventario.mostrarMensaje(mensajeBloqueada)
-func intentarForzar():
-	if Inventario.tieneGanzua():
+		Inventario.mostrar_mensaje(mensaje_bloqueada)
+
+#con ganzuas va el minijuego de la cerradura, sin ganzuas el de los pernos
+func intentar_forzar() -> void:
+	if Inventario.tiene_ganzua():
 		Cerradura.iniciar(self)
 	else:
 		Pernos.iniciar(self)
-func puedeAbrir():
-	return idLlaveRequerida=="" or Inventario.tieneLlave(idLlaveRequerida)
-func abrir():
+
+func puede_abrir() -> bool:
+	return llave_requerida == "" or Inventario.tiene_llave(llave_requerida)
+
+func abrir() -> void:
 	abierta = true
-	Inventario.ocultarAviso()
-	if consumirLlave:
-		Inventario.quitarLlave(idLlaveRequerida)
+	Inventario.ocultar_aviso()
+	if consumir_llave:
+		Inventario.quitar_llave(llave_requerida)
 	if imagen:
 		imagen.visible = false
-	if colisionBloqueo:
-		colisionBloqueo.disabled = true
-	for ruta in bloqueosExtra:
+	if colision_bloqueo:
+		colision_bloqueo.disabled = true
+	for ruta in bloqueos_extra:
 		get_node(ruta).disabled = true
-	Inventario.mostrarMensaje(mensajeAbierta)
+	Inventario.mostrar_mensaje(mensaje_abierta)
+	#le aviso al pathfinding que ahora se puede pasar por ahi
 	get_tree().call_group("pathfinding", "actualizar")
-	if idTutorialAlAbrir != "":
-		Tutorial.mostrar(idTutorialAlAbrir)
-func alEntrarCuerpo(cuerpo):
-	if cuerpo.is_in_group("jugador"):
-		jugadorCerca = true
+	if tutorial_al_abrir != "":
+		Tutorial.mostrar(tutorial_al_abrir)
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("jugador"):
+		jugador_cerca = true
 		if not abierta:
-			Inventario.mostrarAviso(textoAviso)
-func alSalirCuerpo(cuerpo):
-	if cuerpo.is_in_group("jugador"):
-		jugadorCerca = false
-		Inventario.ocultarAviso()
+			Inventario.mostrar_aviso(texto_aviso)
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("jugador"):
+		jugador_cerca = false
+		Inventario.ocultar_aviso()

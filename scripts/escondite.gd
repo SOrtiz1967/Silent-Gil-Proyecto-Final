@@ -1,31 +1,38 @@
 extends Area2D
-@export var textoAviso = "F para revisar"
-@export var mensajeEncontrado = "Sacaste una hamburguesa"
-@export var mensajeVacio = "No hay nada"
-var idObjeto = ""
-var jugadorCerca = false
+#lugares donde esta escondida una hamburguesa del Cliente. Se revisan con F
+@export var texto_aviso = "F para revisar"
+@export var mensaje_encontrado = "Sacaste una hamburguesa"
+@export var mensaje_vacio = "No hay nada"
+
+var id_objeto = ""
+var jugador_cerca = false
 var revisado = false
-func _ready():
-	idObjeto = str(get_path())
-	revisado = Inventario.yaRecogido(idObjeto)
-func _process(delta):
-	if jugadorCerca and Input.is_action_just_pressed("interactuar") and not Tutorial.activo:
+
+func _ready() -> void:
+	id_objeto = str(get_path())
+	revisado = Inventario.ya_recogido(id_objeto)
+
+func _process(delta: float) -> void:
+	if jugador_cerca and Input.is_action_just_pressed("interactuar") and not Tutorial.activo:
 		revisar()
-func revisar():
+
+func revisar() -> void:
 	if revisado:
-		Inventario.mostrarMensaje(mensajeVacio)
+		Inventario.mostrar_mensaje(mensaje_vacio)
 		return
 	revisado = true
-	Inventario.marcarRecogido(idObjeto)
+	Inventario.marcar_recogido(id_objeto)
 	Inventario.hamburguesas += 1
-	Inventario.ocultarAviso()
-	Inventario.mostrarMensaje(mensajeEncontrado + ". Llevala al Cliente o comela con C")
+	Inventario.ocultar_aviso()
+	Inventario.mostrar_mensaje(mensaje_encontrado + ". Llevala al Cliente o comela con C")
 	Tutorial.mostrar("hamburguesa")
-func alEntrarCuerpo(cuerpo):
-	if cuerpo.is_in_group("jugador"):
-		jugadorCerca = true
-		Inventario.mostrarAviso(textoAviso)
-func alSalirCuerpo(cuerpo):
-	if cuerpo.is_in_group("jugador"):
-		jugadorCerca = false
-		Inventario.ocultarAviso()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("jugador"):
+		jugador_cerca = true
+		Inventario.mostrar_aviso(texto_aviso)
+
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("jugador"):
+		jugador_cerca = false
+		Inventario.ocultar_aviso()
