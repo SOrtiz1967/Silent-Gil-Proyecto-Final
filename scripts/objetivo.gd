@@ -64,10 +64,10 @@ func pasoPlaza(nivel, jugador):
 	return [texto, "EntradaSubte"]
 func pasoMc(nivel, jugador):
 	var arriba = jugador.global_position.x > 2000.0
-	if not tiene("llaveSubte") and existe(nivel, "Cliente"):
-		return ["Encontrá al Cliente (planta baja, a la derecha): tiene la llave del subte. Pegale con Espacio; se pone rojo un instante antes de pegar.", "Cliente"]
 	if not tiene("llaveSubte"):
-		return ["Agarrá la llave del candado que soltó el Cliente (F).", ""]
+		var pasoCliente = pasoHamburguesas(nivel)
+		if not pasoCliente.is_empty():
+			return pasoCliente
 	if not tiene("powerbank") and not arriba:
 		return ["Recomendado: subí al segundo piso (escalera, F) y buscá el powerbank en la oficina.", "ZonaEscaleraSubir"]
 	if not tiene("powerbank"):
@@ -75,6 +75,24 @@ func pasoMc(nivel, jugador):
 	if arriba:
 		return ["Bajá por la escalera (F).", "ZonaEscaleraBajar"]
 	return ["Salí del McDonald's (puerta de abajo) y andá a la reja del subte, en la plaza.", "ZonaSalida"]
+func pasoHamburguesas(nivel):
+	var cliente = nivel.get_node_or_null("Cliente")
+	if Inventario.clienteEnojado:
+		if cliente != null:
+			return ["Rompiste el trato: el Cliente pelea a muerte. Derrotalo para quedarte con la llave (Espacio, piedras o bengalas).", "Cliente"]
+		return ["Agarrá la llave del candado que soltó el Cliente (F).", ""]
+	if cliente == null:
+		return []
+	if Inventario.hamburguesas > 0:
+		return ["Llevale la hamburguesa al Cliente (F cerca de él). Si te la comés (C) te cura todo, pero rompés el trato.", "Cliente"]
+	var revisados = 0
+	for nombre in ["EsconditeHorno", "EsconditeBano", "EsconditeSillon"]:
+		var escondite = nivel.get_node_or_null(nombre)
+		if escondite != null and escondite.revisado:
+			revisados += 1
+	if revisados == 0 and Inventario.hamburguesasEntregadas == 0:
+		return ["Hablá con el Cliente, el fisura sentado a la derecha de la planta baja (F).", "Cliente"]
+	return ["Buscá la hamburguesa que falta (" + str(Inventario.hamburguesasEntregadas) + "/3). El Cliente dijo: «" + cliente.pistaSiguiente() + "»", ""]
 func pasoComisaria(nivel):
 	if not Inventario.pistola:
 		return ["Entrá a los calabozos (arriba a la derecha, F). Desde la celda hay un camino al depósito de evidencia, donde está la pistola de bengalas.", "EntradaCalabozos"]
