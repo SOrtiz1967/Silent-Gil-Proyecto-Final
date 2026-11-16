@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const Proyectil = preload("res://escenas/jugador/proyectil.tscn")
 const Bengala = preload("res://escenas/jugador/bengala.tscn")
+const PantallaMuerte = preload("res://escenas/interfaz/pantalla_muerte.tscn")
 const ancho_barra = 200.0
 const direcciones = {
 	"arriba": Vector2.UP,
@@ -27,6 +28,7 @@ var invulnerable = false
 var vida = 0
 var cantidad_piedras = 0
 var control_bloqueado = false
+var muerto = false
 var linterna_encendida = true
 var posicion_anterior = Vector2.ZERO
 var bloqueo_anim = 0.0
@@ -239,8 +241,14 @@ func actualizar_barra_vida() -> void:
 	var texto_vida = str(int(vida_visible)) if vida_visible == floor(vida_visible) else str(vida_visible)
 	etiqueta_vida.text = texto_vida + " / " + str(vida_maxima)
 
+#se cuenta la muerte y aparece el cartel, que decide si se repite el nivel o arranca todo de nuevo
 func morir() -> void:
-	Inventario.vida = -1.0
-	Inventario.piedras = 0
-	Inventario.bateria = max(Inventario.bateria, 30.0)
-	get_tree().reload_current_scene()
+	if muerto:
+		return
+	muerto = true
+	control_bloqueado = true
+	Inventario.muertes += 1
+	#el cartel va en la raiz para que no se borre cuando se recarga el nivel
+	var pantalla = PantallaMuerte.instantiate()
+	get_tree().root.add_child(pantalla)
+	pantalla.mostrar(Inventario.muertes)

@@ -58,7 +58,7 @@ func paso_de(archivo: String, nivel: Node, jugador: Node2D) -> Array:
 		"nivel_6.tscn":
 			return paso_estacion_fantasma(nivel, jugador)
 		"nivel_7.tscn":
-			return paso_casa()
+			return paso_casa(nivel)
 	return []
 
 func paso_plaza(jugador: Node2D) -> Array:
@@ -144,7 +144,8 @@ func paso_estacion_fantasma(nivel: Node, jugador: Node2D) -> Array:
 		return ["Te falta la SUBE: hay una en la alacena detrás de la rejilla, en el cuarto de arriba (F para sacar los pernos).", "RejillaAlacena"]
 	return ["Pasá el molinete de salida (F) con la SUBE y el silbato.", "MolineteSalida"]
 
-func paso_casa() -> Array:
-	if Tutorial.vistos.has("fin"):
-		return ["Fin. Gracias por jugar.", ""]
+#cuando empieza el apagon de la casa el objetivo desaparece
+func paso_casa(nivel: Node) -> Array:
+	if nivel.get("final_empezado"):
+		return []
 	return ["Entrá a la cocina.", "ZonaFin"]

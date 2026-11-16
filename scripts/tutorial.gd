@@ -60,7 +60,7 @@ func texto_de(id_tutorial: String) -> String:
 	return texto
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ayuda") and not activo and not get_tree().paused:
+	if Input.is_action_just_pressed("ayuda") and not activo and not get_tree().paused and not CambioNivel.en_menu():
 		mostrar_texto("CONTROLES", texto_ayuda)
 	if puede_cerrar() and Input.is_action_just_pressed("interactuar"):
 		cerrar()

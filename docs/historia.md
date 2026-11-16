@@ -80,7 +80,7 @@ Mc:       depósito / oficina (piso 2) -> powerbank -> enemigo molesto
 Plaza:    llave del candado -> reja del subte
 Subte:    andenes, tren vacío, cabina de señales del ramal -> llave de servicio -> puerta de servicio
 Estación que no existe: puzzles con la luz -> Guardia -> salida
-Casa:     el reloj marca 3:07
+Casa:     el reloj marca 3:07 -> apagón -> el fantasma de la B
 ```
 
 ## Niveles
@@ -194,10 +194,11 @@ Tono: exploración y puzzles, con lo sobrenatural a la vista. Pocos combates, ha
 ### Nivel 7: La casa
 
 - Es el nivel más corto, de cierre. Después del Guardia se sube a un tren que esta vez frena y lo deja en su estación. Llega a su casa, todo parece normal, y el reloj de la cocina marca 3:07. No hay nadie.
+- Al entrar a la cocina se apagan las luces una por una hasta que solo queda la del celular. Algo respira detrás. Aparece el cartel final: «Fuiste perseguido y asesinado por el fantasma de la B».
 
 ## El final: ambiguo
 
-**Elegido: la casa está, pero...** Llega y todo parece normal, pero el reloj de la cocina marca 3:07 y no hay nadie. No se explica nada más.
+**Elegido: la casa está, pero...** Llega y todo parece normal, pero el reloj de la cocina marca 3:07 y no hay nadie. Las luces se apagan y lo alcanza el fantasma de la B, la línea de subte que lo venía siguiendo. No se explica nada más.
 
 Descartados: *el tren otra vez* (abre la puerta y se despierta en el tren que entra a Constitución) y *nadie lo ve* (llega y no hay modo de saber si está vivo o no).
 
@@ -220,7 +221,7 @@ Ya decidido:
 - La powerbank está en el depósito o la oficina del segundo piso. Al agarrarla aparecen los bichos de la cocina.
 - El Guardia reacciona a la luz del celular, va hacia la última luz que vio y toca el silbato si le pegás.
 - Los malvivientes del subte son una variante nueva de fisuras: quietos mientras no los alumbres y más fuertes que los de la plaza.
-- Final: **la casa está, pero...** El reloj de la cocina marca 3:07 y no hay nadie.
+- Final: **la casa está, pero...** El reloj de la cocina marca 3:07, no hay nadie, se apagan las luces y lo mata el fantasma de la B.
 - El docente no pidió nada específico.
 
 Falta:

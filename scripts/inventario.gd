@@ -12,6 +12,7 @@ var bengalas = 0
 var hamburguesas = 0
 var hamburguesas_entregadas = 0
 var cliente_enojado = false
+var muertes = 0
 var inventario_abierto = false
 
 @onready var etiqueta_mensaje = $EtiquetaMensaje
@@ -53,6 +54,25 @@ func marcar_recogido(id_objeto: String) -> void:
 func ya_recogido(id_objeto: String) -> bool:
 	return objetos_recogidos.has(id_objeto)
 
+#se usa cuando se pierden las 3 vidas: todo vuelve a como estaba al empezar el juego
+func reiniciar() -> void:
+	llaves.clear()
+	nombres_llaves.clear()
+	objetos_recogidos.clear()
+	ganzuas = 0
+	bateria = 100.0
+	vida = -1.0
+	piedras = 0
+	pistola = false
+	bengalas = 0
+	hamburguesas = 0
+	hamburguesas_entregadas = 0
+	cliente_enojado = false
+	muertes = 0
+	cerrar_inventario()
+	ocultar_aviso()
+	etiqueta_mensaje.visible = false
+
 func mostrar_mensaje(texto: String) -> void:
 	etiqueta_mensaje.text = texto
 	etiqueta_mensaje.visible = true
@@ -69,7 +89,7 @@ func _on_temporizador_mensaje_timeout() -> void:
 	etiqueta_mensaje.visible = false
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("inventario"):
+	if Input.is_action_just_pressed("inventario") and not CambioNivel.en_menu():
 		alternar_inventario()
 	elif inventario_abierto and Input.is_action_just_pressed("ui_cancel"):
 		cerrar_inventario()

@@ -1,0 +1,96 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/menu_principal.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/pausa.jpeg" id="2_fondo"]
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Fondo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_fondo")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Oscurecer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Titulo" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 64
+text = "SILENT GIL"
+horizontal_alignment = 1
+
+[node name="Hora" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 22
+text = "Constitución, 3:07"
+horizontal_alignment = 1
+
+[node name="Espacio" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="BotonJugar" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Jugar"
+
+[node name="BotonControles" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controles"
+
+[node name="BotonSalir" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+
+[node name="Controles" type="Label" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+text = "WASD o flechas: moverte
+Espacio: golpear
+E: tirar piedras o bengalas
+F: agarrar, abrir, leer, entrar y cargar el celular (mantener)
+T: inventario
+C: comer una hamburguesa
+Q: prender o apagar la linterna del celular
+H: ayuda      Esc: pausa"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BotonJugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BotonControles" to="." method="_on_boton_controles_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BotonSalir" to="." method="_on_boton_salir_pressed"]

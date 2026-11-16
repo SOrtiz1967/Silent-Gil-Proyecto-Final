@@ -1,515 +1,568 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cd61lb1e5115f"]
 
-[ext_resource type="Script" path="res://scripts/nivel.gd" id="nivel"]
-[ext_resource type="Script" path="res://scripts/pathfinding.gd" id="pathfinding"]
 [ext_resource type="PackedScene" uid="uid://oob0ouo3ypvy" path="res://escenas/jugador/jugador.tscn" id="1_jugador"]
 [ext_resource type="PackedScene" path="res://escenas/objetos/cartel.tscn" id="e1"]
-[ext_resource type="PackedScene" path="res://escenas/mundo/zona_tutorial.tscn" id="e2"]
-[ext_resource type="Texture2D" path="res://assets/texturas/baldosa.png" id="tx_baldosa"]
-[ext_resource type="Texture2D" path="res://assets/texturas/ladrillo.png" id="tx_ladrillo"]
-[ext_resource type="Texture2D" path="res://assets/texturas/madera.png" id="tx_madera"]
-[ext_resource type="Texture2D" path="res://assets/texturas/madera_piso.png" id="tx_madera_piso"]
-[ext_resource type="Texture2D" path="res://assets/texturas/metal.png" id="tx_metal"]
-[ext_resource type="Texture2D" path="res://assets/texturas/plastico.png" id="tx_plastico"]
-[ext_resource type="Texture2D" path="res://assets/texturas/tela.png" id="tx_tela"]
-
-[sub_resource type="RectangleShape2D" id="Shape_32x128"]
-size = Vector2(32, 128)
-
-[sub_resource type="RectangleShape2D" id="Shape_32x192"]
-size = Vector2(32, 192)
-
-[sub_resource type="RectangleShape2D" id="Shape_32x288"]
-size = Vector2(32, 288)
-
-[sub_resource type="RectangleShape2D" id="Shape_32x512"]
-size = Vector2(32, 512)
-
-[sub_resource type="RectangleShape2D" id="Shape_64x64"]
-size = Vector2(64, 64)
-
-[sub_resource type="RectangleShape2D" id="Shape_128x64"]
-size = Vector2(128, 64)
-
-[sub_resource type="RectangleShape2D" id="Shape_160x32"]
-size = Vector2(160, 32)
-
-[sub_resource type="RectangleShape2D" id="Shape_192x32"]
-size = Vector2(192, 32)
-
-[sub_resource type="RectangleShape2D" id="Shape_192x96"]
-size = Vector2(192, 96)
-
-[sub_resource type="RectangleShape2D" id="Shape_192x128"]
-size = Vector2(192, 128)
-
-[sub_resource type="RectangleShape2D" id="Shape_224x32"]
-size = Vector2(224, 32)
-
-[sub_resource type="RectangleShape2D" id="Shape_224x96"]
-size = Vector2(224, 96)
-
-[sub_resource type="RectangleShape2D" id="Shape_256x96"]
-size = Vector2(256, 96)
-
-[sub_resource type="RectangleShape2D" id="Shape_352x32"]
-size = Vector2(352, 32)
-
-[sub_resource type="RectangleShape2D" id="Shape_448x64"]
-size = Vector2(448, 64)
-
-[sub_resource type="RectangleShape2D" id="Shape_608x32"]
-size = Vector2(608, 32)
+[ext_resource type="Script" path="res://scripts/nivel_7.gd" id="nivel"]
+[ext_resource type="Script" uid="uid://hgrwl0ygh41w" path="res://scripts/pathfinding.gd" id="pathfinding"]
+[ext_resource type="Texture2D" uid="uid://cuu57yef0kkfe" path="res://assets/texturas/baldosa.png" id="tx_baldosa"]
+[ext_resource type="Texture2D" uid="uid://c5wfkkk4en8qs" path="res://assets/texturas/ladrillo.png" id="tx_ladrillo"]
+[ext_resource type="Texture2D" uid="uid://car2osgmtd2tg" path="res://assets/texturas/madera.png" id="tx_madera"]
+[ext_resource type="Texture2D" uid="uid://daykjfaxnt2lq" path="res://assets/texturas/madera_piso.png" id="tx_madera_piso"]
+[ext_resource type="Texture2D" uid="uid://ml745l8nx8cs" path="res://assets/texturas/metal.png" id="tx_metal"]
+[ext_resource type="Texture2D" uid="uid://c76n8h7wtrrqu" path="res://assets/texturas/plastico.png" id="tx_plastico"]
+[ext_resource type="Texture2D" uid="uid://bf0m5sijx3yqk" path="res://assets/texturas/tela.png" id="tx_tela"]
 
 [sub_resource type="RectangleShape2D" id="Shape_1248x32"]
 size = Vector2(1248, 32)
 
-[node name="NivelCasa" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="Shape_32x512"]
+size = Vector2(32, 512)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x192"]
+size = Vector2(32, 192)
+
+[sub_resource type="RectangleShape2D" id="Shape_160x32"]
+size = Vector2(160, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_608x32"]
+size = Vector2(608, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_224x32"]
+size = Vector2(224, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x128"]
+size = Vector2(32, 128)
+
+[sub_resource type="RectangleShape2D" id="Shape_352x32"]
+size = Vector2(352, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_192x32"]
+size = Vector2(192, 32)
+
+[sub_resource type="RectangleShape2D" id="Shape_32x288"]
+size = Vector2(32, 288)
+
+[sub_resource type="RectangleShape2D" id="Shape_256x96"]
+size = Vector2(256, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_192x96"]
+size = Vector2(192, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_448x64"]
+size = Vector2(448, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_224x96"]
+size = Vector2(224, 96)
+
+[sub_resource type="RectangleShape2D" id="Shape_192x128"]
+size = Vector2(192, 128)
+
+[sub_resource type="RectangleShape2D" id="Shape_128x64"]
+size = Vector2(128, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_64x64"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="Shape_zona_fin"]
+size = Vector2(200, 100)
+
+[node name="NivelCasa" type="Node2D" unique_id=1531767350]
 script = ExtResource("nivel")
 titulo_intro = "TU CASA"
 texto_intro = "Llegaste. Las llaves entran en la cerradura y las luces andan. Entrá a la cocina."
 
-[node name="Pathfinding" type="Node" parent="."]
+[node name="Oscuridad" type="CanvasModulate" parent="." unique_id=1303828857]
+
+[node name="Pathfinding" type="Node" parent="." unique_id=244992499]
 script = ExtResource("pathfinding")
 
-[node name="PISOS" type="Node2D" parent="."]
+[node name="PISOS" type="Node2D" parent="." unique_id=425853981]
 
-[node name="LIVING" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="LIVING" type="Polygon2D" parent="PISOS" unique_id=228175472]
 texture_repeat = 2
 position = Vector2(96, 96)
 color = Color(0.45, 0.38, 0.3, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 512, 0, 512)
 
-[node name="COCINA" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_baldosa")
+[node name="COCINA" type="Polygon2D" parent="PISOS" unique_id=1000843810]
 texture_repeat = 2
 position = Vector2(768, 96)
 color = Color(0.5, 0.5, 0.48, 1)
+texture = ExtResource("tx_baldosa")
 polygon = PackedVector2Array(0, 0, 512, 0, 512, 512, 0, 512)
 
-[node name="PASILLO" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="PASILLO" type="Polygon2D" parent="PISOS" unique_id=1549400552]
 texture_repeat = 2
 position = Vector2(96, 640)
 color = Color(0.4, 0.35, 0.3, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 1184, 0, 1184, 128, 0, 128)
 
-[node name="DORMITORIO" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="DORMITORIO" type="Polygon2D" parent="PISOS" unique_id=1392974360]
 texture_repeat = 2
 position = Vector2(96, 800)
 color = Color(0.42, 0.36, 0.4, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 512, 0, 512, 288, 0, 288)
 
-[node name="BANO" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_baldosa")
+[node name="BANO" type="Polygon2D" parent="PISOS" unique_id=1217943057]
 texture_repeat = 2
 position = Vector2(640, 800)
 color = Color(0.5, 0.5, 0.55, 1)
+texture = ExtResource("tx_baldosa")
 polygon = PackedVector2Array(0, 0, 288, 0, 288, 288, 0, 288)
 
-[node name="ENTRADA" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="ENTRADA" type="Polygon2D" parent="PISOS" unique_id=861413422]
 texture_repeat = 2
 position = Vector2(960, 800)
 color = Color(0.4, 0.35, 0.3, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 320, 0, 320, 288, 0, 288)
 
-[node name="PUERTA_COCINA_LIVING" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="PUERTA_COCINA_LIVING" type="Polygon2D" parent="PISOS" unique_id=531433339]
 texture_repeat = 2
 position = Vector2(736, 288)
 color = Color(0.45, 0.45, 0.4, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
 
-[node name="PUERTA_LIVING" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="PUERTA_LIVING" type="Polygon2D" parent="PISOS" unique_id=1065406372]
 texture_repeat = 2
 position = Vector2(224, 608)
 color = Color(0.45, 0.45, 0.4, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
-[node name="PUERTA_COCINA" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="PUERTA_COCINA" type="Polygon2D" parent="PISOS" unique_id=1363663469]
 texture_repeat = 2
 position = Vector2(960, 608)
 color = Color(0.45, 0.45, 0.4, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
-[node name="PUERTA_DORMITORIO" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="PUERTA_DORMITORIO" type="Polygon2D" parent="PISOS" unique_id=570470284]
 texture_repeat = 2
 position = Vector2(224, 768)
 color = Color(0.45, 0.45, 0.4, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
-[node name="PUERTA_BANO" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="PUERTA_BANO" type="Polygon2D" parent="PISOS" unique_id=464743632]
 texture_repeat = 2
 position = Vector2(704, 768)
 color = Color(0.45, 0.45, 0.4, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 96, 0, 96, 32, 0, 32)
 
-[node name="PUERTA_ENTRADA" type="Polygon2D" parent="PISOS"]
-texture = ExtResource("tx_madera_piso")
+[node name="PUERTA_ENTRADA" type="Polygon2D" parent="PISOS" unique_id=2054968759]
 texture_repeat = 2
 position = Vector2(1024, 768)
 color = Color(0.45, 0.45, 0.4, 1)
+texture = ExtResource("tx_madera_piso")
 polygon = PackedVector2Array(0, 0, 96, 0, 96, 32, 0, 32)
 
-[node name="PAREDES" type="StaticBody2D" parent="."]
+[node name="PAREDES" type="StaticBody2D" parent="." unique_id=1611648418]
 
-[node name="PARED_01" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_01" type="Polygon2D" parent="PAREDES" unique_id=133453103]
 texture_repeat = 2
 position = Vector2(64, 64)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 1248, 0, 1248, 32, 0, 32)
 
-[node name="COLISION_01" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_01" type="CollisionShape2D" parent="PAREDES" unique_id=1346791699]
 position = Vector2(688, 80)
 shape = SubResource("Shape_1248x32")
 
-[node name="PARED_02" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_02" type="Polygon2D" parent="PAREDES" unique_id=1114331041]
 texture_repeat = 2
 position = Vector2(64, 96)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 512, 0, 512)
 
-[node name="COLISION_02" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_02" type="CollisionShape2D" parent="PAREDES" unique_id=1451588885]
 position = Vector2(80, 352)
 shape = SubResource("Shape_32x512")
 
-[node name="PARED_03" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_03" type="Polygon2D" parent="PAREDES" unique_id=655259848]
 texture_repeat = 2
 position = Vector2(736, 96)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
 
-[node name="COLISION_03" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_03" type="CollisionShape2D" parent="PAREDES" unique_id=1574385362]
 position = Vector2(752, 192)
 shape = SubResource("Shape_32x192")
 
-[node name="PARED_04" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_04" type="Polygon2D" parent="PAREDES" unique_id=982397295]
 texture_repeat = 2
 position = Vector2(1280, 96)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 512, 0, 512)
 
-[node name="COLISION_04" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_04" type="CollisionShape2D" parent="PAREDES" unique_id=1394489519]
 position = Vector2(1296, 352)
 shape = SubResource("Shape_32x512")
 
-[node name="PARED_05" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_05" type="Polygon2D" parent="PAREDES" unique_id=1676966271]
 texture_repeat = 2
 position = Vector2(736, 416)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
 
-[node name="COLISION_05" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_05" type="CollisionShape2D" parent="PAREDES" unique_id=814391653]
 position = Vector2(752, 512)
 shape = SubResource("Shape_32x192")
 
-[node name="PARED_06" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_06" type="Polygon2D" parent="PAREDES" unique_id=1263911083]
 texture_repeat = 2
 position = Vector2(64, 608)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 160, 0, 160, 32, 0, 32)
 
-[node name="COLISION_06" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_06" type="CollisionShape2D" parent="PAREDES" unique_id=892245659]
 position = Vector2(144, 624)
 shape = SubResource("Shape_160x32")
 
-[node name="PARED_07" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_07" type="Polygon2D" parent="PAREDES" unique_id=1254928694]
 texture_repeat = 2
 position = Vector2(352, 608)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 608, 0, 608, 32, 0, 32)
 
-[node name="COLISION_07" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_07" type="CollisionShape2D" parent="PAREDES" unique_id=359494627]
 position = Vector2(656, 624)
 shape = SubResource("Shape_608x32")
 
-[node name="PARED_08" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_08" type="Polygon2D" parent="PAREDES" unique_id=293797325]
 texture_repeat = 2
 position = Vector2(1088, 608)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 224, 0, 224, 32, 0, 32)
 
-[node name="COLISION_08" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_08" type="CollisionShape2D" parent="PAREDES" unique_id=1037411210]
 position = Vector2(1200, 624)
 shape = SubResource("Shape_224x32")
 
-[node name="PARED_09" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_09" type="Polygon2D" parent="PAREDES" unique_id=1462474151]
 texture_repeat = 2
 position = Vector2(64, 640)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
 
-[node name="COLISION_09" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_09" type="CollisionShape2D" parent="PAREDES" unique_id=926794843]
 position = Vector2(80, 704)
 shape = SubResource("Shape_32x128")
 
-[node name="PARED_10" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_10" type="Polygon2D" parent="PAREDES" unique_id=2081673830]
 texture_repeat = 2
 position = Vector2(1280, 640)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
 
-[node name="COLISION_10" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_10" type="CollisionShape2D" parent="PAREDES" unique_id=1456472570]
 position = Vector2(1296, 704)
 shape = SubResource("Shape_32x128")
 
-[node name="PARED_11" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_11" type="Polygon2D" parent="PAREDES" unique_id=807641788]
 texture_repeat = 2
 position = Vector2(64, 768)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 160, 0, 160, 32, 0, 32)
 
-[node name="COLISION_11" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_11" type="CollisionShape2D" parent="PAREDES" unique_id=711424990]
 position = Vector2(144, 784)
 shape = SubResource("Shape_160x32")
 
-[node name="PARED_12" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_12" type="Polygon2D" parent="PAREDES" unique_id=404430338]
 texture_repeat = 2
 position = Vector2(352, 768)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 352, 0, 352, 32, 0, 32)
 
-[node name="COLISION_12" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_12" type="CollisionShape2D" parent="PAREDES" unique_id=488244915]
 position = Vector2(528, 784)
 shape = SubResource("Shape_352x32")
 
-[node name="PARED_13" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_13" type="Polygon2D" parent="PAREDES" unique_id=1259777937]
 texture_repeat = 2
 position = Vector2(800, 768)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 224, 0, 224, 32, 0, 32)
 
-[node name="COLISION_13" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_13" type="CollisionShape2D" parent="PAREDES" unique_id=325795225]
 position = Vector2(912, 784)
 shape = SubResource("Shape_224x32")
 
-[node name="PARED_14" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_14" type="Polygon2D" parent="PAREDES" unique_id=1433156233]
 texture_repeat = 2
 position = Vector2(1120, 768)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 192, 0, 192, 32, 0, 32)
 
-[node name="COLISION_14" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_14" type="CollisionShape2D" parent="PAREDES" unique_id=1077941772]
 position = Vector2(1216, 784)
 shape = SubResource("Shape_192x32")
 
-[node name="PARED_15" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_15" type="Polygon2D" parent="PAREDES" unique_id=1477951165]
 texture_repeat = 2
 position = Vector2(64, 800)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
 
-[node name="COLISION_15" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_15" type="CollisionShape2D" parent="PAREDES" unique_id=1796744315]
 position = Vector2(80, 944)
 shape = SubResource("Shape_32x288")
 
-[node name="PARED_16" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_16" type="Polygon2D" parent="PAREDES" unique_id=983756380]
 texture_repeat = 2
 position = Vector2(608, 800)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
 
-[node name="COLISION_16" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_16" type="CollisionShape2D" parent="PAREDES" unique_id=715438175]
 position = Vector2(624, 944)
 shape = SubResource("Shape_32x288")
 
-[node name="PARED_17" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_17" type="Polygon2D" parent="PAREDES" unique_id=1755433185]
 texture_repeat = 2
 position = Vector2(928, 800)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
 
-[node name="COLISION_17" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_17" type="CollisionShape2D" parent="PAREDES" unique_id=204818117]
 position = Vector2(944, 944)
 shape = SubResource("Shape_32x288")
 
-[node name="PARED_18" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_18" type="Polygon2D" parent="PAREDES" unique_id=2144967557]
 texture_repeat = 2
 position = Vector2(1280, 800)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 288, 0, 288)
 
-[node name="COLISION_18" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_18" type="CollisionShape2D" parent="PAREDES" unique_id=2130016674]
 position = Vector2(1296, 944)
 shape = SubResource("Shape_32x288")
 
-[node name="PARED_19" type="Polygon2D" parent="PAREDES"]
-texture = ExtResource("tx_ladrillo")
+[node name="PARED_19" type="Polygon2D" parent="PAREDES" unique_id=2062036127]
 texture_repeat = 2
 position = Vector2(64, 1088)
 color = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("tx_ladrillo")
 polygon = PackedVector2Array(0, 0, 1248, 0, 1248, 32, 0, 32)
 
-[node name="COLISION_19" type="CollisionShape2D" parent="PAREDES"]
+[node name="COLISION_19" type="CollisionShape2D" parent="PAREDES" unique_id=1573059329]
 position = Vector2(688, 1104)
 shape = SubResource("Shape_1248x32")
 
-[node name="OBJETOS" type="Node2D" parent="."]
+[node name="OBJETOS" type="Node2D" parent="." unique_id=463313715]
 
-[node name="SOFA" type="Node2D" parent="OBJETOS"]
+[node name="SOFA" type="Node2D" parent="OBJETOS" unique_id=1583698523]
 position = Vector2(128, 128)
 
-[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/SOFA"]
-texture = ExtResource("tx_tela")
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/SOFA" unique_id=621097351]
 texture_repeat = 2
 color = Color(0.4, 0.3, 0.35, 1)
+texture = ExtResource("tx_tela")
 polygon = PackedVector2Array(0, 0, 256, 0, 256, 96, 0, 96)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/SOFA"]
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/SOFA" unique_id=2097042323]
 position = Vector2(128, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/SOFA/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/SOFA/StaticBody2D" unique_id=193753603]
 shape = SubResource("Shape_256x96")
 
-[node name="MESA_LIVING" type="Node2D" parent="OBJETOS"]
+[node name="MESA_LIVING" type="Node2D" parent="OBJETOS" unique_id=766266829]
 position = Vector2(192, 352)
 
-[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESA_LIVING"]
-texture = ExtResource("tx_madera")
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESA_LIVING" unique_id=1371454894]
 texture_repeat = 2
 color = Color(0.45, 0.3, 0.15, 1)
+texture = ExtResource("tx_madera")
 polygon = PackedVector2Array(0, 0, 192, 0, 192, 96, 0, 96)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESA_LIVING"]
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESA_LIVING" unique_id=21722035]
 position = Vector2(96, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESA_LIVING/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESA_LIVING/StaticBody2D" unique_id=63654295]
 shape = SubResource("Shape_192x96")
 
-[node name="MESADA" type="Node2D" parent="OBJETOS"]
+[node name="MESADA" type="Node2D" parent="OBJETOS" unique_id=533227737]
 position = Vector2(800, 128)
 
-[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESADA"]
-texture = ExtResource("tx_metal")
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESADA" unique_id=667041086]
 texture_repeat = 2
 color = Color(0.55, 0.55, 0.55, 1)
+texture = ExtResource("tx_metal")
 polygon = PackedVector2Array(0, 0, 448, 0, 448, 64, 0, 64)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESADA"]
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESADA" unique_id=1217729904]
 position = Vector2(224, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESADA/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESADA/StaticBody2D" unique_id=448028113]
 shape = SubResource("Shape_448x64")
 
-[node name="MESA_COCINA" type="Node2D" parent="OBJETOS"]
+[node name="MESA_COCINA" type="Node2D" parent="OBJETOS" unique_id=256380179]
 position = Vector2(896, 352)
 
-[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESA_COCINA"]
-texture = ExtResource("tx_madera")
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESA_COCINA" unique_id=39860374]
 texture_repeat = 2
 color = Color(0.45, 0.3, 0.15, 1)
+texture = ExtResource("tx_madera")
 polygon = PackedVector2Array(0, 0, 224, 0, 224, 96, 0, 96)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESA_COCINA"]
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/MESA_COCINA" unique_id=2116375851]
 position = Vector2(112, 48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESA_COCINA/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/MESA_COCINA/StaticBody2D" unique_id=1060840369]
 shape = SubResource("Shape_224x96")
 
-[node name="CAMA" type="Node2D" parent="OBJETOS"]
+[node name="CAMA" type="Node2D" parent="OBJETOS" unique_id=1159041028]
 position = Vector2(128, 832)
 
-[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/CAMA"]
-texture = ExtResource("tx_tela")
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/CAMA" unique_id=370311874]
 texture_repeat = 2
 color = Color(0.5, 0.4, 0.45, 1)
+texture = ExtResource("tx_tela")
 polygon = PackedVector2Array(0, 0, 192, 0, 192, 128, 0, 128)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/CAMA"]
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/CAMA" unique_id=1817799598]
 position = Vector2(96, 64)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/CAMA/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/CAMA/StaticBody2D" unique_id=794011506]
 shape = SubResource("Shape_192x128")
 
-[node name="PLACARD" type="Node2D" parent="OBJETOS"]
+[node name="PLACARD" type="Node2D" parent="OBJETOS" unique_id=1644331045]
 position = Vector2(448, 832)
 
-[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/PLACARD"]
-texture = ExtResource("tx_metal")
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/PLACARD" unique_id=558329763]
 texture_repeat = 2
 color = Color(0.55, 0.55, 0.55, 1)
+texture = ExtResource("tx_metal")
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 64, 0, 64)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/PLACARD"]
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/PLACARD" unique_id=1670874296]
 position = Vector2(64, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/PLACARD/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/PLACARD/StaticBody2D" unique_id=291214670]
 shape = SubResource("Shape_128x64")
 
-[node name="INODORO" type="Node2D" parent="OBJETOS"]
+[node name="INODORO" type="Node2D" parent="OBJETOS" unique_id=2010938147]
 position = Vector2(672, 832)
 
-[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/INODORO"]
-texture = ExtResource("tx_plastico")
+[node name="Polygon2D" type="Polygon2D" parent="OBJETOS/INODORO" unique_id=2027841387]
 texture_repeat = 2
 color = Color(0.55, 0.55, 0.55, 1)
+texture = ExtResource("tx_plastico")
 polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/INODORO"]
+[node name="StaticBody2D" type="StaticBody2D" parent="OBJETOS/INODORO" unique_id=1006415692]
 position = Vector2(32, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/INODORO/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OBJETOS/INODORO/StaticBody2D" unique_id=1186786342]
 shape = SubResource("Shape_64x64")
 
-[node name="ZONAS" type="Node2D" parent="."]
+[node name="ZONAS" type="Node2D" parent="." unique_id=393050959]
 
-[node name="MARCADORES" type="Node2D" parent="."]
+[node name="MARCADORES" type="Node2D" parent="." unique_id=1097475258]
 
-[node name="RELOJ_COCINA" type="Marker2D" parent="MARCADORES"]
+[node name="RELOJ_COCINA" type="Marker2D" parent="MARCADORES" unique_id=1693173744]
 position = Vector2(1056, 112)
 
-[node name="PUERTA_CALLE" type="Marker2D" parent="MARCADORES"]
+[node name="PUERTA_CALLE" type="Marker2D" parent="MARCADORES" unique_id=1737210522]
 position = Vector2(1120, 1056)
 
-[node name="CartelEntrada" parent="." instance=ExtResource("e1")]
+[node name="CartelEntrada" parent="." unique_id=759255309 instance=ExtResource("e1")]
 position = Vector2(1120, 920)
 titulo = "TU CASA"
 texto = "Las llaves entran en la cerradura. Todo está donde lo dejaste. Las luces andan. No hay nadie."
 ruta_textura = "res://assets/carteles/cartel_llave.png"
 
-[node name="CartelLiving" parent="." instance=ExtResource("e1")]
+[node name="CartelLiving" parent="." unique_id=2101243519 instance=ExtResource("e1")]
 position = Vector2(460, 280)
 titulo = "CELULAR"
 texto = "Tenés una llamada perdida de «Casa». Es de las 3:07."
 ruta_textura = "res://assets/carteles/cartel_info.png"
 
-[node name="CartelReloj" parent="." instance=ExtResource("e1")]
+[node name="CartelReloj" parent="." unique_id=305107206 instance=ExtResource("e1")]
 position = Vector2(1056, 250)
 titulo = "RELOJ DE LA COCINA"
 texto = "El reloj de la cocina marca las 3:07. La llamada perdida sigue en el celular, de hace un rato. Ya no sabés quién llamó a quién."
 ruta_textura = "res://assets/carteles/cartel_alerta.png"
 
-[node name="ZonaFin" parent="." instance=ExtResource("e2")]
+[node name="ZonaFin" type="Area2D" parent="." unique_id=1699890764]
 position = Vector2(1056, 330)
-id_tutorial = "fin"
 
-[node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaFin" unique_id=1242939267]
+shape = SubResource("Shape_zona_fin")
+
+[node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="." unique_id=1710945055]
 position = Vector2(1120, 1000)
 
-[node name="Jugador" parent="." instance=ExtResource("1_jugador")]
+[node name="Jugador" parent="." unique_id=81005143 instance=ExtResource("1_jugador")]
 position = Vector2(1120, 1000)
+
+[node name="CartelFinal" type="CanvasLayer" parent="." unique_id=712969671]
+layer = 80
+
+[node name="Fondo" type="ColorRect" parent="CartelFinal" unique_id=108954848]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0, 0, 1)
+
+[node name="Centro" type="CenterContainer" parent="CartelFinal/Fondo" unique_id=1317410564]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Caja" type="VBoxContainer" parent="CartelFinal/Fondo/Centro" unique_id=1288351365]
+custom_minimum_size = Vector2(760, 0)
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="EtiquetaFinal" type="Label" parent="CartelFinal/Fondo/Centro/Caja" unique_id=181234694]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Fuiste perseguido y asesinado por el fantasma de la \"B\" (de la linea B)."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="EtiquetaFin" type="Label" parent="CartelFinal/Fondo/Centro/Caja" unique_id=1757789265]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 28
+text = "FIN"
+horizontal_alignment = 1
+
+[node name="EtiquetaVolver" type="Label" parent="CartelFinal/Fondo/Centro/Caja" unique_id=506071779]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+text = "F para volver al menú"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="ZonaFin" to="." method="_on_zona_fin_body_entered"]
