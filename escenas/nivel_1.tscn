@@ -35,6 +35,11 @@
 [ext_resource type="Script" path="res://scripts/pathfinding.gd" id="60_pathfinding"]
 [ext_resource type="PackedScene" path="res://escenas/entradaNivel.tscn" id="61_entrada_nivel"]
 [ext_resource type="PackedScene" path="res://escenas/teletransporte.tscn" id="62_teleport"]
+[ext_resource type="Texture2D" path="res://assets/texturas/asfalto.png" id="tx_asfalto"]
+[ext_resource type="Texture2D" path="res://assets/texturas/concreto.png" id="tx_concreto"]
+[ext_resource type="Texture2D" path="res://assets/texturas/edificio.png" id="tx_edificio"]
+[ext_resource type="Texture2D" path="res://assets/texturas/ladrillo.png" id="tx_ladrillo"]
+[ext_resource type="Texture2D" path="res://assets/texturas/madera.png" id="tx_madera"]
 
 [sub_resource type="RectangleShape2D" id="Shape_Comisaria"]
 size = Vector2(288, 128)
@@ -162,6 +167,8 @@ script = ExtResource("6_nivel1")
 [node name="LIMITE_ARRIBA" type="Node2D" parent="." unique_id=1110867858]
 
 [node name="Polygon2D" type="Polygon2D" parent="LIMITE_ARRIBA" unique_id=674253211]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.1, 0.1, 0.1, 1)
 polygon = PackedVector2Array(0, 0, 4096, 0, 4096, 32, 0, 32)
 
@@ -175,6 +182,8 @@ shape = SubResource("Shape_4096x32")
 position = Vector2(0, 5088)
 
 [node name="Polygon2D" type="Polygon2D" parent="LIMITE_ABAJO" unique_id=736504178]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.1, 0.1, 0.1, 1)
 polygon = PackedVector2Array(0, 0, 4096, 0, 4096, 32, 0, 32)
 
@@ -187,6 +196,8 @@ shape = SubResource("Shape_4096x32")
 [node name="LIMITE_IZQ" type="Node2D" parent="." unique_id=723031896]
 
 [node name="Polygon2D" type="Polygon2D" parent="LIMITE_IZQ" unique_id=1732646865]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.1, 0.1, 0.1, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 5120, 0, 5120)
 
@@ -200,6 +211,8 @@ shape = SubResource("Shape_32x5120")
 position = Vector2(4064, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="LIMITE_DER" unique_id=1816344752]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.1, 0.1, 0.1, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 5120, 0, 5120)
 
@@ -489,6 +502,8 @@ shape = SubResource("Shape_192x128")
 position = Vector2(36, 2520)
 
 [node name="Polygon2D" type="Polygon2D" parent="MCDONALDS" unique_id=1219193952]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.7, 0.1, 0.1, 1)
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 448, 0, 448)
 
@@ -638,6 +653,8 @@ shape = SubResource("Shape_160x64")
 position = Vector2(320, 3456)
 
 [node name="Polygon2D" type="Polygon2D" parent="Barrio" unique_id=311760969]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.35, 0.35, 0.35, 1)
 polygon = PackedVector2Array(0, 0, 3456, 0, 3456, 1440, 0, 1440)
 
@@ -645,6 +662,8 @@ polygon = PackedVector2Array(0, 0, 3456, 0, 3456, 1440, 0, 1440)
 position = Vector2(1664, 3456)
 
 [node name="Polygon2D" type="Polygon2D" parent="CALLE_PRINCIPAL" unique_id=1407681729]
+texture = ExtResource("tx_asfalto")
+texture_repeat = 2
 color = Color(0.3, 0.3, 0.3, 1)
 polygon = PackedVector2Array(0, 0, 320, 0, 320, 1440, 0, 1440)
 
@@ -652,6 +671,8 @@ polygon = PackedVector2Array(0, 0, 320, 0, 320, 1440, 0, 1440)
 position = Vector2(640, 3840)
 
 [node name="Polygon2D" type="Polygon2D" parent="CALLE_IZQ" unique_id=1187376413]
+texture = ExtResource("tx_asfalto")
+texture_repeat = 2
 color = Color(0.3, 0.3, 0.3, 1)
 polygon = PackedVector2Array(-321, -1, 1024, 0, 1024, 103, 1027, 194, -320, 193)
 
@@ -659,6 +680,8 @@ polygon = PackedVector2Array(-321, -1, 1024, 0, 1024, 103, 1027, 194, -320, 193)
 position = Vector2(2304, 4096)
 
 [node name="Polygon2D" type="Polygon2D" parent="CALLE_DER" unique_id=1252620761]
+texture = ExtResource("tx_asfalto")
+texture_repeat = 2
 position = Vector2(-328, -280)
 color = Color(0.3, 0.3, 0.3, 1)
 polygon = PackedVector2Array(0, 0, 1826, 2, 1824, 188, 473, 190, 0, 192)
@@ -667,6 +690,8 @@ polygon = PackedVector2Array(0, 0, 1826, 2, 1824, 188, 473, 190, 0, 192)
 position = Vector2(384, 3520)
 
 [node name="Polygon2D" type="Polygon2D" parent="EDIFICIO_01" unique_id=310071687]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 512, 0, 512, 256, 0, 256)
 
@@ -680,6 +705,8 @@ shape = SubResource("Shape_512x256")
 position = Vector2(992, 3520)
 
 [node name="Polygon2D" type="Polygon2D" parent="EDIFICIO_02" unique_id=253202143]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 480, 0, 480, 256, 0, 256)
 
@@ -693,6 +720,8 @@ shape = SubResource("Shape_480x256")
 position = Vector2(2048, 3520)
 
 [node name="Polygon2D" type="Polygon2D" parent="EDIFICIO_03" unique_id=1012631166]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 480, 0, 480, 256, 0, 256)
 
@@ -706,6 +735,8 @@ shape = SubResource("Shape_480x256")
 position = Vector2(2688, 3520)
 
 [node name="Polygon2D" type="Polygon2D" parent="EDIFICIO_04" unique_id=1322343565]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 480, 0, 480, 256, 0, 256)
 
@@ -719,6 +750,8 @@ shape = SubResource("Shape_480x256")
 position = Vector2(3232, 3520)
 
 [node name="Polygon2D" type="Polygon2D" parent="EDIFICIO_05" unique_id=2112872059]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 480, 0, 480, 256, 0, 256)
 
@@ -732,6 +765,8 @@ shape = SubResource("Shape_480x256")
 position = Vector2(384, 4096)
 
 [node name="Polygon2D" type="Polygon2D" parent="EDIFICIO_06" unique_id=2050062719]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 480, 0, 480, 288, 0, 288)
 
@@ -745,6 +780,8 @@ shape = SubResource("Shape_480x288")
 position = Vector2(992, 4096)
 
 [node name="Polygon2D" type="Polygon2D" parent="EDIFICIO_07" unique_id=1363987516]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 480, 0, 480, 288, 0, 288)
 
@@ -758,6 +795,8 @@ shape = SubResource("Shape_480x288")
 position = Vector2(2048, 4032)
 
 [node name="Polygon2D" type="Polygon2D" parent="EDIFICIO_08" unique_id=2053802505]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 480, 0, 480, 288, 0, 288)
 
@@ -771,6 +810,8 @@ shape = SubResource("Shape_480x288")
 position = Vector2(2688, 4032)
 
 [node name="Polygon2D" type="Polygon2D" parent="EDIFICIO_09" unique_id=1130018425]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 448, 0, 448, 288, 0, 288)
 
@@ -784,6 +825,8 @@ shape = SubResource("Shape_448x288")
 position = Vector2(3296, 4224)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_DEPOSITO_ARRIBA" unique_id=1737756661]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 320, 0, 320, 32, 0, 32)
 
@@ -797,6 +840,8 @@ shape = SubResource("Shape_320x32")
 position = Vector2(3296, 4224)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_DEPOSITO_IZQX" unique_id=680788791]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 256, 0, 256)
 
@@ -810,6 +855,8 @@ shape = SubResource("Shape_32x256")
 position = Vector2(3584, 4224)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_DEPOSITO_DER" unique_id=928339259]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 256, 0, 256)
 
@@ -823,6 +870,8 @@ shape = SubResource("Shape_32x256")
 position = Vector2(3296, 4448)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_DEPOSITO_ABAJO_IZQ" unique_id=1588075870]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
@@ -836,6 +885,8 @@ shape = SubResource("Shape_128x32")
 position = Vector2(3488, 4448)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_DEPOSITO_ABAJO_DER" unique_id=1102373865]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
@@ -849,6 +900,8 @@ shape = SubResource("Shape_128x32")
 position = Vector2(3328, 4256)
 
 [node name="Polygon2D" type="Polygon2D" parent="PISO_DEPOSITO" unique_id=1190748478]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.35, 0.35, 0.35, 1)
 polygon = PackedVector2Array(0, 0, 256, 0, 256, 192, 0, 192)
 
@@ -856,6 +909,8 @@ polygon = PackedVector2Array(0, 0, 256, 0, 256, 192, 0, 192)
 position = Vector2(2624, 4384)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_CASA_FINAL_ARRIBA" unique_id=44066766]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.2, 0.7, 0.2, 1)
 polygon = PackedVector2Array(0, 0, 448, 0, 448, 32, 0, 32)
 
@@ -869,6 +924,8 @@ shape = SubResource("Shape_448x32")
 position = Vector2(2624, 4384)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_CASA_FINAL_IZQ" unique_id=2037014304]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.2, 0.7, 0.2, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
 
@@ -882,6 +939,8 @@ shape = SubResource("Shape_32x320")
 position = Vector2(3040, 4384)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_CASA_FINAL_DER" unique_id=712827778]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.2, 0.7, 0.2, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
 
@@ -895,6 +954,8 @@ shape = SubResource("Shape_32x320")
 position = Vector2(2624, 4672)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_CASA_FINAL_ABAJO_IZQ" unique_id=272508428]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.2, 0.7, 0.2, 1)
 polygon = PackedVector2Array(0, 0, 192, 0, 192, 32, 0, 32)
 
@@ -908,6 +969,8 @@ shape = SubResource("Shape_192x32")
 position = Vector2(2880, 4672)
 
 [node name="Polygon2D" type="Polygon2D" parent="PARED_CASA_FINAL_ABAJO_DER" unique_id=1641522751]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 color = Color(0.2, 0.7, 0.2, 1)
 polygon = PackedVector2Array(0, 0, 192, 0, 192, 32, 0, 32)
 
@@ -1724,6 +1787,8 @@ rutaTextura = "res://assets/carteles/cartel_bateria.png"
 position = Vector2(652, 2696)
 
 [node name="Polygon2D" type="Polygon2D" parent="PUERTA_MCDONALDS" unique_id=1733520404]
+texture = ExtResource("tx_madera")
+texture_repeat = 2
 color = Color(0.95, 0.78, 0.1, 1)
 polygon = PackedVector2Array(0, 0, 24, 0, 24, 96, 0, 96)
 
@@ -1767,6 +1832,8 @@ textoAviso = "F para bajar al subte"
 position = Vector2(2912, 3060)
 
 [node name="Polygon2D" type="Polygon2D" parent="COMISARIA_FACHADA"]
+texture = ExtResource("tx_edificio")
+texture_repeat = 2
 color = Color(0.25, 0.3, 0.45, 1)
 polygon = PackedVector2Array(0, 0, 288, 0, 288, 128, 0, 128)
 
@@ -1780,6 +1847,8 @@ shape = SubResource("Shape_Comisaria")
 position = Vector2(2960, 3160)
 
 [node name="Polygon2D" type="Polygon2D" parent="PUERTA_COMISARIA"]
+texture = ExtResource("tx_madera")
+texture_repeat = 2
 color = Color(0.95, 0.78, 0.1, 1)
 polygon = PackedVector2Array(0, 0, 96, 0, 96, 28, 0, 28)
 
@@ -1863,7 +1932,7 @@ nombreObjeto = "SUBE"
 idTutorialPersonalizado = "sube"
 
 [node name="LlaveMcDonalds" parent="." unique_id=1360776584 instance=ExtResource("3_objeto")]
-position = Vector2(3100, 3150)
+position = Vector2(3260, 3150)
 idLlave = "llaveMc"
 nombreObjeto = "Llave del McDonalds"
 
