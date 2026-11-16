@@ -6,7 +6,16 @@ extends Area2D
 @export var idTutorialPersonalizado = ""
 var idObjeto = ""
 var jugadorCerca = false
+# Sprite propio para los objetos que no son llaves (las llaves usan llave.svg)
+const SPRITES = {
+	"sube": "res://assets/sube.svg",
+	"silbato": "res://assets/silbato.svg",
+}
 func _ready():
+	if esGanzua:
+		$Sprite2D.texture = load("res://assets/ganzua.svg")
+	elif SPRITES.has(idLlave):
+		$Sprite2D.texture = load(SPRITES[idLlave])
 	idObjeto = str(get_path())
 	if Inventario.yaRecogido(idObjeto):
 		queue_free()
