@@ -64,10 +64,10 @@ func pasoPlaza(nivel, jugador):
 	return [texto, "EntradaSubte"]
 func pasoMc(nivel, jugador):
 	var arriba = jugador.global_position.x > 2000.0
-	if not tiene("llaveSubte") and existe(nivel, "Cliente"):
-		return ["Encontrá al Cliente (planta baja, a la derecha): tiene la llave del subte. Pegale con Espacio; se pone rojo un instante antes de pegar.", "Cliente"]
 	if not tiene("llaveSubte"):
-		return ["Agarrá la llave del candado que soltó el Cliente (F).", ""]
+		var pasoCliente = pasoHamburguesas(nivel)
+		if not pasoCliente.is_empty():
+			return pasoCliente
 	if not tiene("powerbank") and not arriba:
 		return ["Recomendado: subí al segundo piso (escalera, F) y buscá el powerbank en la oficina.", "ZonaEscaleraSubir"]
 	if not tiene("powerbank"):
@@ -75,6 +75,24 @@ func pasoMc(nivel, jugador):
 	if arriba:
 		return ["Bajá por la escalera (F).", "ZonaEscaleraBajar"]
 	return ["Salí del McDonald's (puerta de abajo) y andá a la reja del subte, en la plaza.", "ZonaSalida"]
+func pasoHamburguesas(nivel):
+	var cliente = nivel.get_node_or_null("Cliente")
+	if Inventario.clienteEnojado:
+		if cliente != null:
+			return ["Rompiste el trato: el Cliente pelea a muerte. Derrotalo para quedarte con la llave (Espacio, piedras o bengalas).", "Cliente"]
+		return ["Agarrá la llave del candado que soltó el Cliente (F).", ""]
+	if cliente == null:
+		return []
+	if Inventario.hamburguesas > 0:
+		return ["Llevale la hamburguesa al Cliente (F cerca de él). Si te la comés (C) te cura todo, pero rompés el trato.", "Cliente"]
+	var revisados = 0
+	for nombre in ["EsconditeHorno", "EsconditeBano", "EsconditeSillon"]:
+		var escondite = nivel.get_node_or_null(nombre)
+		if escondite != null and escondite.revisado:
+			revisados += 1
+	if revisados == 0 and Inventario.hamburguesasEntregadas == 0:
+		return ["Hablá con el Cliente, el fisura sentado a la derecha de la planta baja (F).", "Cliente"]
+	return ["Buscá la hamburguesa que falta (" + str(Inventario.hamburguesasEntregadas) + "/3). El Cliente dijo: «" + cliente.pistaSiguiente() + "»", ""]
 func pasoComisaria(nivel):
 	if not Inventario.pistola:
 		return ["Entrá a los calabozos (arriba a la derecha, F). Desde la celda hay un camino al depósito de evidencia, donde está la pistola de bengalas.", "EntradaCalabozos"]
@@ -90,12 +108,14 @@ func pasoCelda(nivel):
 func pasoSubte():
 	if not tiene("powerbank") and Inventario.bateria < 35.0:
 		return ["Te queda poca batería. Volvé a la plaza (escalera, F) y buscá el powerbank en el McDonald's.", "SubirPlaza"]
-	return ["Seguí el andén y los túneles hasta la puerta de servicio (al fondo, a la derecha). Apagá la linterna (Q) para que los pálidos no se muevan.", "PuertaServicio"]
+	if not tiene("llaveServicio"):
+		return ["La puerta de servicio está cerrada. Buscá la llave en la cabina de señales del ramal: cruzá la pasarela al andén sur y seguí el túnel. Apagá la linterna (Q) para que los pálidos no se muevan.", "PuertaCabina"]
+	return ["Con la llave de servicio, seguí el túnel hasta la puerta de servicio (al fondo, a la derecha).", "PuertaServicio"]
 func pasoEstacionFantasma(nivel, jugador):
 	if not tiene("silbato") and jugador.global_position.x < 2850.0:
 		return ["Buscá el andén: seguí el túnel largo que sale hacia abajo. Si te devuelve al principio, cruzalo con la linterna apagada (Q).", "MARCADORES/TUNEL_META"]
 	if not tiene("silbato") and existe(nivel, "Guarda"):
-		return ["Derrotá al Guarda: te ve solo con la linterna prendida. Suelta un silbato.", "Guarda"]
+		return ["Derrotá al Guarda. Con luz te ve de lejos; a oscuras va hacia donde vio tu luz, y si le pegás toca el silbato y te persigue. Suelta un silbato.", "Guarda"]
 	if not tiene("silbato"):
 		return ["Agarrá el silbato que soltó el Guarda (F).", ""]
 	if not tiene("sube"):

@@ -12,6 +12,14 @@
 [ext_resource type="PackedScene" path="res://escenas/entradaNivel.tscn" id="e7"]
 [ext_resource type="PackedScene" path="res://escenas/cartel.tscn" id="e8"]
 [ext_resource type="PackedScene" path="res://escenas/enemigo.tscn" id="e9"]
+[ext_resource type="Script" path="res://scripts/guarda.gd" id="e10"]
+[ext_resource type="PackedScene" path="res://escenas/zonaMensaje.tscn" id="e11"]
+[ext_resource type="Texture2D" path="res://assets/texturas/baldosa.png" id="tx_baldosa"]
+[ext_resource type="Texture2D" path="res://assets/texturas/concreto.png" id="tx_concreto"]
+[ext_resource type="Texture2D" path="res://assets/texturas/ladrillo.png" id="tx_ladrillo"]
+[ext_resource type="Texture2D" path="res://assets/texturas/madera.png" id="tx_madera"]
+[ext_resource type="Texture2D" path="res://assets/texturas/madera_piso.png" id="tx_madera_piso"]
+[ext_resource type="Texture2D" path="res://assets/texturas/metal.png" id="tx_metal"]
 
 [sub_resource type="RectangleShape2D" id="Shape_32x32"]
 size = Vector2(32, 32)
@@ -97,10 +105,10 @@ size = Vector2(2720, 32)
 [node name="NivelEstacionquenoexiste" type="Node2D"]
 script = ExtResource("nivel")
 tituloIntro = "LA ESTACIÓN QUE NO EXISTE"
-textoIntro = "El cartel dice Constitución, pero ya saliste de ahí. Las puertas de las salas te devuelven a la misma sala: el camino es el túnel largo que sale hacia abajo. Si te devuelve al principio, cruzalo con la linterna apagada (Q). Al final espera el Guarda, que te ve solo con la linterna prendida. Para salir hace falta la SUBE y su silbato."
+textoIntro = "El cartel dice Constitución, pero ya saliste de ahí. Las puertas de las salas te devuelven a la misma sala: el camino es el túnel largo que sale hacia abajo. Si te devuelve al principio, cruzalo con la linterna apagada (Q). Al final espera el Guarda: con la linterna prendida te ve de lejos; a oscuras no te ve, pero va hacia donde vio tu luz y si le pegás toca el silbato y te persigue igual. Para salir hace falta la SUBE y su silbato."
 
 [node name="Oscuridad" type="CanvasModulate" parent="."]
-color = Color(0.08, 0.08, 0.12, 1)
+color = Color(0.02, 0.02, 0.03, 1)
 
 [node name="Pathfinding" type="Node" parent="."]
 script = ExtResource("pathfinding")
@@ -108,106 +116,148 @@ script = ExtResource("pathfinding")
 [node name="PISOS" type="Node2D" parent="."]
 
 [node name="VESTIBULO_ESPEJO" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
 position = Vector2(96, 96)
 color = Color(0.35, 0.35, 0.37, 1)
 polygon = PackedVector2Array(0, 0, 1024, 0, 1024, 640, 0, 640)
 
 [node name="SALA_A" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
 position = Vector2(1152, 96)
 color = Color(0.36, 0.34, 0.34, 1)
 polygon = PackedVector2Array(0, 0, 512, 0, 512, 640, 0, 640)
 
 [node name="SALA_B" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
 position = Vector2(1696, 96)
 color = Color(0.36, 0.34, 0.34, 1)
 polygon = PackedVector2Array(0, 0, 512, 0, 512, 640, 0, 640)
 
 [node name="SALA_C" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
 position = Vector2(2240, 96)
 color = Color(0.36, 0.34, 0.34, 1)
 polygon = PackedVector2Array(0, 0, 512, 0, 512, 640, 0, 640)
 
 [node name="PUERTA_VESTIBULO_A" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
 position = Vector2(1120, 288)
 color = Color(0.45, 0.45, 0.4, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
 
 [node name="PUERTA_A_B" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
 position = Vector2(1664, 288)
 color = Color(0.45, 0.45, 0.4, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
 
 [node name="PUERTA_B_C" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
 position = Vector2(2208, 288)
 color = Color(0.45, 0.45, 0.4, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
 
 [node name="SALA_OBJETOS" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
 position = Vector2(1152, 768)
 color = Color(0.33, 0.33, 0.3, 1)
 polygon = PackedVector2Array(0, 0, 1056, 0, 1056, 512, 0, 512)
 
 [node name="PUERTA_A_OBJETOS" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
 position = Vector2(1280, 736)
 color = Color(0.45, 0.45, 0.4, 1)
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
 [node name="PUERTA_B_OBJETOS" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
 position = Vector2(1856, 736)
 color = Color(0.45, 0.45, 0.4, 1)
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
 [node name="CUARTO_CERRADO" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_baldosa")
+texture_repeat = 2
 position = Vector2(2240, 768)
 color = Color(0.3, 0.28, 0.28, 1)
 polygon = PackedVector2Array(0, 0, 512, 0, 512, 512, 0, 512)
 
 [node name="PUERTA_CUARTO" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
 position = Vector2(2208, 960)
 color = Color(0.45, 0.45, 0.4, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
 
 [node name="PASO_ALACENA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 position = Vector2(2752, 992)
 color = Color(0.2, 0.2, 0.22, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
 
 [node name="ALACENA" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 position = Vector2(2784, 960)
 color = Color(0.2, 0.2, 0.22, 1)
 polygon = PackedVector2Array(0, 0, 160, 0, 160, 160, 0, 160)
 
 [node name="PUERTA_TUNEL" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera_piso")
+texture_repeat = 2
 position = Vector2(480, 736)
 color = Color(0.45, 0.45, 0.4, 1)
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
 [node name="TUNEL_LARGO_V" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 position = Vector2(480, 768)
 color = Color(0.2, 0.2, 0.22, 1)
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 1216, 0, 1216)
 
 [node name="TUNEL_LARGO_H" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 position = Vector2(608, 1856)
 color = Color(0.2, 0.2, 0.22, 1)
 polygon = PackedVector2Array(0, 0, 2272, 0, 2272, 128, 0, 128)
 
 [node name="ANDEN_FINAL" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 position = Vector2(2880, 1568)
 color = Color(0.3, 0.3, 0.32, 1)
 polygon = PackedVector2Array(0, 0, 640, 0, 640, 544, 0, 544)
 
 [node name="PUERTA_FALSA_A" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera")
+texture_repeat = 2
 position = Vector2(1344, 96)
 color = Color(0.5, 0.4, 0.2, 1)
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
 [node name="PUERTA_FALSA_B" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera")
+texture_repeat = 2
 position = Vector2(1888, 96)
 color = Color(0.5, 0.4, 0.2, 1)
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 
 [node name="PUERTA_FALSA_C" type="Polygon2D" parent="PISOS"]
+texture = ExtResource("tx_madera")
+texture_repeat = 2
 position = Vector2(2432, 96)
 color = Color(0.5, 0.4, 0.2, 1)
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
@@ -215,6 +265,8 @@ polygon = PackedVector2Array(0, 0, 128, 0, 128, 32, 0, 32)
 [node name="PAREDES" type="StaticBody2D" parent="."]
 
 [node name="PARED_01" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(64, 64)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 2720, 0, 2720, 32, 0, 32)
@@ -224,6 +276,8 @@ position = Vector2(1424, 80)
 shape = SubResource("Shape_2720x32")
 
 [node name="PARED_02" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(64, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 640, 0, 640)
@@ -233,6 +287,8 @@ position = Vector2(80, 416)
 shape = SubResource("Shape_32x640")
 
 [node name="PARED_03" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(1120, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
@@ -242,6 +298,8 @@ position = Vector2(1136, 192)
 shape = SubResource("Shape_32x192")
 
 [node name="PARED_04" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(1664, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
@@ -251,6 +309,8 @@ position = Vector2(1680, 192)
 shape = SubResource("Shape_32x192")
 
 [node name="PARED_05" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2208, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
@@ -260,6 +320,8 @@ position = Vector2(2224, 192)
 shape = SubResource("Shape_32x192")
 
 [node name="PARED_06" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2752, 96)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 640, 0, 640)
@@ -269,6 +331,8 @@ position = Vector2(2768, 416)
 shape = SubResource("Shape_32x640")
 
 [node name="PARED_07" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(1120, 416)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
@@ -278,6 +342,8 @@ position = Vector2(1136, 576)
 shape = SubResource("Shape_32x320")
 
 [node name="PARED_08" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(1664, 416)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
@@ -287,6 +353,8 @@ position = Vector2(1680, 576)
 shape = SubResource("Shape_32x320")
 
 [node name="PARED_09" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2208, 416)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 320, 0, 320)
@@ -296,6 +364,8 @@ position = Vector2(2224, 576)
 shape = SubResource("Shape_32x320")
 
 [node name="PARED_10" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(64, 736)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 416, 0, 416, 32, 0, 32)
@@ -305,6 +375,8 @@ position = Vector2(272, 752)
 shape = SubResource("Shape_416x32")
 
 [node name="PARED_11" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(608, 736)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 672, 0, 672, 32, 0, 32)
@@ -314,6 +386,8 @@ position = Vector2(944, 752)
 shape = SubResource("Shape_672x32")
 
 [node name="PARED_12" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(1408, 736)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 448, 0, 448, 32, 0, 32)
@@ -323,6 +397,8 @@ position = Vector2(1632, 752)
 shape = SubResource("Shape_448x32")
 
 [node name="PARED_13" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(1984, 736)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 800, 0, 800, 32, 0, 32)
@@ -332,6 +408,8 @@ position = Vector2(2384, 752)
 shape = SubResource("Shape_800x32")
 
 [node name="PARED_14" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(448, 768)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 1216, 0, 1216)
@@ -341,6 +419,8 @@ position = Vector2(464, 1376)
 shape = SubResource("Shape_32x1216")
 
 [node name="PARED_15" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(608, 768)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 1056, 0, 1056)
@@ -350,6 +430,8 @@ position = Vector2(624, 1296)
 shape = SubResource("Shape_32x1056")
 
 [node name="PARED_16" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(1120, 768)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 512, 0, 512)
@@ -359,6 +441,8 @@ position = Vector2(1136, 1024)
 shape = SubResource("Shape_32x512")
 
 [node name="PARED_17" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2208, 768)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
@@ -368,6 +452,8 @@ position = Vector2(2224, 864)
 shape = SubResource("Shape_32x192")
 
 [node name="PARED_18" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2752, 768)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 160, 0, 160)
@@ -377,6 +463,8 @@ position = Vector2(2768, 848)
 shape = SubResource("Shape_32x160")
 
 [node name="PARED_19" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2752, 928)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 224, 0, 224, 32, 0, 32)
@@ -386,6 +474,8 @@ position = Vector2(2864, 944)
 shape = SubResource("Shape_224x32")
 
 [node name="PARED_20" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2752, 960)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 32, 0, 32)
@@ -395,6 +485,8 @@ position = Vector2(2768, 976)
 shape = SubResource("Shape_32x32")
 
 [node name="PARED_21" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2944, 960)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 160, 0, 160)
@@ -404,6 +496,8 @@ position = Vector2(2960, 1040)
 shape = SubResource("Shape_32x160")
 
 [node name="PARED_22" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2208, 1088)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 192, 0, 192)
@@ -413,6 +507,8 @@ position = Vector2(2224, 1184)
 shape = SubResource("Shape_32x192")
 
 [node name="PARED_23" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2752, 1088)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 32, 0, 32)
@@ -422,6 +518,8 @@ position = Vector2(2768, 1104)
 shape = SubResource("Shape_32x32")
 
 [node name="PARED_24" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2752, 1120)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 224, 0, 224, 32, 0, 32)
@@ -431,6 +529,8 @@ position = Vector2(2864, 1136)
 shape = SubResource("Shape_224x32")
 
 [node name="PARED_25" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2752, 1152)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 128, 0, 128)
@@ -440,6 +540,8 @@ position = Vector2(2768, 1216)
 shape = SubResource("Shape_32x128")
 
 [node name="PARED_26" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(1120, 1280)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 1664, 0, 1664, 32, 0, 32)
@@ -449,6 +551,8 @@ position = Vector2(1952, 1296)
 shape = SubResource("Shape_1664x32")
 
 [node name="PARED_27" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2848, 1536)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 704, 0, 704, 32, 0, 32)
@@ -458,6 +562,8 @@ position = Vector2(3200, 1552)
 shape = SubResource("Shape_704x32")
 
 [node name="PARED_28" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2848, 1568)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 256, 0, 256)
@@ -467,6 +573,8 @@ position = Vector2(2864, 1696)
 shape = SubResource("Shape_32x256")
 
 [node name="PARED_29" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(3520, 1568)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 544, 0, 544)
@@ -476,6 +584,8 @@ position = Vector2(3536, 1840)
 shape = SubResource("Shape_32x544")
 
 [node name="PARED_30" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(608, 1824)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 2272, 0, 2272, 32, 0, 32)
@@ -485,6 +595,8 @@ position = Vector2(1744, 1840)
 shape = SubResource("Shape_2272x32")
 
 [node name="PARED_31" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(448, 1984)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 2432, 0, 2432, 32, 0, 32)
@@ -494,6 +606,8 @@ position = Vector2(1664, 2000)
 shape = SubResource("Shape_2432x32")
 
 [node name="PARED_32" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2848, 2016)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 96, 0, 96)
@@ -503,6 +617,8 @@ position = Vector2(2864, 2064)
 shape = SubResource("Shape_32x96")
 
 [node name="PARED_33" type="Polygon2D" parent="PAREDES"]
+texture = ExtResource("tx_ladrillo")
+texture_repeat = 2
 position = Vector2(2848, 2112)
 color = Color(0.8, 0.8, 0.8, 1)
 polygon = PackedVector2Array(0, 0, 704, 0, 704, 32, 0, 32)
@@ -517,6 +633,8 @@ shape = SubResource("Shape_704x32")
 position = Vector2(704, 640)
 
 [node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MOLINETE_UNICO"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
 color = Color(0.55, 0.55, 0.55, 1)
 polygon = PackedVector2Array(0, 0, 32, 0, 32, 64, 0, 64)
 
@@ -530,6 +648,8 @@ shape = SubResource("Shape_32x64")
 position = Vector2(288, 560)
 
 [node name="Polygon2D" type="Polygon2D" parent="OBJETOS/BANCO_VESTIBULO"]
+texture = ExtResource("tx_madera")
+texture_repeat = 2
 color = Color(0.45, 0.3, 0.15, 1)
 polygon = PackedVector2Array(0, 0, 160, 0, 160, 32, 0, 32)
 
@@ -543,6 +663,8 @@ shape = SubResource("Shape_160x32")
 position = Vector2(1568, 960)
 
 [node name="Polygon2D" type="Polygon2D" parent="OBJETOS/MESA_OBJETOS"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
 color = Color(0.55, 0.55, 0.55, 1)
 polygon = PackedVector2Array(0, 0, 256, 0, 256, 96, 0, 96)
 
@@ -556,6 +678,8 @@ shape = SubResource("Shape_256x96")
 position = Vector2(1184, 1152)
 
 [node name="Polygon2D" type="Polygon2D" parent="OBJETOS/ESTANTE_OBJETOS"]
+texture = ExtResource("tx_metal")
+texture_repeat = 2
 color = Color(0.55, 0.55, 0.55, 1)
 polygon = PackedVector2Array(0, 0, 320, 0, 320, 64, 0, 64)
 
@@ -569,6 +693,8 @@ shape = SubResource("Shape_320x64")
 position = Vector2(3040, 1696)
 
 [node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_FINAL_1"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
@@ -582,6 +708,8 @@ shape = SubResource("Shape_64x64")
 position = Vector2(3040, 1920)
 
 [node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_FINAL_2"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
@@ -595,6 +723,8 @@ shape = SubResource("Shape_64x64")
 position = Vector2(3296, 1696)
 
 [node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_FINAL_3"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
@@ -608,6 +738,8 @@ shape = SubResource("Shape_64x64")
 position = Vector2(3296, 1920)
 
 [node name="Polygon2D" type="Polygon2D" parent="OBJETOS/COLUMNA_FINAL_4"]
+texture = ExtResource("tx_concreto")
+texture_repeat = 2
 color = Color(0.5, 0.5, 0.5, 1)
 polygon = PackedVector2Array(0, 0, 64, 0, 64, 64, 0, 64)
 
@@ -788,6 +920,7 @@ rangoDeteccion = 300
 soloConLuz = true
 
 [node name="Guarda" parent="." instance=ExtResource("e9")]
+script = ExtResource("e10")
 position = Vector2(3168, 1810)
 vida = 40
 dano = 2
@@ -800,6 +933,18 @@ soloConLuz = true
 idLlaveBotin = "silbato"
 nombreLlaveBotin = "Silbato del guarda"
 tiempoAturdido = 0
+
+[node name="ZonaSilbatoLejos" parent="." instance=ExtResource("e11")]
+position = Vector2(544, 1150)
+mensaje = "Se escucha un silbato, lejos. Muy al fondo del túnel."
+
+[node name="ZonaPasos" parent="." instance=ExtResource("e11")]
+position = Vector2(1700, 1920)
+mensaje = "Pasos en un andén. Alguien camina despacio, sin apuro, de una punta a la otra."
+
+[node name="ZonaSilbatoCerca" parent="." instance=ExtResource("e11")]
+position = Vector2(2950, 1920)
+mensaje = "Un silbato, ahora muy cerca. Y una voz cansada: «Última estación...»"
 
 [node name="PUNTO_APARICION_JUGADOR" type="Marker2D" parent="."]
 position = Vector2(224, 320)
