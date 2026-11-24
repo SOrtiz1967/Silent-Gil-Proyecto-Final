@@ -1,6 +1,5 @@
 extends CanvasLayer
-#autoload. cartel de arriba a la derecha que dice que hay que hacer y para donde queda
-const direcciones = ["a la derecha", "abajo a la derecha", "abajo", "abajo a la izquierda", "a la izquierda", "arriba a la izquierda", "arriba", "arriba a la derecha"]
+#autoload. cartel de arriba a la derecha que dice que hay que hacer
 var tiempo = 0.0
 
 @onready var fondo = $Fondo
@@ -21,20 +20,7 @@ func actualizar() -> void:
 		paso = paso_de(nivel.scene_file_path.get_file(), nivel, jugador)
 	fondo.visible = not paso.is_empty()
 	if fondo.visible:
-		etiqueta.text = "OBJETIVO: " + paso[0] + indicacion(nivel, jugador, paso[1])
-
-#ruta es el nodo del nivel al que apunta la flecha (puede estar vacia)
-func indicacion(nivel: Node, jugador: Node2D, ruta: String) -> String:
-	var objetivo = nivel.get_node_or_null(ruta) if ruta != "" else null
-	if objetivo == null:
-		return ""
-	var vector = objetivo.global_position - jugador.global_position
-	var metros = int(vector.length() / 32.0)
-	if metros < 3:
-		return "\n(estás justo acá)"
-	#divido el circulo en 8 partes de 45 grados para elegir la direccion
-	var indice = posmod(int(round(vector.angle() / (PI / 4.0))), 8)
-	return "\n(" + direcciones[indice] + ", a unos " + str(metros) + " metros)"
+		etiqueta.text = "OBJETIVO: " + paso[0]
 
 func tiene(id_llave: String) -> bool:
 	return Inventario.tiene_llave(id_llave)

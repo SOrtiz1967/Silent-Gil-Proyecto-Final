@@ -819,21 +819,21 @@ position = Vector2(1500, 600)
 
 [node name="Alfajor" parent="." instance=ExtResource("e4")]
 position = Vector2(1400, 200)
-curacion = 1
+curacion = 10
 nombre_consumible = "Alfajor"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/alfajor-01-negro.png"
 
 [node name="Empanada" parent="." instance=ExtResource("e4")]
 position = Vector2(330, 860)
-curacion = 1
+curacion = 10
 nombre_consumible = "Empanada"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/empanada.png"
 
 [node name="Pastafrola" parent="." instance=ExtResource("e4")]
 position = Vector2(2200, 1100)
-curacion = 1
+curacion = 10
 nombre_consumible = "Pastafrola"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/pastafrola.png"

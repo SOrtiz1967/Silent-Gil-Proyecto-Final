@@ -1,6 +1,6 @@
 extends Area2D
 #cosas para curarse (alfajores, bebidas, etc). Se agarran con F
-@export var curacion = 1.0
+@export var curacion = 10.0
 @export var nombre_consumible = "Golosina"
 @export var verbo = "comer"
 @export_file("*.png") var ruta_textura = ""

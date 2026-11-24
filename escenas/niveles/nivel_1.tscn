@@ -1722,21 +1722,21 @@ shape = SubResource("Shape_pz_1696x64")
 
 [node name="KioscoAlfajor" parent="." instance=ExtResource("50_consumible")]
 position = Vector2(800, 654)
-curacion = 1.0
+curacion = 10.0
 nombre_consumible = "Alfajor"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/alfajor-01-negro.png"
 
 [node name="KioscoGolosina1" parent="." instance=ExtResource("50_consumible")]
 position = Vector2(896, 654)
-curacion = 1.0
+curacion = 10.0
 nombre_consumible = "Golosina"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/golosina-02.png"
 
 [node name="KioscoGolosina2" parent="." instance=ExtResource("50_consumible")]
 position = Vector2(992, 654)
-curacion = 1.0
+curacion = 10.0
 nombre_consumible = "Golosina"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/golosina-01.png"
@@ -1756,7 +1756,7 @@ ruta_textura = "res://assets/carteles/cartel_llave.png"
 [node name="Cartel03" parent="." instance=ExtResource("51_cartel")]
 position = Vector2(2180, 1680)
 titulo = "PUNTO DE CARGA"
-texto = "Mantené F cerca de un poste celeste para cargar el celular: de 0 a 100% tarda unos 20 segundos. Hay postes en la estación, en la plaza y en el McDonald's."
+texto = "Acercate a un poste celeste y el celular se carga solo: de 0 a 100% tarda unos 7 segundos. Hay postes en la estación, en la plaza y en el McDonald's."
 ruta_textura = "res://assets/carteles/cartel_info.png"
 
 [node name="Cartel04" parent="." instance=ExtResource("51_cartel")]

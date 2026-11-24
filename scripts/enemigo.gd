@@ -17,7 +17,7 @@ static var muertes_sin_botin = 0
 @export var velocidad = 60.0
 @export var rango_ataque = 40.0
 #las variables exportadas sin ñ porque en el .tscn no se guardan bien con ñ
-@export var dano = 1
+@export var dano = 15
 @export var rango_deteccion = 250.0
 @export var probabilidad_botin = 0.7
 @export var llave_botin = ""
@@ -164,7 +164,7 @@ func soltar_botin() -> void:
 	var bebida = bebidas.pick_random()
 	var consumible = Consumible.instantiate()
 	consumible.persistente = false
-	consumible.curacion = 0.5
+	consumible.curacion = 5.0
 	consumible.verbo = "tomar"
 	consumible.nombre_consumible = bebida["nombre"]
 	consumible.ruta_textura = bebida["textura"]

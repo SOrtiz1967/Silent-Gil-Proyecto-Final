@@ -837,14 +837,14 @@ position = Vector2(1500, 900)
 
 [node name="Milanga" parent="." instance=ExtResource("e3")]
 position = Vector2(1250, 1000)
-curacion = 2
+curacion = 20
 nombre_consumible = "Milanga"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/milanga.png"
 
 [node name="Alfajor" parent="." instance=ExtResource("e3")]
 position = Vector2(2000, 200)
-curacion = 1
+curacion = 10
 nombre_consumible = "Alfajor"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/alfajor-03-mani.png"
@@ -925,7 +925,7 @@ ruta_textura = "res://assets/carteles/cartel_madera.png"
 [node name="Fisura01" parent="." instance=ExtResource("e9")]
 position = Vector2(1936, 200)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -934,7 +934,7 @@ solo_con_luz = true
 [node name="Fisura02" parent="." instance=ExtResource("e9")]
 position = Vector2(1400, 900)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -943,7 +943,7 @@ solo_con_luz = true
 [node name="Fisura03" parent="." instance=ExtResource("e9")]
 position = Vector2(2500, 700)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -953,7 +953,7 @@ solo_con_luz = true
 script = ExtResource("e10")
 position = Vector2(3168, 1810)
 vida = 40
-dano = 2
+dano = 30
 velocidad = 70
 rango_deteccion = 600
 rango_ataque = 60

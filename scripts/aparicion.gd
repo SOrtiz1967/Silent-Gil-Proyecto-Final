@@ -5,7 +5,7 @@ extends Node2D
 @export var id_aparicion = ""
 @export var vida = 2
 @export var velocidad = 120.0
-@export var dano = 0.5
+@export var dano = 8.0
 @export var escala = 0.6
 @export var rango_deteccion = 3000.0
 

@@ -933,21 +933,21 @@ position = Vector2(3150, 620)
 
 [node name="Golosina1" parent="." instance=ExtResource("e3")]
 position = Vector2(1700, 1200)
-curacion = 1
+curacion = 10
 nombre_consumible = "Golosina"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/golosina-01.png"
 
 [node name="Golosina2" parent="." instance=ExtResource("e3")]
 position = Vector2(3500, 1230)
-curacion = 1
+curacion = 10
 nombre_consumible = "Golosina"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/golosina-02.png"
 
 [node name="Choripan" parent="." instance=ExtResource("e3")]
 position = Vector2(4350, 560)
-curacion = 2
+curacion = 20
 nombre_consumible = "Choripan"
 verbo = "comer"
 ruta_textura = "res://assets/argentinian-assets-pack-v1.0 (1)/comida/choripan.png"
@@ -998,7 +998,7 @@ ruta_textura = "res://assets/carteles/cartel_llave.png"
 [node name="Fisura01" parent="." instance=ExtResource("e6")]
 position = Vector2(1000, 560)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1007,7 +1007,7 @@ solo_con_luz = true
 [node name="Fisura02" parent="." instance=ExtResource("e6")]
 position = Vector2(1500, 700)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1016,7 +1016,7 @@ solo_con_luz = true
 [node name="Fisura03" parent="." instance=ExtResource("e6")]
 position = Vector2(2000, 1200)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1025,7 +1025,7 @@ solo_con_luz = true
 [node name="Fisura04" parent="." instance=ExtResource("e6")]
 position = Vector2(2700, 650)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1034,7 +1034,7 @@ solo_con_luz = true
 [node name="Fisura05" parent="." instance=ExtResource("e6")]
 position = Vector2(3100, 1340)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1043,7 +1043,7 @@ solo_con_luz = true
 [node name="Fisura06" parent="." instance=ExtResource("e6")]
 position = Vector2(3100, 640)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1052,7 +1052,7 @@ solo_con_luz = true
 [node name="Fisura07" parent="." instance=ExtResource("e6")]
 position = Vector2(3700, 1248)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1061,7 +1061,7 @@ solo_con_luz = true
 [node name="Fisura08" parent="." instance=ExtResource("e6")]
 position = Vector2(4064, 900)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1070,7 +1070,7 @@ solo_con_luz = true
 [node name="Fisura09" parent="." instance=ExtResource("e6")]
 position = Vector2(4300, 544)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1079,7 +1079,7 @@ solo_con_luz = true
 [node name="Fisura10" parent="." instance=ExtResource("e6")]
 position = Vector2(600, 800)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1109,7 +1109,7 @@ texto = "Todas las señales del tablero marcan lo mismo: 3:07. Colgada de un cla
 [node name="Fisura11" parent="." instance=ExtResource("e6")]
 position = Vector2(3800, 1240)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300
@@ -1118,7 +1118,7 @@ solo_con_luz = true
 [node name="Fisura12" parent="." instance=ExtResource("e6")]
 position = Vector2(3430, 1240)
 vida = 12
-dano = 1.5
+dano = 22
 variante = 2
 color_normal = Color(0.78, 0.84, 1, 1)
 rango_deteccion = 300

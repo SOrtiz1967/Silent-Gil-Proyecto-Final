@@ -1,6 +1,6 @@
 extends Area2D
-#poste para cargar el celular. Hay que mantener F
-@export var velocidad_carga = 5.0
+#poste para cargar el celular. Carga solo al estar cerca
+@export var velocidad_carga = 15.0
 
 var jugador_cerca = false
 var tiempo = 0.0
@@ -16,11 +16,9 @@ func _process(delta: float) -> void:
 		Inventario.mostrar_aviso("No necesito cargar, tengo el powerbank")
 	elif Inventario.bateria >= 100.0:
 		Inventario.mostrar_aviso("Celular cargado")
-	elif Input.is_action_pressed("interactuar"):
+	else:
 		Inventario.cargar_bateria(velocidad_carga * delta)
 		Inventario.mostrar_aviso("Cargando celular... " + str(int(Inventario.bateria)) + "%")
-	else:
-		Inventario.mostrar_aviso("Mantene F para cargar el celular")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("jugador"):
